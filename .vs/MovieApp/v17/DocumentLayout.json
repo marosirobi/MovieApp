@@ -1,0 +1,132 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\maros\\source\\MovieApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|c:\\users\\maros\\source\\movieapp\\movieapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|solutionrelative:movieapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|c:\\users\\maros\\source\\movieapp\\movieapp\\mvvm\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|solutionrelative:movieapp\\mvvm\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|c:\\users\\maros\\source\\movieapp\\movieapp\\theme\\textboxtheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|solutionrelative:movieapp\\theme\\textboxtheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|c:\\users\\maros\\source\\movieapp\\movieapp\\theme\\moviecardtheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|solutionrelative:movieapp\\theme\\moviecardtheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|c:\\users\\maros\\source\\movieapp\\movieapp\\utils\\buttonutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|solutionrelative:movieapp\\utils\\buttonutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|c:\\users\\maros\\source\\movieapp\\movieapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|solutionrelative:movieapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|c:\\users\\maros\\source\\movieapp\\movieapp\\mvvm\\view\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F06CEC05-BC56-4A79-A98C-B0C8973D951B}|MovieApp\\MovieApp.csproj|solutionrelative:movieapp\\mvvm\\view\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TextBoxTheme.xaml",
+              "DocumentMoniker": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\Theme\\TextBoxTheme.xaml",
+              "RelativeDocumentMoniker": "MovieApp\\Theme\\TextBoxTheme.xaml",
+              "ToolTip": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\Theme\\TextBoxTheme.xaml",
+              "RelativeToolTip": "MovieApp\\Theme\\TextBoxTheme.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-18T15:26:30.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MovieCardTheme.xaml",
+              "DocumentMoniker": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\Theme\\MovieCardTheme.xaml",
+              "RelativeDocumentMoniker": "MovieApp\\Theme\\MovieCardTheme.xaml",
+              "ToolTip": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\Theme\\MovieCardTheme.xaml",
+              "RelativeToolTip": "MovieApp\\Theme\\MovieCardTheme.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-18T15:22:42.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\MVVM\\ViewModel\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "MovieApp\\MVVM\\ViewModel\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\MVVM\\ViewModel\\MainViewModel.cs",
+              "RelativeToolTip": "MovieApp\\MVVM\\ViewModel\\MainViewModel.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T15:10:49.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ButtonUtils.cs",
+              "DocumentMoniker": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\Utils\\ButtonUtils.cs",
+              "RelativeDocumentMoniker": "MovieApp\\Utils\\ButtonUtils.cs",
+              "ToolTip": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\Utils\\ButtonUtils.cs",
+              "RelativeToolTip": "MovieApp\\Utils\\ButtonUtils.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T14:54:48.655Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\App.xaml",
+              "RelativeDocumentMoniker": "MovieApp\\App.xaml",
+              "ToolTip": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\App.xaml",
+              "RelativeToolTip": "MovieApp\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-18T14:01:44.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MovieApp\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\MainWindow.xaml",
+              "RelativeToolTip": "MovieApp\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-18T12:54:53.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeView.xaml",
+              "DocumentMoniker": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\MVVM\\View\\HomeView.xaml",
+              "RelativeDocumentMoniker": "MovieApp\\MVVM\\View\\HomeView.xaml",
+              "ToolTip": "C:\\Users\\maros\\source\\MovieApp\\MovieApp\\MVVM\\View\\HomeView.xaml",
+              "RelativeToolTip": "MovieApp\\MVVM\\View\\HomeView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-14T16:56:07.843Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
