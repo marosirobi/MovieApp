@@ -6,10 +6,7 @@
         <ResourceDictionary Source="/Theme/WatchlistButtonTheme.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MovieCard" TargetType="ContentControl">
-        <Setter Property="ContentTemplate">
-            <Setter.Value>
-                <DataTemplate>
+                <DataTemplate x:Key="MovieCard">
                 <Border Height="460"
                         Width="200"
                         CornerRadius="0,12,12,12"
@@ -27,8 +24,9 @@
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     Orientation="Horizontal">
-
-                                <TextBlock Text="⭐ 9.5"
+                    <TextBlock Text="Rate this movie:" Foreground="White" Margin="0,5,0,0"/>
+                    <Slider Minimum="1" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True" Width="150"/>
+                    <TextBlock Text="{Binding AverageRating}"
                                        FontWeight="SemiBold"
                                        Margin="5,5,0,0"
                                        FontSize="16"
@@ -38,14 +36,14 @@
                                        FontWeight="SemiBold"
                                        Margin="5,5,0,0"
                                        FontSize="16"
-                                       Foreground="White"/>
+                                       Foreground="yellow"/>
                         </StackPanel>
                         <StackPanel Grid.Row="2"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     Orientation="Vertical">
 
-                                <TextBlock Text="The Lord of the Rings: The Fellowship of the Ring adsada sdadasdasd sadasdasdasdas dsadadas sdasdad asdasdasdas"
+                                <TextBlock Text="{Binding PrimaryTitle}"
                                            TextWrapping="Wrap"
                                            TextTrimming="WordEllipsis"
                                            FontWeight="SemiBold"
@@ -72,7 +70,7 @@
                         
                             <Border CornerRadius="0,12,0,0">
                                 <Border.Background>
-                                    <ImageBrush Stretch="Fill" ImageSource="/Images/batman.jpg"/>
+                                    <ImageBrush Stretch="Fill" ImageSource="{Binding PrimaryImage}" x:Name="movieImage"/>
                                 </Border.Background>
                             </Border>
                             
@@ -81,8 +79,6 @@
 
                 </Border>
                 </DataTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+            
 
 </ResourceDictionary>

@@ -1,51 +1,40 @@
-﻿using MovieApp.Core;
-using System;
-
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using MovieApp.MVVM.Model;
+using System.Collections.ObjectModel;
 
 namespace MovieApp.MVVM.ViewModel
 {
-    class MainViewModel : ObservableObject
+    public partial class MainViewModel : ObservableObject
     {
-        public RelayCommand HomeViewCommand { get; set; }
-        public RelayCommand DiscoveryViewCommand { get; set; }
-
-        public HomeViewModel HomeVM { get; set; }
-        public DiscoveryViewModel DiscoveryVM { get; set; }
-
+        [ObservableProperty]
         private object _currentView;
 
-        public object CurrentView
-        {
-            get { return _currentView; }
-            set 
-            {   _currentView = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private HomeViewModel _homeVM;
+        [ObservableProperty]
+        private DiscoveryViewModel _discoveryVM;
 
 
         public MainViewModel()
         {
+            
             HomeVM = new HomeViewModel();
             DiscoveryVM = new DiscoveryViewModel();
-            
+
             CurrentView = HomeVM;
-
-            HomeViewCommand = new RelayCommand(o => 
-            {
-                CurrentView = HomeVM;
-                         
-            });
-            DiscoveryViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = DiscoveryVM;
-
-            });
-
-
         }
 
+        [RelayCommand]
+        private void NavigateToHome()
+        {
+            CurrentView = HomeVM;
+        }
 
-
+        [RelayCommand]
+        private void NavigateToDiscovery()
+        {
+            CurrentView = DiscoveryVM;
+        }
     }
 }

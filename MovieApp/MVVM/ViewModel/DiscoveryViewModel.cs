@@ -3,7 +3,7 @@
 
 namespace MovieApp.MVVM.ViewModel
 {
-    class DiscoveryViewModel
+    public partial class DiscoveryViewModel
     {
     }
 }

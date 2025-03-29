@@ -1,6 +1,6 @@
 # Build artifacts
-bin/
-obj/
+*/bin/
+*/obj/
 *.exe
 *.dll
 *.pdb

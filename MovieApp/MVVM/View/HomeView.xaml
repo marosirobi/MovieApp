@@ -16,19 +16,23 @@
 
             <StackPanel Orientation="Horizontal">
 
-                <ContentControl Style="{StaticResource MovieCard}" />
-                <ContentControl Style="{StaticResource MovieCard}" />
-
-
-
+                <ItemsControl ItemsSource="{Binding Movies}"
+                  ItemTemplate="{StaticResource MovieCard}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Most Watched"
-           Foreground="White"
-           FontSize="20"
-           HorizontalAlignment="Left"
-           Margin="0,0,0,10"/>
+                           Foreground="White"
+                           FontSize="20"
+                           HorizontalAlignment="Left"
+                           Margin="0,0,0,10"/>
 
                 <StackPanel Orientation="Horizontal">
 
