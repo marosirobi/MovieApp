@@ -3,7 +3,6 @@ using MovieApp.MVVM.Model;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
-
 namespace MovieApp.MVVM.ViewModel
 {
     public partial class HomeViewModel : ObservableObject
@@ -11,13 +10,11 @@ namespace MovieApp.MVVM.ViewModel
         public ObservableCollection<MovieModel> Movies { get; } = new ObservableCollection<MovieModel>();
         private readonly Random _random = new Random();
 
-        public async Task LoadRandom20Movies()
+        public void SetMovies(ObservableCollection<MovieModel> allMovies)
         {
             try
             {
-                Debug.WriteLine("Loading 20 random movies...");
-
-                var allMovies = await MovieApi.GetMoviesFromApi();
+                Debug.WriteLine("Setting 20 random movies from pre-loaded data...");
                 Movies.Clear();
 
                 if (allMovies?.Count > 0)
@@ -25,14 +22,14 @@ namespace MovieApp.MVVM.ViewModel
                     // Take 20 random movies
                     var random20 = allMovies
                         .OrderBy(x => _random.Next())
-                        .Take(allMovies.Count)
+                        .Take(20)
                         .ToList();
 
                     foreach (var movie in random20)
                     {
                         Movies.Add(movie);
                     }
-                    Debug.WriteLine($"Loaded {random20.Count} random movies");
+                    Debug.WriteLine($"Set {random20.Count} random movies");
                 }
                 else
                 {
@@ -51,11 +48,11 @@ namespace MovieApp.MVVM.ViewModel
         {
             // Generate 20 random fallback movies
             var fallbackTitles = new List<string>
-    {
-        "The Shawshank Redemption", "The Godfather", "The Dark Knight",
-        "Pulp Fiction", "Fight Club", "Forrest Gump", "Inception",
-        "The Matrix", "Goodfellas", "The Silence of the Lambs"
-    };
+            {
+                "The Shawshank Redemption", "The Godfather", "The Dark Knight",
+                "Pulp Fiction", "Fight Club", "Forrest Gump", "Inception",
+                "The Matrix", "Goodfellas", "The Silence of the Lambs"
+            };
 
             for (int i = 0; i < 20; i++)
             {
@@ -68,6 +65,5 @@ namespace MovieApp.MVVM.ViewModel
                 });
             }
         }
-
     }
 }

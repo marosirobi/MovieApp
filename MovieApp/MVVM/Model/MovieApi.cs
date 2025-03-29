@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -14,7 +15,7 @@ namespace MovieApp.MVVM.Model
 {
     class MovieApi
     {
-        public static async Task<List<MovieModel>> GetMoviesFromApi()
+        public static async Task<ObservableCollection<MovieModel>> GetMoviesFromApi()
         {
             var headers = new Dictionary<string, string>
             {
@@ -35,13 +36,13 @@ namespace MovieApp.MVVM.Model
             {
                 // For System.Text.Json:
                 string content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<MovieModel>>(content);
+                return JsonConvert.DeserializeObject<ObservableCollection<MovieModel>>(content);
             }
             else
             {
                 // Handle API errors
                 Debug.WriteLine($"API Error: {response.StatusCode}");
-                return new List<MovieModel>();
+                return new ObservableCollection<MovieModel>();
             }
         }
     }
