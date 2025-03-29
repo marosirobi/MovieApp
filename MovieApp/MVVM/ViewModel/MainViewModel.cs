@@ -1,7 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MovieApp.MVVM.Model;
-using System.Collections.ObjectModel;
 
 namespace MovieApp.MVVM.ViewModel
 {
@@ -12,6 +10,7 @@ namespace MovieApp.MVVM.ViewModel
 
         [ObservableProperty]
         private HomeViewModel _homeVM;
+
         [ObservableProperty]
         private DiscoveryViewModel _discoveryVM;
 

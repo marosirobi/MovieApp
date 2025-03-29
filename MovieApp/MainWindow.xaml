@@ -53,11 +53,11 @@
                 <RadioButton Content="Home"      
                              IsChecked="True"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding HomeViewCommand}"/>
+                             Command="{Binding NavigateToHomeCommand}"/>
 
                 <RadioButton Content="Top rated movies"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding DiscoveryViewCommand}"/>
+                             Command="{Binding NavigateToDiscoveryCommand}"/>
 
                 <RadioButton Content="Watchlist"
                              Style="{StaticResource MenuButtonTheme}"/>
