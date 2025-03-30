@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore p1:name="Model" p1:Guid="8bc7a736-9940-4543-8ee4-92a0289971e3" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="Film" entity-set="Films" table="Filmek" p1:Guid="8e56c725-5381-4230-ad8b-2b5ed320f710">
+    <id name="Film_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="a8fd4612-9390-42ad-9948-f6e779a62b4e">
+      <column name="" />
+    </id>
+    <property name="Időtartam" type="Int32" p1:ValidateRequired="true" p1:Guid="adeb9122-65a5-412c-8c4c-0e110a6a430a">
+      <column name="" />
+    </property>
+    <property name="Megjelenési_év" type="Int32" p1:ValidateRequired="true" p1:Guid="d308bbfc-ff63-41db-8a6a-cca1e6e85728">
+      <column name="" />
+    </property>
+    <property name="Átlag_értékelés" type="Double" p1:ValidateRequired="true" p1:Guid="f3c10c3d-bbc7-476c-afb6-a986a3ed3bfb">
+      <column name="" />
+    </property>
+    <property name="Kép" type="String" p1:ValidateRequired="true" p1:Guid="da6450bc-6f81-4eb4-ae85-34f6d4dd9be4">
+      <column name="" />
+    </property>
+    <property name="Műfaj" type="String" p1:ValidateRequired="true" p1:Guid="7ce00469-bfbc-462b-80c2-69f358fba2aa">
+      <column name="" />
+    </property>
+    <property name="Cím" type="String" p1:ValidateRequired="true" p1:Guid="897bd67c-9a21-4426-adf0-2cfeec6e21b8">
+      <column name="" />
+    </property>
+  </class>
+  <class name="Felhasználó" entity-set="Felhasználós" table="Felhasználó" p1:Guid="5d28ccf6-f243-425d-b958-ae87cfa5528d">
+    <id name="Felhasználó_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="814194b0-2c1b-447a-a570-49ad3af05ced">
+      <column name="" />
+    </id>
+    <property name="Felhasználó_név" type="String" p1:ValidateRequired="true" p1:Guid="bdca976a-66a7-4ad5-bc10-d893f236bfa5">
+      <column name="" />
+    </property>
+    <property name="Jelszó" type="String" p1:ValidateRequired="true" p1:Guid="0791a1cb-cbea-4d01-8bda-47618763284e">
+      <column name="" />
+    </property>
+    <property name="Email" type="String" p1:ValidateRequired="true" p1:Guid="419e5b25-0bc5-4257-90c6-d300865c287b">
+      <column name="" />
+    </property>
+    <property name="Értékelés_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="01ec1825-a074-49e7-9a18-a22fe9f83559">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Értékelések" entity-set="Értékeléseks" p1:Guid="e97c73fe-087d-49c5-97f2-2fc12221f539">
+    <id name="Értékelés_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="ef0a62a5-064c-49e0-aaa3-684319ce5c75">
+      <column name="" />
+    </id>
+    <property name="Csillagok" type="Int32" p1:ValidateRequired="true" p1:Guid="34b15b8d-e099-4ec1-995d-081298ecc6a9">
+      <column name="" />
+    </property>
+    <property name="Közlési_dátum" type="DateTime" p1:ValidateRequired="true" p1:Guid="5bbba4a6-2f8d-41ab-abdb-13cf6843b354">
+      <column name="" />
+    </property>
+    <property name="Tartalom" type="String" p1:ValidateRequired="true" p1:Guid="b01e7268-50ee-4977-b1e1-91ecfc2bf858">
+      <column name="" />
+    </property>
+    <property name="Film_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="2f3424d8-f8c8-4284-9c71-845cc9d36861">
+      <column name="" not-null="False" />
+    </property>
+    <property name="FilmFilm_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="2b84b002-7283-49ae-80a8-3e328529bde0">
+      <column name="" not-null="False" />
+    </property>
+    <property name="Felhasználó_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="326eb4a3-77ef-43ca-948e-94b1fcc162d1">
+      <column name="" not-null="False" />
+    </property>
+    <property name="FilmFilm_ID1" type="Int32" p1:ValidateRequired="true" p1:Guid="aa320122-9b58-4b04-a0c3-5a13d322c9dd">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Lista" entity-set="Listas" table="Megnézendő_filmek" p1:Guid="772dd50e-4821-4b2f-9918-fef9a06aa90f">
+    <id name="Lista_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="93ffd7a5-fe3c-4aa7-8442-18c8c5ab3e1b">
+      <column name="" />
+    </id>
+    <property name="Lista_név" type="String" p1:ValidateRequired="true" p1:Guid="2e9e699c-41e2-4c80-9b3a-34aab785de99">
+      <column name="" />
+    </property>
+    <property name="Felhasználó_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="d3e94391-b3d5-4d5e-baa7-757439dc051e">
+      <column name="" />
+    </property>
+    <property name="FelhasználóFelhasználó_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="53cc51c2-1a4d-4dfa-b402-52db6b5a93d2">
+      <column name="" not-null="False" />
+    </property>
+    <property name="FelhasználóFelhasználó_ID1" type="Int32" p1:ValidateRequired="true" p1:Guid="b1069a8c-80a2-461f-90f5-34bf52c057d1">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Megnézendő_Filmek" entity-set="Megnézendő_Filmeks" p1:Guid="2c4f8991-3315-4adf-bce7-e3e3e4c757a7">
+    <id name="Megnézendő_Filmek_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="7b94ab96-a88b-4328-84bc-eb3869c2a613">
+      <column name="" />
+    </id>
+    <property name="Lista_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="382e7cc1-c63e-4f43-b09d-655f83a3c8da">
+      <column name="" />
+    </property>
+    <property name="Film_ID" type="String" p1:ValidateRequired="true" p1:Guid="0736e4a4-f1fd-42bc-b682-57db99d64aa2">
+      <column name="" />
+    </property>
+    <property name="Hozzáadási_dátum" type="DateTime" p1:ValidateRequired="true" p1:Guid="dfead49d-9bd7-4bfe-9153-eea4a1845bcd">
+      <column name="" />
+    </property>
+    <property name="ListaLista_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="4e3e91f1-8dfa-4f12-a4ee-1c99d7e960f5">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <associations>
+    <association name="Film_Értékelések" cardinality="OneToMany" p1:Guid="070ac12d-5561-41d5-8c02-30bd7e3206fa">
+      <end1 multiplicity="One" name="Film_értékelés" class="Értékelések" relation-class="Film" constrained="True" lazy="False" p1:Guid="2e4bf718-60a5-4bb6-b54d-9cee24354084">
+        <property name="Film_ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Film_értékelés" class="Film" relation-class="Értékelések" lazy="False" p1:Guid="4b9f3044-3d98-4819-b633-ddae1c15f3fb">
+        <property name="FilmFilm_ID1" />
+      </end2>
+    </association>
+    <association name="Értékelések_Felhasználó" cardinality="OneToMany" p1:Guid="fbcc5b3e-7ca4-4fb1-b6cb-881f538324a4">
+      <end1 multiplicity="One" name="Felhasználó_értékelés" class="Felhasználó" relation-class="Értékelések" constrained="True" lazy="False" p1:Guid="3568eb16-3537-49fd-93fb-a96faf5d41df">
+        <property name="Értékelés_ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Felhasználó_értékelés" class="Értékelések" relation-class="Felhasználó" lazy="False" p1:Guid="f5491aaa-e2a8-45cf-a117-1f94872183e1">
+        <property name="Értékelés_ID" />
+      </end2>
+    </association>
+    <association name="Felhasználó_Lista" cardinality="OneToMany" p1:Guid="07a0a816-14ca-4ad8-b74c-dac760277c94">
+      <end1 multiplicity="One" name="Felhasználó_Lista" class="Lista" relation-class="Felhasználó" constrained="True" lazy="False" p1:Guid="e45c5c7b-855b-4f92-8e89-f0a56f91773a">
+        <property name="Felhasználó_ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Felhasználó_Lista" class="Felhasználó" relation-class="Lista" lazy="False" p1:Guid="37886fcc-c767-40aa-9b92-1f181bd47620">
+        <property name="FelhasználóFelhasználó_ID1" />
+      </end2>
+    </association>
+    <association name="Megnézendő_Filmek_Film" cardinality="ManyToMany" p1:Guid="902c1ad1-12a1-472c-ab02-1191355418aa">
+      <end1 multiplicity="Many" name="Megnézendő_Filmeks" class="Film" relation-class="Megnézendő_Filmek" lazy="False" p1:Guid="f4690971-5a79-465c-8603-383edf50ba87">
+        <property name="Film_ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Films" class="Megnézendő_Filmek" relation-class="Film" lazy="False" p1:Guid="0f1521e8-f6dd-4e39-a20c-4e9ca58a645a">
+        <property name="Film_ID" />
+      </end2>
+    </association>
+    <association name="Lista_Megnézendő_Filmek" cardinality="OneToMany" p1:Guid="f8b3601d-c9e2-40e3-8353-7d7fb8849686">
+      <end1 multiplicity="One" name="Megnézendő_Lista" class="Megnézendő_Filmek" relation-class="Lista" constrained="True" lazy="False" p1:Guid="baec3c02-5a82-4cfd-b4ba-8f0688d7c4fe">
+        <property name="Lista_ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Megnézendő_Lista" class="Lista" relation-class="Megnézendő_Filmek" lazy="False" p1:Guid="87e811b1-0342-4be8-ba9a-e16b1e52a2ed">
+        <property name="ListaLista_ID" />
+      </end2>
+    </association>
+  </associations>
+</efcore>
