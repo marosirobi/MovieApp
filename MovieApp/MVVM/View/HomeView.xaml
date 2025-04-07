@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MovieApp.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="460" d:DesignWidth="800">
-    <Grid>
+    <Grid Name="MoviesGrid" SizeChanged="MoviesGrid_SizeChanged">
         <StackPanel>
             <TextBlock Text="What to watch"
                    Foreground="White"
@@ -14,56 +14,25 @@
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" >
 
-                <ItemsControl ItemsSource="{Binding Movies}"
-                  ItemTemplate="{StaticResource MovieCard}">
+                <Button  x:Name="btnLeft" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Style="{StaticResource LeftArrowButton}" Margin=" 0 0 10 0" Click="Swipe_Left">
+                    
+                </Button>
+
+                <ItemsControl ItemsSource="{Binding VisibleMovies}"
+                              ItemTemplate="{StaticResource MovieCard}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-                
-            </StackPanel>
 
-            <StackPanel>
-                <TextBlock Text="Most Watched"
-                           Foreground="White"
-                           FontSize="20"
-                           HorizontalAlignment="Left"
-                           Margin="0,0,0,10"/>
-
-                <StackPanel Orientation="Horizontal">
-
-                    <StackPanel.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="Margin" Value="15,0,0,0"/>
-                        </Style>
-
-                    </StackPanel.Resources>
-
-                    <Border Width="150" 
-                        Height="150"
-                        Background="#844eff"
-                        CornerRadius="10"
-                        Margin="0"/>
-
-                    <Border Width="150" 
-                        Height="150"
-                        Background="#4e99ff"
-                        CornerRadius="10"/>
-
-                    <Border Width="150" 
-                        Height="150"
-                        Background="#4eff91"
-                        CornerRadius="10"/>
-
-                    <Border Width="150" 
-                        Height="150"
-                        Background="#ecff4e"
-                        CornerRadius="10"/>
-                </StackPanel>
+                <Button x:Name="btnRight" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Style="{StaticResource RightArrowButton}" Margin=" 10 0 0 0" Click="Swipe_Right">
+                </Button>
 
             </StackPanel>
 
