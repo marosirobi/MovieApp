@@ -13,8 +13,8 @@
         </Style.Triggers>
     </Style>
 
-    <Path x:Key="LeftArrow" Data="M20,0 L0,40 L20,80" Style="{StaticResource ArrowPathStyle}"/>
-    <Path x:Key="RightArrow" Data="M0,0 L20,40 L0,80" Style="{StaticResource ArrowPathStyle}"/>
+    <Path x:Key="LeftArrow" Data="M20,0 L0,40 L20,80" Style="{StaticResource ArrowPathStyle}" x:Shared="False"/>
+    <Path x:Key="RightArrow" Data="M0,0 L20,40 L0,80" Style="{StaticResource ArrowPathStyle}" x:Shared="False"/>
 
     <!-- Button Template with Hover Effects -->
     <ControlTemplate x:Key="ArrowButtonTemplate" TargetType="Button">

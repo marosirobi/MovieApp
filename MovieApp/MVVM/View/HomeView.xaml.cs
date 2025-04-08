@@ -6,6 +6,8 @@ namespace MovieApp.MVVM.View
 {
     public partial class HomeView : UserControl
     {
+        private const double MovieCardWidth = 220; // 200 width + 20 margin
+
         public HomeView()
         {
             InitializeComponent();
@@ -14,36 +16,20 @@ namespace MovieApp.MVVM.View
 
         private void HomeView_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateMoviesPerPage();
+            UpdateItemsPerPage();
         }
 
         private void MoviesGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            UpdateMoviesPerPage();
+            UpdateItemsPerPage();
         }
 
-        private void UpdateMoviesPerPage()
+        private void UpdateItemsPerPage()
         {
             if (DataContext is HomeViewModel vm)
             {
-                const double movieCardWidth = 220; // 200 width + 20 margin
-                vm.CalculateMoviesPerPage(MoviesGrid.ActualWidth, movieCardWidth);
-            }
-        }
-
-        private void Swipe_Left(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is HomeViewModel vm)
-            {
-                vm.PreviousPage();
-            }
-        }
-
-        private void Swipe_Right(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is HomeViewModel vm)
-            {
-                vm.NextPage();
+                vm.RandomMoviesList.CalculateItemsPerPage(MoviesGrid.ActualWidth, MovieCardWidth);
+                vm.TopMoviesList.CalculateItemsPerPage(MoviesGrid.ActualWidth, MovieCardWidth);
             }
         }
     }

@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
         xmlns:utils="clr-namespace:MovieApp.Utils"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="600" MinWidth="920"
+        Title="MainWindow" MinHeight="600" MinWidth="975"
         WindowStyle="None"
         ResizeMode="CanResize" 
         Background="Transparent"
@@ -117,7 +117,8 @@
             
             <ScrollViewer Grid.Column="1"
                            Grid.Row="1"
-                           CanContentScroll="True">
+                           CanContentScroll="True"
+                           Style="{StaticResource VerticalOnlyScrollViewer}">
                 <ContentControl Margin="10"
                                 Content="{Binding CurrentView}"/>
             </ScrollViewer>
