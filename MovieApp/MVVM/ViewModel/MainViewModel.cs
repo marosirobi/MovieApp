@@ -31,22 +31,31 @@ namespace MovieApp.MVVM.ViewModel
 
         private async Task InitializeMovies()
         {
-            AllMovies = await MovieApi.GetMoviesFromApi();
-
-            HomeVM.SetMovies(AllMovies);
+            // Only load if we don't have movies already
+            if (AllMovies == null || AllMovies.Count == 0)
+            {
+                AllMovies = await MovieApi.GetMoviesFromApi();
+                HomeVM.SetMovies(AllMovies);
+            }
         }
 
         [RelayCommand]
         private void NavigateToHome()
         {
-            CurrentView = HomeVM;
-            HomeVM.SetMovies(AllMovies);
+            if (CurrentView != HomeVM)
+            {
+                CurrentView = HomeVM;
+                HomeVM.SetMovies(AllMovies);
+            }
         }
 
         [RelayCommand]
         private void NavigateToDiscovery()
         {
-            CurrentView = DiscoveryVM;
+            if (CurrentView != DiscoveryVM)
+            {
+                CurrentView = DiscoveryVM;
+            }
         }
     }
 }

@@ -29,6 +29,7 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=hoverColor}"/>
+                <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
         </Style.Triggers>
         
