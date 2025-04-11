@@ -8,7 +8,7 @@ namespace MovieApp.MVVM.ViewModel
     public partial class PaginatedListViewModel<T> : ObservableObject
     {
         private int _currentPage = 0;
-        private int _itemsPerPage = 6;
+        private int _itemsPerPage = 7;
 
         [ObservableProperty]
         private ObservableCollection<T> _allItems = new();
@@ -16,7 +16,7 @@ namespace MovieApp.MVVM.ViewModel
         [ObservableProperty]
         private ObservableCollection<T> _visibleItems = new();
 
-        protected int CurrentPage => _currentPage;
+        public int CurrentPage => _currentPage;
 
         public int ItemsPerPage
         {
@@ -25,6 +25,8 @@ namespace MovieApp.MVVM.ViewModel
             {
                 if (SetProperty(ref _itemsPerPage, value))
                 {
+                    // Ensure currentPage is valid after ItemsPerPage changes
+                    AdjustCurrentPageAfterItemsPerPageChange();
                     UpdateVisibleItems();
                     OnPropertyChanged(nameof(CanGoNext));
                     OnPropertyChanged(nameof(CanGoPrevious));
@@ -75,6 +77,21 @@ namespace MovieApp.MVVM.ViewModel
         protected void UpdateVisibleItems()
         {
             PaginationUtils.UpdateVisibleItems(AllItems, VisibleItems, _currentPage, ItemsPerPage);
+        }
+
+        /// <summary>
+        /// Adjusts currentPage if it becomes invalid after ItemsPerPage changes.
+        /// </summary>
+        private void AdjustCurrentPageAfterItemsPerPageChange()
+        {
+            if (AllItems.Count == 0)
+            {
+                _currentPage = 0;
+                return;
+            }
+
+            int maxPage = Math.Max(0, (int)Math.Ceiling((double)AllItems.Count / ItemsPerPage) - 1);
+            _currentPage = Math.Min(_currentPage, maxPage);
         }
     }
 }
