@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MovieApp.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for DiscoveryView.xaml
+    /// Interaction logic for ListsView.xaml
     /// </summary>
-    public partial class DiscoveryView : UserControl
+    public partial class ListsView : UserControl
     {
-        public DiscoveryView()
+        public ListsView()
         {
             InitializeComponent();
         }
