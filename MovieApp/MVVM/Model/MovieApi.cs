@@ -11,7 +11,7 @@ namespace MovieApp.MVVM.Model
         {
             var headers = new Dictionary<string, string>
             {
-                { "x-rapidapi-key", "05663317ebmsh594a98da95da942p134351jsn27869b438227" },
+                { "x-rapidapi-key", "e4c6a405ddmshf5707aabf03ca12p13ee90jsna854a85e8042" },
                 { "x-rapidapi-host", "imdb236.p.rapidapi.com" },
             };
 

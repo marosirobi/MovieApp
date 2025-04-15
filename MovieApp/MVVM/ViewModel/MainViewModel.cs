@@ -2,6 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using MovieApp.MVVM.Model;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Windows;
 
 namespace MovieApp.MVVM.ViewModel
 {
@@ -14,15 +16,22 @@ namespace MovieApp.MVVM.ViewModel
         private HomeViewModel _homeVM;
 
         [ObservableProperty]
-        private DiscoveryViewModel _discoveryVM;
+        private TopMoviesViewModel _topMoviesVM;
+
+        [ObservableProperty]
+        private SelectedMoviePageViewModel _selectedMovieVM;
 
         [ObservableProperty]
         private ObservableCollection<MovieModel> _allMovies;
 
+        [ObservableProperty]
+        private MovieModel _selectedMovie;
+
         public MainViewModel()
         {
             HomeVM = new HomeViewModel();
-            DiscoveryVM = new DiscoveryViewModel();
+            TopMoviesVM = new TopMoviesViewModel();
+            SelectedMovieVM = new SelectedMoviePageViewModel();
             CurrentView = HomeVM;
 
             // Start loading movies when MainViewModel is created
@@ -37,6 +46,7 @@ namespace MovieApp.MVVM.ViewModel
                 AllMovies = await MovieApi.GetMoviesFromApi();
                 HomeVM.SetMovies(AllMovies);
             }
+            
         }
 
         [RelayCommand]
@@ -50,12 +60,30 @@ namespace MovieApp.MVVM.ViewModel
         }
 
         [RelayCommand]
-        private void NavigateToDiscovery()
+        private void NavigateToTopMovies()
         {
-            if (CurrentView != DiscoveryVM)
+            if (CurrentView != TopMoviesVM)
             {
-                CurrentView = DiscoveryVM;
+                CurrentView = TopMoviesVM;
             }
+        }
+
+        [RelayCommand]
+        private void ShowMovieDetails(MovieModel movie)
+        {
+            if (movie != null)
+            {
+                System.Diagnostics.Debug.WriteLine(movie.RunTime);
+                SelectedMovie = movie;
+                SelectedMovieVM.SetMovie(movie); // Update the selected movie VM
+                CurrentView = SelectedMovieVM;   // Switch to the selected movie view
+            }
+        }
+
+        [RelayCommand]
+        private void NavigateBack()
+        {
+            CurrentView = HomeVM;
         }
     }
 }

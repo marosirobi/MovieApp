@@ -57,7 +57,7 @@
 
                 <RadioButton Content="Top rated movies"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding NavigateToDiscoveryCommand}"/>
+                             Command="{Binding NavigateToTopMoviesCommand}"/>
 
                 <RadioButton Content="Watchlist"
                              Style="{StaticResource MenuButtonTheme}"/>

@@ -58,7 +58,9 @@
                         <local:HoverButton Content="Watchlist"
                                            bgColor="#2c2c2c"
                                            hoverColor="#30353c"
-                                           x:Name="WatchlistBtn"
+                                           x:Name="WatchlistBtn"                    
+                                           Command="{Binding DataContext.ShowMovieDetailsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                            CommandParameter="{Binding}"
                                            Style="{StaticResource buttonka}"/>
 
                                 

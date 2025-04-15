@@ -1,7 +1,7 @@
 ﻿
 namespace MovieApp.MVVM.ViewModel
 {
-    public partial class DiscoveryViewModel
+    public partial class TopMoviesViewModel
     {
         
     }

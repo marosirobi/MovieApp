@@ -21,10 +21,13 @@
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModel:DiscoveryViewModel}">
-                <view:DiscoveryView/>
+            <DataTemplate DataType="{x:Type viewModel:TopMoviesViewModel}">
+                <view:TopMoviesView/>
             </DataTemplate>
-
+            <DataTemplate DataType="{x:Type viewModel:SelectedMoviePageViewModel}">
+                <view:SelectedMoviePageView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
        
     </Application.Resources>
