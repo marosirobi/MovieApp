@@ -15,7 +15,7 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         WindowStartupLocation="CenterScreen"
         >
-    <!--ResizeMode="CanResize"-->
+    <!--ResizeMode="CanResize fasz"-->
     
     <Window.DataContext>
             <viewModel:MainViewModel/>
