@@ -37,7 +37,8 @@
 
             <StackPanel Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox FontFamily="Bahnschrift"
+                    <TextBox x:Name="UserTextBox"
+                             FontFamily="Bahnschrift"
                              FontSize="20"
                              Text="Username"
                              FontWeight="Light"
@@ -56,18 +57,19 @@
                         Opacity="0.5"/>
 
                 <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
-                     <PasswordBox FontFamily="Bahnschrift"
-                              FontSize="20"
-                              Password="Password"
-                              FontWeight="Light"
-                              HorizontalAlignment="Center"
-                              Background="Transparent"
-                              Foreground="DarkMagenta"
-                              BorderThickness="0"
-                              HorizontalContentAlignment="Left"
-                              Opacity="0.5"
-                              Height="25"
-                              Margin="63,0,0,0"/>
+                     <PasswordBox x:Name="PasswordTextBox"
+                                  FontFamily="Bahnschrift"
+                                  FontSize="20"
+                                  Password="Password"
+                                  FontWeight="Light"
+                                  HorizontalAlignment="Center"
+                                  Background="Transparent"
+                                  Foreground="DarkMagenta"
+                                  BorderThickness="0"
+                                  HorizontalContentAlignment="Left"
+                                  Opacity="0.5"
+                                  Height="25"
+                                  Margin="63,0,0,0"/>
                 </StackPanel>
                  <Border Width="168"
                          Height="2"
@@ -75,8 +77,8 @@
                          Opacity="0.5"/>
 
                 <StackPanel Orientation="Horizontal" Margin="0, 50, 0 ,0">
-                    <Button Width="80" Height="35" Content="LOGIN" Margin="50, 0, 40, 0"/>
-                    <Button Width="80" Height="35" Content="REGISTER"/>
+                    <Button x:Name="LoginBtn" Click="LoginBtn_Click" Width="80" Height="35" Content="LOGIN" Margin="50, 0, 40, 0"/>
+                    <Button x:Name="RegisterBtn" Click="RegisterBtn_Click" Width="80" Height="35" Content="REGISTER"/>
                 </StackPanel>
                 
             </StackPanel>
