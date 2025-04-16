@@ -73,7 +73,6 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (movie != null)
             {
-                System.Diagnostics.Debug.WriteLine(movie.RunTime);
                 SelectedMovie = movie;
                 SelectedMovieVM.SetMovie(movie); // Update the selected movie VM
                 CurrentView = SelectedMovieVM;   // Switch to the selected movie view
