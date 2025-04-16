@@ -23,7 +23,8 @@
                         <StackPanel Grid.Row="1"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
-                                    Orientation="Horizontal">
+                                    Orientation="Horizontal"
+                                    Margin="5,0,5,0">
                     <TextBlock Text="{Binding AverageRating}"
                                        FontWeight="SemiBold"
                                        Margin="5,5,0,0"
@@ -39,16 +40,34 @@
                         <StackPanel Grid.Row="2"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
-                                    Orientation="Vertical">
+                                    Orientation="Vertical"
+                                    Margin="5,0,5,0">
 
-                                <TextBlock Text="{Binding PrimaryTitle}"
+                    <TextBlock Text="{Binding PrimaryTitle}"
                                            TextWrapping="Wrap"
                                            TextTrimming="WordEllipsis"
                                            FontWeight="SemiBold"
                                            Margin="5,0,5,0"
                                            FontSize="16"
-                                           Foreground="White"/>
-                        </StackPanel>
+                                           Foreground="White">
+                        <TextBlock.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" 
+                                          Command="{Binding DataContext.ShowMovieDetailsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                          CommandParameter="{Binding}"/>
+                        </TextBlock.InputBindings>
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                        <Setter Property="TextDecorations" Value="Underline"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                </StackPanel>
 
                         <StackPanel Grid.Row="3"
                                     HorizontalAlignment="Center"
@@ -58,9 +77,7 @@
                         <local:HoverButton Content="Watchlist"
                                            bgColor="#2c2c2c"
                                            hoverColor="#30353c"
-                                           x:Name="WatchlistBtn"                    
-                                           Command="{Binding DataContext.ShowMovieDetailsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                                            CommandParameter="{Binding}"
+                                           x:Name="WatchlistBtn"                                       
                                            Style="{StaticResource buttonka}"/>
 
                                 
@@ -72,6 +89,21 @@
                                 <Border.Background>
                                     <ImageBrush Stretch="Fill" ImageSource="{Binding PrimaryImage}" x:Name="movieImage"/>
                                 </Border.Background>
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="LeftClick"
+                                                  Command="{Binding DataContext.ShowMovieDetailsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                                  CommandParameter="{Binding}"
+                                    />
+                                </Border.InputBindings>
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Opacity" Value="0.6"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
                             </Border>
                             
                         

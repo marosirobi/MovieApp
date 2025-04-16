@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Windows.Input;
 
 namespace MovieApp.MVVM.Model
 {
@@ -28,6 +29,7 @@ namespace MovieApp.MVVM.Model
             {
                 // For System.Text.Json:
                 string content = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine(content);
                 return JsonConvert.DeserializeObject<ObservableCollection<MovieModel>>(content);
             }
             else

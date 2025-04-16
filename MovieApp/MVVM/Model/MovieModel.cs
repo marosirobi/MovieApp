@@ -1,83 +1,140 @@
-﻿using System.Globalization;
-using System.Text.Json.Serialization;
-
+﻿using Newtonsoft.Json;
+using System.Globalization;
 
 namespace MovieApp.MVVM.Model
 {
     public class MovieModel
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string? Id { get; set; }
 
-        [JsonPropertyName("primaryTitle")]
+        [JsonProperty("primaryTitle")]
         public string? PrimaryTitle { get; set; }
 
-        [JsonPropertyName("primaryImage")]
+        [JsonProperty("primaryImage")]
         public string? PrimaryImage { get; set; }
 
-        [JsonPropertyName("averageRating")]
+        [JsonProperty("averageRating")]
         public double AverageRating { get; set; }
 
-        [JsonPropertyName("genres")]
+        [JsonProperty("genres")]
         public string[]? Genres { get; set; }
 
-        [JsonPropertyName("startYear")]
+        [JsonProperty("startYear")]
         public string? StartYear { get; set; }
 
-        [JsonPropertyName("description")]
+        [JsonProperty("description")]
         public string? Description { get; set; }
 
-        [JsonPropertyName("runtimeMinutes")]
-        public string RunTime { get; set; }
-    }       
+        [JsonProperty("contentRating")]
+        public string? ContentRating { get; set; }
+
+        // Raw runtime
+        [JsonProperty("runtimeMinutes")]
+        public int? RuntimeMinutes { get; set; }
+
+        // Raw Budget
+        [JsonProperty("budget")]
+        public string? Budget { get; set; }
+
+        // Formatted runtime
+        [JsonIgnore]
+        public string FormattedRuntime => GetFormattedRuntime();
+
+        // Formatted budget
+        [JsonIgnore]
+        public string? FormattedBudget => GetFormattedBudget();
+
+        private string GetFormattedRuntime()
+        {
+            if (!RuntimeMinutes.HasValue) return "N/A";
+
+            var minutes = RuntimeMinutes.Value;
+            var hours = minutes / 60;
+            var remainingMinutes = minutes % 60;
+
+            return hours > 0
+                ? remainingMinutes > 0
+                    ? $"{hours}h {remainingMinutes}m"
+                    : $"{hours}h"
+                : $"{remainingMinutes}m";
+        }
+        private string? GetFormattedBudget()
+        {
+            if (string.IsNullOrEmpty(Budget) || Budget == "0")
+                return "N/A";
+
+            // Try to parse the budget as a number
+            if (long.TryParse(Budget, out long budgetValue))
+            {
+                // Format with commas and dollar sign
+                return "$" + budgetValue.ToString("N0", CultureInfo.InvariantCulture);
+            }
+
+            // If not a number, return as-is
+            return Budget;
+        }
+    }
+
 
     public class MovieBuilder
     {
         private readonly MovieModel movie = new MovieModel();
-        public MovieBuilder setId(string id)
+
+        public MovieBuilder SetId(string id)
         {
             movie.Id = id;
             return this;
         }
-        public MovieBuilder setPrimaryTitle(string title)
+        public MovieBuilder SetPrimaryTitle(string title)
         {
             movie.PrimaryTitle = title;
             return this;
         }
-        public MovieBuilder setPrimaryImage(string imageUrl)
+        public MovieBuilder SetPrimaryImage(string imageUrl)
         {
             movie.PrimaryImage = imageUrl;
             return this;
         }
-        public MovieBuilder setAverageRating(double rating)
+        public MovieBuilder SetAverageRating(double rating)
         {
             movie.AverageRating = rating;
             return this;
         }
-        public MovieBuilder setGenre(string[] genres)
+        public MovieBuilder SetGenre(string[] genres)
         {
             movie.Genres = genres;
             return this;
         }
-        public MovieBuilder StartYear(string startYear)
+        public MovieBuilder SetStartYear(string startYear)
         {
             movie.StartYear = startYear;
             return this;
         }
-        public MovieBuilder setDesc(string desc)
+        public MovieBuilder SetDesc(string desc)
         {
             movie.Description = desc;
             return this;
         }
-        public MovieBuilder setRunTime(string runTime)
+        public MovieBuilder SetContentRating(string conrat)
         {
-            movie.RunTime = runTime;
+            movie.ContentRating = conrat;
             return this;
         }
-        public MovieModel Build()
+        public MovieBuilder SetRuntime(int? minutes)
         {
-            return movie; 
+            movie.RuntimeMinutes = minutes;
+            return this;
+        }
+        public MovieBuilder SetBudget(string budget)
+        {
+            movie.Budget = budget;
+            return this;
         }
 
+        public MovieModel Build()
+        {
+            return movie;
+        }
     }
-} 
+}
