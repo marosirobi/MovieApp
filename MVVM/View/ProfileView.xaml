@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="MovieApp.MVVM.View.ProfileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MovieApp.MVVM.View"
+             xmlns:viewmodel="clr-namespace:MovieApp.MVVM.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewmodel:ProfileViewModel/>
+    </UserControl.DataContext>
+
+    <Grid Background="#272537">
+        <Border Background="#2E2B45" CornerRadius="15" Padding="30" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <!-- Profilkép -->
+                <Border Width="120" Height="120" CornerRadius="60" BorderBrush="White" BorderThickness="2" Margin="0,0,0,20">
+                    <Image Source="{Binding ProfileImage}" Stretch="Fill" />
+                </Border>
+
+                <!-- Név -->
+                <TextBlock Text="{Binding FullName, FallbackValue='Teszt Elek'}"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,10"/>
+
+                <!-- Email -->
+                <TextBlock Text="{Binding Email, FallbackValue='teszt.elek@email.com'}"
+                           FontSize="14"
+                           Foreground="#CCCCCC"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
+
+                <!-- Kijelentkezés gomb -->
+                <Button Content="Kijelentkezés" 
+                        Command="{Binding LogoutCommand}" 
+                        Width="150" Height="40"
+                        Background="#FF5C5C" Foreground="White"
+                        FontWeight="SemiBold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        HorizontalAlignment="Center"
+                        Margin="0,20,0,0">
+                    <Button.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                                CornerRadius="20"
+                                                Padding="{TemplateBinding Padding}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
