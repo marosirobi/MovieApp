@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MovieApp"
              xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
-             xmlns:view="clr-namespace:MovieApp.MVVM.View"
-             StartupUri="MainWindow.xaml">
+             xmlns:view="clr-namespace:MovieApp.MVVM.View">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,6 +14,7 @@
                 <ResourceDictionary Source="/Theme/MovieCardTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/SideBarTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/ScrollBarTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/MovieListTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -26,7 +26,7 @@
             <DataTemplate DataType="{x:Type viewModel:SelectedMoviePageViewModel}">
                 <view:SelectedMoviePageView/>
             </DataTemplate>
-
+            
             <!--1. Topratedmovies Menü-->
             <!--2. Watchlist Menü-->
             <DataTemplate DataType="{x:Type viewModel:WatchlistViewModel}">

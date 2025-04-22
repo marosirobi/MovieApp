@@ -1,4 +1,4 @@
-﻿namespace MovieDB
+﻿namespace MovieApp
 {
     public partial class Movie_Watchlist
     {

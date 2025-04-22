@@ -1,4 +1,4 @@
-﻿namespace MovieDB
+﻿namespace MovieApp
 {
     public partial class Movie {
 
@@ -14,30 +14,18 @@
             OnCreated();
         }
 
-        //connects the review to the movie
-        public void AddReview(Review review)
-        {
-            // Set the relationship from both sides
-            review.Movie = this;
-            Reviews.Add(review);
-
-            // Update the counts and average
-            review_count = Reviews.Count;
-            avg_rating = (decimal)Reviews.Average(r => r.stars);
-        }
-
-        public short movie_id { get; set; }
+        public int movie_id { get; set; }
         public int review_count { get; set; }
 
         public decimal avg_rating { get; set; }
 
         public string? title { get; set; }
 
-        public string? genre { get; set; }
+        public string[]? genre { get; set; }
 
-        public short releaseYear { get; set; }
+        public int releaseYear { get; set; }
 
-        public short runTime { get; set; }
+        public int? runTime { get; set; }
 
         public virtual IList<Review> Reviews { get; set; }
 
