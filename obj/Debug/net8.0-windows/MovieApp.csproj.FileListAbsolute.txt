@@ -1,0 +1,208 @@
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.exe
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.deps.json
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.runtimeconfig.json
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.pdb
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Azure.Core.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Azure.Identity.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Net.Http.Formatting.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Newtonsoft.Json.Bson.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.ClientModel.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Diagnostics.DiagnosticSource.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Formats.Asn1.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Memory.Data.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Text.Encodings.Web.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Text.Json.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\LoginView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\SelectedMoviePageView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\MenuButtonTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\ScrollBarTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\SideBarTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\TextBoxTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\HomeView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ListsView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\LoginView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ProfileView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\RatingsView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ReviewsView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\SelectedMoviePageView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\SettingsView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\TopMoviesView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\WatchlistView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp_MarkupCompile.cache
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp_MarkupCompile.lref
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\App.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\HomeView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ListsView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ProfileView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\RatingsView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ReviewsView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\SettingsView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\TopMoviesView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\WatchlistView.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\MovieCardTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\WatchlistButtonTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\WindowButtonTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.g.resources
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.AssemblyInfo.cs
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.csproj.Up2Date
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\refint\MovieApp.dll
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.pdb
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.genruntimeconfig.cache
+C:\Users\user\Desktop\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\ref\MovieApp.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.exe
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.deps.json
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.runtimeconfig.json
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\MovieApp.pdb
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Azure.Core.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Azure.Identity.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Net.Http.Formatting.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\Newtonsoft.Json.Bson.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.ClientModel.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Diagnostics.DiagnosticSource.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Formats.Asn1.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Memory.Data.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Text.Encodings.Web.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\System.Text.Json.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\LoginView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\SelectedMoviePageView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\MenuButtonTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\ScrollBarTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\SideBarTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\TextBoxTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\HomeView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ListsView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\LoginView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ProfileView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\RatingsView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ReviewsView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\SelectedMoviePageView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\SettingsView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\TopMoviesView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\WatchlistView.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp_MarkupCompile.cache
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp_MarkupCompile.lref
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\App.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\HomeView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ListsView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ProfileView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\RatingsView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\ReviewsView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\SettingsView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\TopMoviesView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MVVM\View\WatchlistView.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\MovieCardTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\WatchlistButtonTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\Theme\WindowButtonTheme.baml
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.g.resources
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.AssemblyInfo.cs
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.csproj.Up2Date
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\refint\MovieApp.dll
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.pdb
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\MovieApp.genruntimeconfig.cache
+C:\Users\user\Desktop\Új mappa (4)\MAGYAR!!!!!!\Új mappa (4)\MovieApp-main\MovieApp\obj\Debug\net8.0-windows\ref\MovieApp.dll

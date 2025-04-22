@@ -1,0 +1,63 @@
+﻿<Application x:Class="MovieApp.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MovieApp"
+             xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
+             xmlns:view="clr-namespace:MovieApp.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/WindowButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/WatchlistButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/MovieCardTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/SideBarTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/ScrollBarTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:TopMoviesViewModel}">
+                <view:TopMoviesView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:SelectedMoviePageViewModel}">
+                <view:SelectedMoviePageView/>
+            </DataTemplate>
+
+            <!--1. Topratedmovies Menü-->
+            <!--2. Watchlist Menü-->
+            <DataTemplate DataType="{x:Type viewModel:WatchlistViewModel}">
+                <view:WatchlistView/>
+            </DataTemplate>
+
+            <!--3. Ratings Menü-->
+            <DataTemplate DataType="{x:Type viewModel:RatingsViewModel}">
+                <view:RatingsView/>
+            </DataTemplate>
+
+            <!--4. Lists Menü-->
+            <DataTemplate DataType="{x:Type viewModel:ListsViewModel}">
+                <view:ListsView/>
+            </DataTemplate>
+
+            <!--5. Reviews Menü-->
+            <DataTemplate DataType="{x:Type viewModel:ReviewsViewModel}">
+                <view:ReviewsView/>
+            </DataTemplate>
+
+            <!--6. Profile Menü-->
+            <DataTemplate DataType="{x:Type viewModel:ProfileViewModel}">
+                <view:ProfileView/>
+            </DataTemplate>
+
+            <!--7. Beállítás Menü-->
+            <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+                <view:SettingsView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
