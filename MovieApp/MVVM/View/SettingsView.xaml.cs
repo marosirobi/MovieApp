@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace MovieApp.MVVM.View
 {
@@ -15,13 +16,33 @@ namespace MovieApp.MVVM.View
         public SettingsView()
         {
             InitializeComponent();
-            this.DataContext = new SettingsViewModel(); // ViewModel hozzárendelése
+            var vm = new SettingsViewModel();
+            vm.PropertyChanged += ViewModel_PropertyChanged;
+            this.DataContext = vm;
+
+            UpdateBackground(vm.IsDarkMode); // Kezdeti háttérbeállítás
+        }
+
+        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SettingsViewModel.IsDarkMode))
+            {
+                var vm = DataContext as SettingsViewModel;
+                UpdateBackground(vm.IsDarkMode);
+            }
+        }
+
+        private void UpdateBackground(bool isDarkMode)
+        {
+            if (isDarkMode)
+                MainGrid.Background = new SolidColorBrush(Color.FromRgb(39, 37, 55)); // Sötét háttér
+            else   
+                MainGrid.Background = new SolidColorBrush(Colors.Green); // Világos háttér*/
         }
     }
 
     public class SettingsViewModel : INotifyPropertyChanged
     {
-        // „Állandó” tároló a szimulált mentéshez (itt memóriában marad)
         private static string savedLanguage = "English";
         private static bool savedNotificationsEnabled = false;
         private static bool savedIsDarkMode = false;
@@ -39,6 +60,7 @@ namespace MovieApp.MVVM.View
                 {
                     selectedLanguage = value;
                     OnPropertyChanged(nameof(SelectedLanguage));
+                    UpdateLanguage();
                 }
             }
         }
@@ -69,36 +91,65 @@ namespace MovieApp.MVVM.View
             }
         }
 
+        public string SettingsTitle { get; set; }
+        public string LanguageLabel { get; set; }
+        public string NotificationsLabel { get; set; }
+        public string DarkModeLabel { get; set; }
+        public string SaveButtonText { get; set; }
+
         public ICommand SaveSettingsCommand { get; }
 
         public SettingsViewModel()
         {
-            // Betöltjük az elmentett értékeket induláskor
             SelectedLanguage = savedLanguage;
             NotificationsEnabled = savedNotificationsEnabled;
             IsDarkMode = savedIsDarkMode;
 
             SaveSettingsCommand = new RelayCommand(SaveSettings);
+            UpdateLanguage();
+        }
+
+        private void UpdateLanguage()
+        {
+            if (SelectedLanguage == "Magyar")
+            {
+                SettingsTitle = "Beállítások";
+                LanguageLabel = "Nyelv";
+                NotificationsLabel = "Értesítések";
+                DarkModeLabel = "Sötét mód";
+                SaveButtonText = "Mentés";
+            }
+            else
+            {
+                SettingsTitle = "Settings";
+                LanguageLabel = "Language";
+                NotificationsLabel = "Notifications";
+                DarkModeLabel = "Dark Mode";
+                SaveButtonText = "Save Settings";
+            }
+
+            OnPropertyChanged(nameof(SettingsTitle));
+            OnPropertyChanged(nameof(LanguageLabel));
+            OnPropertyChanged(nameof(NotificationsLabel));
+            OnPropertyChanged(nameof(DarkModeLabel));
+            OnPropertyChanged(nameof(SaveButtonText));
         }
 
         private void SaveSettings()
         {
-            // Mentés: eltároljuk statikus változókba
             savedLanguage = SelectedLanguage;
             savedNotificationsEnabled = NotificationsEnabled;
             savedIsDarkMode = IsDarkMode;
 
-            MessageBox.Show("Settings saved:\n" +
-                            $"Language: {SelectedLanguage}\n" +
-                            $"Notifications: {NotificationsEnabled}\n" +
-                            $"Dark Mode: {IsDarkMode}");
+            MessageBox.Show($"{SaveButtonText}:\n" +
+                            $"{LanguageLabel}: {SelectedLanguage}\n" +
+                            $"{NotificationsLabel}: {NotificationsEnabled}\n" +
+                            $"{DarkModeLabel}: {IsDarkMode}");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
+        protected void OnPropertyChanged(string name) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
     }
 
     public class RelayCommand : ICommand
