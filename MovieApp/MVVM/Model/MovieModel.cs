@@ -21,7 +21,7 @@ namespace MovieApp.MVVM.Model
         public string[]? Genres { get; set; }
 
         [JsonProperty("startYear")]
-        public string? StartYear { get; set; }
+        public int StartYear { get; set; }
 
         [JsonProperty("description")]
         public string? Description { get; set; }
@@ -106,7 +106,7 @@ namespace MovieApp.MVVM.Model
             movie.Genres = genres;
             return this;
         }
-        public MovieBuilder SetStartYear(string startYear)
+        public MovieBuilder SetStartYear(int startYear)
         {
             movie.StartYear = startYear;
             return this;
@@ -121,7 +121,7 @@ namespace MovieApp.MVVM.Model
             movie.ContentRating = conrat;
             return this;
         }
-        public MovieBuilder SetRuntime(int? minutes)
+        public MovieBuilder SetRuntime(int minutes)
         {
             movie.RuntimeMinutes = minutes;
             return this;

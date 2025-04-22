@@ -1,4 +1,4 @@
-﻿namespace MovieDB
+﻿namespace MovieApp
 {
     public partial class User {
 
@@ -10,15 +10,12 @@
             OnCreated();
         }
 
-        public short user_id { get; set; }
+        public int user_id { get; set; }
+        public string username { get; set; }
+        public string passwd { get; set; }
 
-        public string? username { get; set; }
-
-        public string? passwd { get; set; }
-
-        public virtual IList<Watchlist> Watchlists { get; set; }
-
-        public virtual IList<Review> Reviews { get; set; }
+        public ICollection<Watchlist> Watchlists { get; set; }
+        public ICollection<Review> Reviews { get; set; }
 
         #region Extensibility Method Definitions
 

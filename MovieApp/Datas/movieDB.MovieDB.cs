@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace MovieDB
+namespace MovieApp
 {
 
     public partial class MovieDB : DbContext
@@ -88,7 +88,7 @@ namespace MovieDB
             modelBuilder.Entity<Watchlist>().Property(x => x.create_date).HasColumnName(@"create_date").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Watchlist>().Property(x => x.isDefault).HasColumnName(@"isDefault").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Watchlist>().Property(x => x.movie_count).HasColumnName(@"movie_count").IsRequired().ValueGeneratedNever();
-            modelBuilder.Entity<Watchlist>().Property<short>(@"user_id").HasColumnName(@"user_id").IsRequired().ValueGeneratedNever();
+            modelBuilder.Entity<Watchlist>().Property<int>(@"user_id").HasColumnName(@"user_id").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Watchlist>().HasKey(@"watchlist_id");
         }
 
@@ -101,8 +101,8 @@ namespace MovieDB
         private void Movie_WatchlistMapping(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Movie_Watchlist>().ToTable(@"Movie_watchlists");
-            modelBuilder.Entity<Movie_Watchlist>().Property<short>(@"movie_id").HasColumnName(@"movie_id").IsRequired().ValueGeneratedNever();
-            modelBuilder.Entity<Movie_Watchlist>().Property<short>(@"watchlist_id").HasColumnName(@"watchlist_id").IsRequired().ValueGeneratedNever();
+            modelBuilder.Entity<Movie_Watchlist>().Property<int>(@"movie_id").HasColumnName(@"movie_id").IsRequired().ValueGeneratedNever();
+            modelBuilder.Entity<Movie_Watchlist>().Property<int>(@"watchlist_id").HasColumnName(@"watchlist_id").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Movie_Watchlist>().Property(x => x.added_date).HasColumnName(@"added_date").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Movie_Watchlist>().HasKey(@"movie_id", @"watchlist_id");
         }

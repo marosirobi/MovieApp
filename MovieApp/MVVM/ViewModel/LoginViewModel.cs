@@ -1,71 +1,118 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Linq;
-using System.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MovieApp.MVVM.Model;
-using System.Runtime.CompilerServices;
+using MovieApp.MVVM.View;
+using MovieApp.Utils;
+using System.Diagnostics;
 using System.Windows;
 
 namespace MovieApp.MVVM.ViewModel
 {
-    public class AuthViewModel : INotifyPropertyChanged
+    public partial class LoginViewModel : ObservableObject
     {
-        private string _username;
-        private string _password;
+        private readonly DatabaseService _dbService;
 
-        public string Username
+        [ObservableProperty]
+        private string _username = string.Empty;
+
+        [ObservableProperty]
+        private string _password = string.Empty;
+
+        [ObservableProperty]
+        private string _errorMessage = string.Empty;
+
+        
+
+        // Use an action to handle successful login
+        public Action<User> OnLoginSuccess { get; set; }
+
+        public LoginViewModel()
         {
-            get => _username;
-            set { _username = value; OnPropertyChanged(); }
+            _dbService = new DatabaseService();
         }
 
-        public string Password
-        {
-            get => _password;
-            set { _password = value; OnPropertyChanged(); }
-        }
-
-        public ICommand LoginCommand { get; }
-        public ICommand RegisterCommand { get; }
-
-        public AuthViewModel()
-        {
-            LoginCommand = new RelayCommand(Login);
-            RegisterCommand = new RelayCommand(Register);
-
-            using var db = new MovieAppDBContext();
-            db.Database.EnsureCreated(); // létrehozza az adatbázist, ha nem létezik
-        }
-
+        [RelayCommand]
         private void Login()
         {
-            using var db = new MovieAppDBContext();
-            var user = db.Users.FirstOrDefault(u => u.Username == Username && u.Password == Password);
-            MessageBox.Show(user != null ? "Sikeres bejelentkezés!" : "Hibás felhasználónév vagy jelszó.");
-        }
-
-        private void Register()
-        {
-            using var db = new MovieAppDBContext();
-            if (db.Users.Any(u => u.Username == Username))
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
-                MessageBox.Show("Ez a felhasználónév már foglalt.");
+                ErrorMessage = "Please fill in both fields!";
                 return;
             }
 
-            db.Users.Add(new User { Username = Username, Password = Password });
-            db.SaveChanges();
-            MessageBox.Show("Sikeres regisztráció!");
+            var user = _dbService.GetUser(Username);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(Password, user.passwd))
+            {
+                ErrorMessage = "Invalid username or password!";
+                return;
+            }
+
+            ErrorMessage = string.Empty;
+            OnLoginSuccess?.Invoke(user);
+            CloseWindow();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        [RelayCommand]
+        private void Register()
+        {
+            Debug.WriteLine($"Register command triggered. Username: {Username}, Password: {Password}");
+
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+            {
+                ErrorMessage = "Username and password are required!";
+                Debug.WriteLine("Validation failed - empty fields");
+                return;
+            }
+
+            try
+            {
+                Debug.WriteLine("Attempting to register user...");
+
+                if (_dbService.GetUser(Username) != null)
+                {
+                    ErrorMessage = "Username already exists!";
+                    Debug.WriteLine("Registration failed - username exists");
+                    return;
+                }
+
+                var success = _dbService.RegisterUser(Username, Password);
+
+                if (success)
+                {
+                    ErrorMessage = "Registration successful! You can now login.";
+                    Debug.WriteLine("Registration successful");
+
+                    // Clear fields
+                    Username = string.Empty;
+                    Password = string.Empty;
+
+                    (Application.Current.Windows.OfType<LoginView>().FirstOrDefault())?.ClearPassword();
+
+                }
+                else
+                {
+                    ErrorMessage = "Registration failed!";
+                    Debug.WriteLine("Registration failed - unknown reason");
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = "An error occurred during registration.";
+                Debug.WriteLine($"Registration error: {ex.Message}");
+            }
+        }
+
+        // Add this event to notify the view to clear the password box
+
+        private void CloseWindow()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is LoginView)
+                {
+                    window.Close();
+                    break;
+                }
+            }
+        }
     }
 }
