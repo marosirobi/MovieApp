@@ -5,10 +5,11 @@ namespace MovieApp;
 
 public partial class MainWindow : Window
 {
-
+    
     public MainWindow()
     {
         InitializeComponent();
+        
     }
 
     private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -18,7 +19,8 @@ public partial class MainWindow : Window
 
     private void CloseApp(object sender, RoutedEventArgs e)
     {
-        System.Windows.Application.Current.Shutdown();
+        var window = GetWindow(this);
+        window?.Close();
     }
     private void MinimizeApp(object sender, RoutedEventArgs e)
     {

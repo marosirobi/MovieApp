@@ -55,27 +55,46 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding NavigateToHomeCommand}"/>
 
+                <!--1.TopRatedMovies Menü-->
                 <RadioButton Content="Top rated movies"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding NavigateToTopMoviesCommand}"/>
 
+                <!--2.Watchlist Menü-->
                 <RadioButton Content="Watchlist"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToWatchlistCommand}"/>
 
+                <!--3.Ratings Menü-->
                 <RadioButton Content="Your ratings"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToRatingsCommand}"/>
 
+                <!--4.Lists Menü-->
                 <RadioButton Content="Your Lists"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToListsCommand}" />
 
+
+
+                <!--5.Reviews Menü-->
                 <RadioButton Content="Your reviews"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToReviewsCommand}"/>
 
+
+                <!--6.Profile Menü-->
                 <RadioButton Content="Your profile"
-                             Style="{StaticResource MenuButtonTheme}"/>
-                
-                <RadioButton Content="Settings"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+							 Command="{Binding NavigateToProfileCommand}"/>
+
+                <!--7.Settings Menü-->
+                <RadioButton Content="Settings"                                     
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToSettingsCommand}"/>
+
+
+
 
             </StackPanel>
 
@@ -86,14 +105,20 @@
                      Margin="5"
                      Grid.Column="1"
                      Style="{StaticResource ModernTextBox}"/>
-
             
+
             <StackPanel Grid.Column="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Margin="5">
-
+                
+                <TextBlock Text="{Binding CurrentUser.username, FallbackValue='Guest'}"
+               Foreground="White"
+               FontSize="14"
+               VerticalAlignment="Center"
+               Margin="0,0,10,0"/>
+                
                 <utils:HoverButton x:Name="BtnMinimize"
                                    Content="—"
                                    Style="{StaticResource WindowButton}"
