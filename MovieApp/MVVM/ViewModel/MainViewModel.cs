@@ -55,7 +55,9 @@ namespace MovieApp.MVVM.ViewModel
         {
             // Normal initialization
             _ = InitializeMovies();
+
             _dbService = new DatabaseService();
+
             HomeVM = new HomeViewModel();
             TopMoviesVM = new TopMoviesViewModel();
             SelectedMovieVM = new SelectedMoviePageViewModel();
