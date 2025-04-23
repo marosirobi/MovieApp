@@ -13,6 +13,7 @@ namespace MovieApp.Utils
         public DatabaseService()
         {
             _context = new MovieDB();
+            InitializeDatabase();
         }
 
         public User? GetUser(string username)
@@ -63,10 +64,12 @@ namespace MovieApp.Utils
             try
             {
                 _context.Database.EnsureCreated();
+                Debug.WriteLine("Database initialized successfully.");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Database initialization failed: {ex.Message}");
+                Debug.WriteLine($"Database initialization failed: {ex.Message}");
+                throw; // Critical failure
             }
         }
 

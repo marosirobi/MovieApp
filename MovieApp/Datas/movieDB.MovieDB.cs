@@ -28,7 +28,7 @@ namespace MovieApp
             {
                 optionsBuilder.UseSqlServer(
                     //database connection here
-                    @"Server=Robi\SQL2022;Database=MovieDB;Integrated Security=True;TrustServerCertificate=True;"
+                    "Server=localhost\\SQL2022;Database=MovieDB;Integrated Security=True;TrustServerCertificate=True;"
                 );
             }
         }
