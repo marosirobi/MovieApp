@@ -118,24 +118,18 @@
                FontSize="14"
                VerticalAlignment="Center"
                Margin="0,0,10,0"/>
-                
-                <utils:HoverButton x:Name="BtnMinimize"
-                                   Content="—"
-                                   Style="{StaticResource WindowButton}"
-                                   hoverColor="#4e4c5c"
-                                   Click="MinimizeApp"/>
 
-                <utils:HoverButton x:Name="BtnMaximize"
-                                   Style="{StaticResource WindowButton}"
-                                   Content="❐"
-                                   hoverColor="#4e4c5c"
-                                   Click="MaximizeApp"/>
+                <Button Content="—"
+                        Style="{StaticResource WindowButton}"
+                        Click="MinimizeApp"/>
 
-                <utils:HoverButton x:Name="BtnExit"
-                                   Style="{StaticResource WindowButton}"
-                                   Content="X"
-                                   hoverColor="Red"
-                                   Click="CloseApp"/>
+                <Button Style="{StaticResource WindowButton}"
+                        Content="❐"
+                        Click="MaximizeApp"/>
+
+                <Button Style="{StaticResource WindowButton}"
+                        Content="X"
+                        Click="CloseApp"/>
                 
                 
             </StackPanel>

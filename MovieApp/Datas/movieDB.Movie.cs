@@ -15,6 +15,8 @@
         }
 
         public int movie_id { get; set; }
+
+        public string? api_id { get; set; }
         public int review_count { get; set; }
 
         public decimal avg_rating { get; set; }

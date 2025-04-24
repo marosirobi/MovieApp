@@ -86,6 +86,7 @@ namespace MovieApp.Utils
                     {
                         var movie = new Movie
                         {
+                            api_id = movieModel.Id,
                             title = movieModel.PrimaryTitle,
                             genre = movieModel.Genres,
                             releaseYear = movieModel.StartYear,
@@ -126,16 +127,22 @@ namespace MovieApp.Utils
             }
         }
 
-        public void AddToWatchlist(int userId, int movieId, string listName = null)
+        public void AddToWatchlist(int userId, string api_id, string listName = null)
         {
             try
             {
+                Debug.WriteLine($"Attempting to add movie {api_id} to watchlist for user {userId}");
+
                 var user = _context.Users
                     .Include(u => u.Watchlists)
                     .ThenInclude(w => w.Movie_Watchlists1)
                     .FirstOrDefault(u => u.user_id == userId);
 
-                if (user == null) return;
+                if (user == null)
+                {
+                    Debug.WriteLine("User not found");
+                    return;
+                }
 
                 var watchlist = user.Watchlists.FirstOrDefault(w =>
                     (listName == null && w.isDefault) ||
@@ -143,6 +150,7 @@ namespace MovieApp.Utils
 
                 if (watchlist == null)
                 {
+                    Debug.WriteLine("Creating new watchlist");
                     watchlist = new Watchlist
                     {
                         User = user,
@@ -152,16 +160,71 @@ namespace MovieApp.Utils
                     user.Watchlists.Add(watchlist);
                 }
 
-                var movie = _context.Movies.Find(movieId);
-                if (movie != null && !watchlist.Movie_Watchlists1.Any(mw => mw.Movie.movie_id == movieId))
+                var movie = _context.Movies.FirstOrDefault(m => m.api_id == api_id);
+                if (movie == null)
                 {
+                    Debug.WriteLine("Movie not found in database");
+                    return;
+                }
+
+                if (!watchlist.Movie_Watchlists1.Any(mw => mw.Movie.api_id == api_id))
+                {
+                    Debug.WriteLine("Adding movie to watchlist");
                     watchlist.Movie_Watchlists1.Add(new Movie_Watchlist { Movie = movie });
                     _context.SaveChanges();
+                    Debug.WriteLine("Successfully added to watchlist");
+                }
+                else
+                {
+                    Debug.WriteLine("Movie already in watchlist");
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error adding to watchlist: {ex.Message}");
+                Debug.WriteLine($"Error in AddToWatchlist: {ex.Message}");
+                Debug.WriteLine(ex.StackTrace);
+            }
+        }
+
+        public bool IsInWatchlist(int userId, string movieId)
+        {
+            return _context.Movie_Watchlists
+                .Include(mw => mw.Watchlist)
+                .Include(mw => mw.Movie)
+                .Any(mw => mw.Watchlist.User.user_id == userId &&
+                          mw.Movie.api_id == movieId);
+        }
+
+        // MovieApp/Utils/DatabaseService.cs
+        public void RemoveFromWatchlist(int userId, string movieApiId)
+        {
+            try
+            {
+                // Find the watchlist item to remove
+                var watchlistItem = _context.Movie_Watchlists
+                    .Include(mw => mw.Watchlist)
+                    .ThenInclude(w => w.User)
+                    .Include(mw => mw.Movie)
+                    .FirstOrDefault(mw =>
+                        mw.Watchlist.User.user_id == userId &&
+                        mw.Movie.api_id == movieApiId);
+
+                if (watchlistItem != null)
+                {
+                    // Remove the item
+                    _context.Movie_Watchlists.Remove(watchlistItem);
+                    _context.SaveChanges();
+                    Debug.WriteLine($"Successfully removed movie {movieApiId} from user {userId}'s watchlist");
+                }
+                else
+                {
+                    Debug.WriteLine($"Movie {movieApiId} not found in user {userId}'s watchlist");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error removing from watchlist: {ex.Message}");
+                throw; // Re-throw to handle in ViewModel
             }
         }
 

@@ -75,10 +75,19 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (AllMovies == null || AllMovies.Count == 0)
             {
-                AllMovies = await MovieApi.GetMoviesFromApi();
-                HomeVM.SetMovies(AllMovies);
+                var movies = await MovieApi.GetMoviesFromApi();
 
-                // Seed movies from API to database
+                // Initialize watchlist status for each movie
+                if (CurrentUser != null)
+                {
+                    foreach (var movie in movies)
+                    {
+                        movie.IsInWatchlist = _dbService.IsInWatchlist(CurrentUser.user_id, movie.Id);
+                    }
+                }
+                AllMovies = new ObservableCollection<MovieModel>(movies);
+
+                HomeVM.SetMovies(AllMovies);
                 _dbService.SeedMovies(AllMovies);
             }
         }
@@ -173,6 +182,38 @@ namespace MovieApp.MVVM.ViewModel
         {
             CurrentView = HomeVM;
         }
+
+        [RelayCommand]
+        private void ToggleWatchlist(MovieModel movie)
+        {
+            if (CurrentUser == null || movie == null) return;
+
+            try
+            {
+                // Toggle the watchlist status
+                movie.IsInWatchlist = !movie.IsInWatchlist;
+
+                if (movie.IsInWatchlist)
+                {
+                    _dbService.AddToWatchlist(CurrentUser.user_id, movie.Id);
+                    //MessageBox.Show($"{movie.PrimaryTitle} added to watchlist!");
+                }
+                else
+                {
+                    _dbService.RemoveFromWatchlist(CurrentUser.user_id, movie.Id);
+                    //MessageBox.Show($"{movie.PrimaryTitle} removed from watchlist!");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Revert on error
+                movie.IsInWatchlist = !movie.IsInWatchlist;
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+
+
     }
 
 }
