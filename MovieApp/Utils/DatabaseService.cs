@@ -186,8 +186,47 @@ namespace MovieApp.Utils
             }
         }
 
+        public bool IsInWatchlist(int userId, string movieId)
+        {
+            return _context.Movie_Watchlists
+                .Include(mw => mw.Watchlist)
+                .Include(mw => mw.Movie)
+                .Any(mw => mw.Watchlist.User.user_id == userId &&
+                          mw.Movie.api_id == movieId);
+        }
 
+        // MovieApp/Utils/DatabaseService.cs
+        public void RemoveFromWatchlist(int userId, string movieApiId)
+        {
+            try
+            {
+                // Find the watchlist item to remove
+                var watchlistItem = _context.Movie_Watchlists
+                    .Include(mw => mw.Watchlist)
+                    .ThenInclude(w => w.User)
+                    .Include(mw => mw.Movie)
+                    .FirstOrDefault(mw =>
+                        mw.Watchlist.User.user_id == userId &&
+                        mw.Movie.api_id == movieApiId);
 
+                if (watchlistItem != null)
+                {
+                    // Remove the item
+                    _context.Movie_Watchlists.Remove(watchlistItem);
+                    _context.SaveChanges();
+                    Debug.WriteLine($"Successfully removed movie {movieApiId} from user {userId}'s watchlist");
+                }
+                else
+                {
+                    Debug.WriteLine($"Movie {movieApiId} not found in user {userId}'s watchlist");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error removing from watchlist: {ex.Message}");
+                throw; // Re-throw to handle in ViewModel
+            }
+        }
 
         public void AddReview(int userId, int movieId, string content, int stars)
         {

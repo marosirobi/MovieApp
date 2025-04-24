@@ -1,10 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Newtonsoft.Json;
 using System.Globalization;
 
 namespace MovieApp.MVVM.Model
 {
-    public class MovieModel
+    public class MovieModel : ObservableObject
     {
+        private bool _isInWatchlist;
+        public bool IsInWatchlist
+        {
+            get => _isInWatchlist;
+            set => SetProperty(ref _isInWatchlist, value); // This triggers UI updates
+        }
+
         [JsonProperty("id")]
         public string? Id { get; set; }
 
