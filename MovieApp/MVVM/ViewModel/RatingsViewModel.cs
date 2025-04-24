@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MovieApp.MVVM.Model;
+using MovieApp.Utils;
+using System.Collections.ObjectModel;
 
 namespace MovieApp.MVVM.ViewModel
 {
     public partial class RatingsViewModel
     {
+        
+
+
     }
 }
