@@ -75,8 +75,6 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding NavigateToListsCommand}" />
 
-
-
                 <!--5.Reviews Menü-->
                 <RadioButton Content="Your reviews"
                              Style="{StaticResource MenuButtonTheme}"
@@ -119,15 +117,18 @@
                VerticalAlignment="Center"
                Margin="0,0,10,0"/>
 
-                <Button Content="—"
-                        Style="{StaticResource WindowButton}"
+                <Button Style="{StaticResource WindowButton}"
+                        x:Name="MinimizeBtn"
+                        Content="—"
                         Click="MinimizeApp"/>
 
                 <Button Style="{StaticResource WindowButton}"
+                        x:Name="MaximizeBtn"
                         Content="❐"
                         Click="MaximizeApp"/>
 
                 <Button Style="{StaticResource WindowButton}"
+                        x:Name="CloseBtn"
                         Content="X"
                         Click="CloseApp"/>
                 
