@@ -200,32 +200,61 @@ namespace MovieApp.Utils
         {
             try
             {
-                // Find the watchlist item to remove
-                var watchlistItem = _context.Movie_Watchlists
+                var itemToRemove = _context.Movie_Watchlists
                     .Include(mw => mw.Watchlist)
                     .ThenInclude(w => w.User)
                     .Include(mw => mw.Movie)
-                    .FirstOrDefault(mw =>
-                        mw.Watchlist.User.user_id == userId &&
-                        mw.Movie.api_id == movieApiId);
+                    .FirstOrDefault(mw => mw.Watchlist.User.user_id == userId &&
+                                        mw.Movie.api_id == movieApiId);
 
-                if (watchlistItem != null)
+                if (itemToRemove != null)
                 {
-                    // Remove the item
-                    _context.Movie_Watchlists.Remove(watchlistItem);
+                    _context.Movie_Watchlists.Remove(itemToRemove);
                     _context.SaveChanges();
-                    Debug.WriteLine($"Successfully removed movie {movieApiId} from user {userId}'s watchlist");
-                }
-                else
-                {
-                    Debug.WriteLine($"Movie {movieApiId} not found in user {userId}'s watchlist");
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error removing from watchlist: {ex.Message}");
-                throw; // Re-throw to handle in ViewModel
+                throw;
             }
+        }
+
+        public ObservableCollection<MovieModel> GetWatchlistMovies(int userId)
+        {
+            var watchlistMovies = new ObservableCollection<MovieModel>();
+
+            var movies = _context.Movie_Watchlists
+                .Include(mw => mw.Movie)
+                .Include(mw => mw.Watchlist)
+                .Where(mw => mw.Watchlist.User.user_id == userId)
+                .Select(mw => new MovieModel
+                {
+                    Id = mw.Movie.api_id,
+                    PrimaryTitle = mw.Movie.title,
+                    Genres = mw.Movie.genre,
+                    StartYear = mw.Movie.releaseYear,
+                    RuntimeMinutes = mw.Movie.runTime,
+                    IsInWatchlist = true // Since these are from watchlist
+                })
+                .ToList();
+
+            foreach (var movie in movies)
+            {
+                watchlistMovies.Add(movie);
+            }
+
+            return watchlistMovies;
+        }
+
+        public List<string> GetWatchlistApiIds(int userId)
+        {
+            return _context.Movie_Watchlists
+                .Include(mw => mw.Movie)
+                .Include(mw => mw.Watchlist)
+                .Where(mw => mw.Watchlist.User.user_id == userId)
+                .Select(mw => mw.Movie.api_id)
+                .ToList();
         }
 
         public void AddReview(int userId, int movieId, string content, int stars)

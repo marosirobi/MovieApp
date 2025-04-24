@@ -76,16 +76,17 @@ namespace MovieApp.MVVM.ViewModel
             if (AllMovies == null || AllMovies.Count == 0)
             {
                 var movies = await MovieApi.GetMoviesFromApi();
+                AllMovies = new ObservableCollection<MovieModel>(movies);
 
-                // Initialize watchlist status for each movie
+                // Initialize watchlist status
                 if (CurrentUser != null)
                 {
-                    foreach (var movie in movies)
+                    var watchlistApiIds = _dbService.GetWatchlistApiIds(CurrentUser.user_id);
+                    foreach (var movie in AllMovies)
                     {
-                        movie.IsInWatchlist = _dbService.IsInWatchlist(CurrentUser.user_id, movie.Id);
+                        movie.IsInWatchlist = watchlistApiIds.Contains(movie.Id);
                     }
                 }
-                AllMovies = new ObservableCollection<MovieModel>(movies);
 
                 HomeVM.SetMovies(AllMovies);
                 _dbService.SeedMovies(AllMovies);
@@ -117,6 +118,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != WatchlistVM)
             {
+                WatchlistVM.SetCurrentUser(CurrentUser);
+                WatchlistVM.LoadWatchlistMovies(AllMovies);
                 CurrentView = WatchlistVM;
             }
         }
@@ -196,12 +199,16 @@ namespace MovieApp.MVVM.ViewModel
                 if (movie.IsInWatchlist)
                 {
                     _dbService.AddToWatchlist(CurrentUser.user_id, movie.Id);
-                    //MessageBox.Show($"{movie.PrimaryTitle} added to watchlist!");
                 }
                 else
                 {
                     _dbService.RemoveFromWatchlist(CurrentUser.user_id, movie.Id);
-                    //MessageBox.Show($"{movie.PrimaryTitle} removed from watchlist!");
+
+                    // If we're currently viewing the watchlist, remove the movie from the displayed collection
+                    if (CurrentView is WatchlistViewModel watchlistVM)
+                    {
+                        watchlistVM.WatchlistMovies.Remove(movie);
+                    }
                 }
             }
             catch (Exception ex)
