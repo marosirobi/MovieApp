@@ -74,13 +74,10 @@
                                     VerticalAlignment="Center"
                                     Orientation="Vertical">
 
-                        <local:HoverButton Content="Watchlist"
-                                           bgColor="#2c2c2c"
-                                           hoverColor="#30353c"
-                                           x:Name="WatchlistBtn"                                       
-                                           Style="{StaticResource buttonka}"
-                                           Command="{Binding DataContext.AddToWatchlistCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-                                           CommandParameter="{Binding}"/>
+                        <Button Content="Watchlist"                                      
+                                Style="{StaticResource WatchlistBtn}"
+                                Command="{Binding DataContext.AddToWatchlistCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                CommandParameter="{Binding}"/>
 
                                 
 

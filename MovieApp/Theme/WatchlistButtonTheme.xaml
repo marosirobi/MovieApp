@@ -5,20 +5,20 @@
         
 
         <!--Watchlist Button template-->
-    <Style TargetType="{x:Type local:HoverButton}" 
-           x:Key="buttonka">
+    <Style TargetType="Button" 
+           x:Key="WatchlistBtn">
+        <Setter Property="Background" Value="#2c2c2c"/>
         <Setter Property="Foreground" Value="#5799EF"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
-        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=bgColor}"/>
+        <Setter Property="Width" Value="190"/>
+        <Setter Property="Height" Value="40"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border 
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
                     CornerRadius="20"
                     BorderThickness="1"
-                    Width="190"
-                    Height="40"
                     Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" 
                           VerticalAlignment="Center"/>
@@ -28,11 +28,11 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=hoverColor}"/>
                 <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="#30353c"/>
             </Trigger>
         </Style.Triggers>
-        
+
     </Style>
-    
+
 </ResourceDictionary>

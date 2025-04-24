@@ -173,6 +173,25 @@ namespace MovieApp.MVVM.ViewModel
         {
             CurrentView = HomeVM;
         }
+
+        [RelayCommand]
+        private void AddToWatchlist(MovieModel movie)
+        {
+            if (CurrentUser == null || movie == null) return;
+
+            try
+            {
+                _dbService.AddToWatchlist(CurrentUser.user_id, movie.Id);
+                MessageBox.Show($"{movie.PrimaryTitle} added to your watchlist!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding to watchlist: {ex.Message}");
+            }
+        }
+
+
+
     }
 
 }

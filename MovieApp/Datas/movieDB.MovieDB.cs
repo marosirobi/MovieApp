@@ -32,7 +32,6 @@ namespace MovieApp
                 );
             }
         }
-        partial void CustomizeConfiguration(ref DbContextOptionsBuilder optionsBuilder);
 
         public DbSet<Movie> Movies { get; set; }
     public DbSet<User> Users { get; set; }
@@ -42,6 +41,7 @@ namespace MovieApp
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
 
             this.UserMapping(modelBuilder);
@@ -84,7 +84,7 @@ namespace MovieApp
         {
             modelBuilder.Entity<Watchlist>().ToTable(@"Watchlists");
             modelBuilder.Entity<Watchlist>().Property(x => x.watchlist_id).HasColumnName(@"watchlist_id").IsRequired().ValueGeneratedOnAdd();
-            modelBuilder.Entity<Watchlist>().Property(x => x.list_name).HasColumnName(@"list_name").IsRequired().ValueGeneratedNever().HasMaxLength(50);
+            modelBuilder.Entity<Watchlist>().Property(x => x.list_name).HasColumnName(@"list_name").IsRequired(false).ValueGeneratedNever().HasMaxLength(50).HasDefaultValue("Watchlist");
             modelBuilder.Entity<Watchlist>().Property(x => x.create_date).HasColumnName(@"create_date").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Watchlist>().Property(x => x.isDefault).HasColumnName(@"isDefault").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Watchlist>().Property(x => x.movie_count).HasColumnName(@"movie_count").IsRequired().ValueGeneratedNever();
