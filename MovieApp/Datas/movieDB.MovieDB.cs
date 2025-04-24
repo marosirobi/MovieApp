@@ -6,32 +6,24 @@ namespace MovieApp
 
     public partial class MovieDB : DbContext
     {
-
-        private readonly IConfiguration _configuration;
-
-        public MovieDB() :
-            base()
+        public MovieDB(DbContextOptions<MovieDB> options) : base(options)
         {
             OnCreated();
         }
 
-        public MovieDB(DbContextOptions<MovieDB> options, IConfiguration configuration) :
-            base(options)
+        public MovieDB() : this(GetOptions())
         {
-            _configuration = configuration;
-            OnCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        private static DbContextOptions<MovieDB> GetOptions()
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(
-                    //database connection here
-                    "Server=localhost\\SQL2022;Database=MovieDB;Integrated Security=True;TrustServerCertificate=True;"
-                );
-            }
+            var connectionString = App.Configuration.GetConnectionString("MovieDB");
+
+            var optionsBuilder = new DbContextOptionsBuilder<MovieDB>();
+            optionsBuilder.UseSqlServer(connectionString);
+            return optionsBuilder.Options;
         }
+
 
         public DbSet<Movie> Movies { get; set; }
     public DbSet<User> Users { get; set; }

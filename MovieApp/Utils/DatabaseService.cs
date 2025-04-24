@@ -154,8 +154,8 @@ namespace MovieApp.Utils
                     watchlist = new Watchlist
                     {
                         User = user,
-                        isDefault = listName == null,
-                        list_name = listName
+                isDefault = listName == null,
+                list_name = listName == null ? "Watchlist" : listName
                     };
                     user.Watchlists.Add(watchlist);
                 }
