@@ -5,6 +5,9 @@
     <Compile Update="MVVM\View\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\View\MovieRatingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\View\SelectedMoviePageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
