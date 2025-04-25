@@ -51,6 +51,8 @@ namespace MovieApp.MVVM.ViewModel
         [ObservableProperty]
         private User? _currentUser;
 
+        private readonly Stack<object> _navigationStack = new Stack<object>();
+
         public MainViewModel()
         {
             // Normal initialization
@@ -67,8 +69,9 @@ namespace MovieApp.MVVM.ViewModel
             ReviewsVM = new ReviewsViewModel();
             ProfileVM = new ProfileViewModel();
             SettingsVM = new SettingsViewModel();
+
             CurrentView = HomeVM;
-            
+            _navigationStack.Push(HomeVM);
         }
 
         private async Task InitializeMovies()
@@ -90,6 +93,15 @@ namespace MovieApp.MVVM.ViewModel
 
                 HomeVM.SetMovies(AllMovies);
                 _dbService.SeedMovies(AllMovies);
+
+            }
+        }
+        private void NavigateToView(object viewModel)
+        {
+            if (CurrentView != viewModel)
+            {
+                _navigationStack.Push(CurrentView); // Save current view before changing
+                CurrentView = viewModel;
             }
         }
 
@@ -98,7 +110,7 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != HomeVM)
             {
-                CurrentView = HomeVM;
+                NavigateToView(HomeVM);
                 HomeVM.SetMovies(AllMovies);
             }
         }
@@ -109,7 +121,7 @@ namespace MovieApp.MVVM.ViewModel
             if (CurrentView != TopMoviesVM)
             {
                 TopMoviesVM.SetMovies(AllMovies);
-                CurrentView = TopMoviesVM;
+                NavigateToView(TopMoviesVM);
             }
         }
 
@@ -120,7 +132,7 @@ namespace MovieApp.MVVM.ViewModel
             {
                 WatchlistVM.SetCurrentUser(CurrentUser);
                 WatchlistVM.LoadWatchlistMovies(AllMovies);
-                CurrentView = WatchlistVM;
+                NavigateToView(WatchlistVM);
             }
         }
 
@@ -129,7 +141,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != RatingsVM)
             {
-                CurrentView = RatingsVM;
+                NavigateToView(RatingsVM);
+
             }
         }
 
@@ -138,7 +151,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != ListsVM)
             {
-                CurrentView = ListsVM;
+                NavigateToView(ListsVM);
+
             }
         }
 
@@ -147,7 +161,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != ReviewsVM)
             {
-                CurrentView = ReviewsVM;
+                NavigateToView(ReviewsVM);
+
             }
         }
 
@@ -156,7 +171,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != ProfileVM)
             {
-                CurrentView = ProfileVM;
+                NavigateToView(ProfileVM);
+
             }
         }
 
@@ -165,7 +181,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != SettingsVM)
             {
-                CurrentView = SettingsVM;
+                NavigateToView(SettingsVM);
+
             }
         }
 
@@ -176,14 +193,19 @@ namespace MovieApp.MVVM.ViewModel
             {
                 SelectedMovie = movie;
                 SelectedMovieVM.SetMovie(movie);
-                CurrentView = SelectedMovieVM;
+                NavigateToView(SelectedMovieVM);
+
             }
         }
 
         [RelayCommand]
         private void NavigateBack()
         {
-            CurrentView = HomeVM;
+            if (_navigationStack.Count > 1) // Don't pop the last item (Home)
+            {
+                var previousView = _navigationStack.Pop();
+                CurrentView = previousView;
+            }
         }
 
         [RelayCommand]
