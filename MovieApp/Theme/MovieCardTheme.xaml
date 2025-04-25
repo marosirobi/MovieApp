@@ -4,6 +4,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme/WatchlistButtonTheme.xaml"/>
+        <ResourceDictionary Source="/Theme/RateButtonTheme.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
                 <DataTemplate x:Key="MovieCard">
@@ -15,8 +16,8 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition  Height="290"/>
-                            <RowDefinition  Height="35"/>
-                                <RowDefinition Height="70"/>
+                            <RowDefinition  Height="40"/>
+                                <RowDefinition Height="65"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
@@ -24,18 +25,24 @@
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     Orientation="Horizontal"
-                                    Margin="5,0,5,0">
-                    <TextBlock Text="{Binding AverageRating}"
-                                       FontWeight="SemiBold"
-                                       Margin="5,5,0,0"
-                                       FontSize="16"
-                                       Foreground="White"/>
-
+                                    Margin="5,3,3,0">
+                            
                             <TextBlock Text="⭐"
                                        FontWeight="SemiBold"
-                                       Margin="5,5,0,0"
-                                       FontSize="16"
+                                       Margin="0,0,0,2"
+                                       VerticalAlignment="Center"
+                                       FontSize="24"
                                        Foreground="yellow"/>
+                            
+                            <TextBlock Text="{Binding AverageRating}"
+                                       FontWeight="SemiBold"
+                                       Margin="5,0,5,0"
+                                       FontSize="16"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"/>
+
+                            <Button Style="{StaticResource rateBtn}"/>
+
                         </StackPanel>
                         <StackPanel Grid.Row="2"
                                     HorizontalAlignment="Left"
