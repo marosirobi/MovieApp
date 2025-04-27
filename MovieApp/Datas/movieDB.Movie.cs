@@ -1,4 +1,6 @@
-﻿namespace MovieApp
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MovieApp
 {
     public partial class Movie {
 
@@ -19,8 +21,8 @@
         public string? api_id { get; set; }
         public int review_count { get; set; }
 
+        [Column(TypeName = "decimal(3,1)")]
         public decimal avg_rating { get; set; }
-
         public string? title { get; set; }
 
         public string[]? genre { get; set; }

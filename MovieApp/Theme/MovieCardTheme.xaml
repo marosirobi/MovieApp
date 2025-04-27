@@ -41,9 +41,21 @@
                                        Foreground="White"
                                        VerticalAlignment="Center"/>
 
-                            <Button Style="{StaticResource rateBtn}"/>
+                    <Button Style="{StaticResource rateBtn}"
+                            Command="{Binding DataContext.RateMovieCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            CommandParameter="{Binding}"/>
 
-                        </StackPanel>
+                    <!-- Your rating number (only shows when rated) -->
+                    <TextBlock Text="{Binding YourRating}"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,5,0"
+                                   FontSize="16"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"/>
+
+
+
+                </StackPanel>
                         <StackPanel Grid.Row="2"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"

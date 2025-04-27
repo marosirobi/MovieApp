@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieApp"
         xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
+        xmlns:views="clr-namespace:MovieApp.MVVM.View"
         xmlns:utils="clr-namespace:MovieApp.Utils"
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="600" MinWidth="975"
@@ -143,6 +144,40 @@
                                 Content="{Binding CurrentView}"/>
             </ScrollViewer>
 
+            <Popup IsOpen="{Binding IsRatingDialogOpen}"
+                   StaysOpen="True"
+                   Placement="Center"
+                   AllowsTransparency="True"
+                   Panel.ZIndex="1000">
+
+                <Border Background="#80000000" 
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}"
+                        Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
+
+                    <Border Background="#272537"
+                            CornerRadius="10"
+                            Width="450"
+                            Height="300"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">         
+
+                        <Grid>
+                            <!-- MovieRatingView (Primary Content) -->
+                            <views:MovieRatingView DataContext="{Binding RateMovieVM}"/>
+
+                            <!-- Close Button (Positioned Over the Content) -->
+                            <Button Content="✕"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Margin="5"
+                                    Style="{StaticResource WindowButton}"
+                                    Command="{Binding CloseRatingDialogCommand}"
+                                    Panel.ZIndex="1"/>
+                            <!-- Ensures button stays on top -->
+                        </Grid>
+                    </Border>
+                </Border>
+            </Popup>
 
 
         </Grid>

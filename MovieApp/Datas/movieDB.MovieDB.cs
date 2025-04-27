@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Identity.Client;
 
 namespace MovieApp
 {
@@ -17,7 +18,10 @@ namespace MovieApp
 
         private static DbContextOptions<MovieDB> GetOptions()
         {
-            var connectionString = App.Configuration.GetConnectionString("MovieDB");
+            var connectionString = ConfigurationHelper.GetConnectionString("MovieDB");
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new InvalidOperationException("Connection string 'MovieDB' not found in appsettings.json");
 
             var optionsBuilder = new DbContextOptionsBuilder<MovieDB>();
             optionsBuilder.UseSqlServer(connectionString);

@@ -4,6 +4,8 @@ using MovieApp.MVVM.Model;
 using MovieApp.MVVM.View;
 using MovieApp.Utils;
 using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Diagnostics;
 using System.Windows;
 
 namespace MovieApp.MVVM.ViewModel
@@ -23,6 +25,9 @@ namespace MovieApp.MVVM.ViewModel
 
         [ObservableProperty]
         private SelectedMoviePageViewModel _selectedMovieVM;
+
+        [ObservableProperty]
+        private MovieRatingViewModel _rateMovieVM;
 
         [ObservableProperty]
         private WatchlistViewModel _watchlistVM;
@@ -49,6 +54,9 @@ namespace MovieApp.MVVM.ViewModel
         private MovieModel _selectedMovie;
 
         [ObservableProperty]
+        private bool _isRatingDialogOpen;
+
+        [ObservableProperty]
         private User? _currentUser;
 
         private readonly Stack<object> _navigationStack = new Stack<object>();
@@ -69,7 +77,7 @@ namespace MovieApp.MVVM.ViewModel
             ReviewsVM = new ReviewsViewModel();
             ProfileVM = new ProfileViewModel();
             SettingsVM = new SettingsViewModel();
-
+            RateMovieVM = new MovieRatingViewModel();
             CurrentView = HomeVM;
             _navigationStack.Push(HomeVM);
         }
@@ -88,6 +96,9 @@ namespace MovieApp.MVVM.ViewModel
                     foreach (var movie in AllMovies)
                     {
                         movie.IsInWatchlist = watchlistApiIds.Contains(movie.Id);
+
+                        var existingReview = _dbService.GetReview(CurrentUser.user_id, movie.Id);
+                        movie.YourRating = existingReview?.stars;
                     }
                 }
 
@@ -196,6 +207,64 @@ namespace MovieApp.MVVM.ViewModel
                 NavigateToView(SelectedMovieVM);
 
             }
+        }
+
+        [RelayCommand]
+        private void RateMovie(MovieModel movie)
+        {
+            if (movie != null && CurrentUser != null)
+            {
+                SelectedMovie = movie;
+                RateMovieVM.SetMovie(movie);
+                RateMovieVM.CurrentUser = CurrentUser;
+
+                // Load existing rating
+                var existingReview = _dbService.GetReview(CurrentUser.user_id, movie.Id);
+
+                // Update both the VM rating and the movie model
+                RateMovieVM.Rating = existingReview?.stars ?? 0;
+                movie.UpdateUserRating(existingReview?.stars);
+
+                IsRatingDialogOpen = true;
+            }
+        }
+
+        [RelayCommand]
+        private void OnRatingSubmitted()
+        {
+            if (SelectedMovie != null && CurrentUser != null)
+            {
+                // Update the movie model
+                SelectedMovie.UpdateUserRating(RateMovieVM.Rating);
+
+                // Save to database
+                _dbService.AddReview(CurrentUser.user_id, SelectedMovie.Id, RateMovieVM.Rating);
+
+                // Refresh all views that might display this movie
+                RefreshMovieRatings(SelectedMovie.Id, RateMovieVM.Rating);
+
+                // Close the dialog
+                IsRatingDialogOpen = false;
+            }
+        }
+
+        private void RefreshMovieRatings(string movieId, int newRating)
+        {
+            var movieInCollection = AllMovies.FirstOrDefault(m => m.Id == movieId);
+            if (movieInCollection != null)
+            {
+                movieInCollection.UpdateUserRating(newRating);
+            }
+
+        }
+
+        
+
+
+        [RelayCommand]
+        private void CloseRatingDialog()
+        {
+            IsRatingDialogOpen = false; // Hide the popup
         }
 
         [RelayCommand]
