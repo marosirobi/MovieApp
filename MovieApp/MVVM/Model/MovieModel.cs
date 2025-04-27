@@ -1,18 +1,41 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Globalization;
 
 namespace MovieApp.MVVM.Model
 {
-    public class MovieModel : ObservableObject
+    public partial class MovieModel : ObservableObject
     {
+
+        private int? _yourRating;
+        public int? YourRating
+        {
+            get => _yourRating;
+            set
+            {
+                if (SetProperty(ref _yourRating, value))
+                {
+                    Debug.WriteLine($"YourRating updated to: {value}");
+                    OnPropertyChanged(nameof(HasRating));
+                }
+            }
+        }
+
+        public bool HasRating => YourRating.HasValue && YourRating > 0;
+
+        public void UpdateUserRating(int? rating)
+        {
+            YourRating = rating;
+            // No need to call OnPropertyChanged here if you're using SetProperty in the YourRating setter
+        }
+
         private bool _isInWatchlist;
         public bool IsInWatchlist
         {
             get => _isInWatchlist;
             set => SetProperty(ref _isInWatchlist, value); // This triggers UI updates
         }
-
         [JsonProperty("id")]
         public string? Id { get; set; }
 
@@ -137,6 +160,12 @@ namespace MovieApp.MVVM.Model
         public MovieBuilder SetBudget(string budget)
         {
             movie.Budget = budget;
+            return this;
+        }
+
+        public MovieBuilder SetUserRating(int? rating)
+        {
+            movie.YourRating = rating;
             return this;
         }
 

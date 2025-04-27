@@ -28,11 +28,7 @@
             <DataTemplate DataType="{x:Type viewModel:TopMoviesViewModel}">
                 <view:TopMoviesView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModel:SelectedMoviePageViewModel}">
-                <view:SelectedMoviePageView/>
-            </DataTemplate>
             
-            <!--1. Topratedmovies Menü-->
             <!--2. Watchlist Menü-->
             <DataTemplate DataType="{x:Type viewModel:WatchlistViewModel}">
                 <view:WatchlistView/>
@@ -61,6 +57,14 @@
             <!--7. Beállítás Menü-->
             <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
                 <view:SettingsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SelectedMoviePageViewModel}">
+                <view:SelectedMoviePageView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:MovieRatingViewModel}">
+                <view:MovieRatingView/>
             </DataTemplate>
 
         </ResourceDictionary>

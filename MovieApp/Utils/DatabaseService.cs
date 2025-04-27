@@ -257,37 +257,58 @@ namespace MovieApp.Utils
                 .ToList();
         }
 
-        public void AddReview(int userId, int movieId, string content, int stars)
+        public void AddReview(int userId, string movieApiId, int stars)
         {
+            using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var existingReview = _context.Reviews
-                    .FirstOrDefault(r => r.User.user_id == userId && r.Movie.movie_id == movieId);
+                var movie = _context.Movies
+                    .Include(m => m.Reviews)
+                    .FirstOrDefault(m => m.api_id == movieApiId);
 
+                if (movie == null)
+                {
+                    return;
+                }
+
+                // Handle existing review
+                var existingReview = movie.Reviews.FirstOrDefault(r => r.user_id == userId);
                 if (existingReview != null)
                 {
-                    existingReview.content = content;
                     existingReview.stars = stars;
                     existingReview.publish_date = DateTime.Now;
                 }
                 else
                 {
-                    var review = new Review
+                    movie.Reviews.Add(new Review
                     {
                         user_id = userId,
-                        movie_id = movieId,
-                        content = content,
                         stars = stars,
                         publish_date = DateTime.Now
-                    };
-                    _context.Reviews.Add(review);
+                    });
+                    movie.review_count++;
                 }
+
+                // Calculate new average - explicitly using decimal
+                movie.avg_rating = (decimal)movie.Reviews.Average(r => r.stars);
+
                 _context.SaveChanges();
+                transaction.Commit();
+
+
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error adding review: {ex.Message}");
+                transaction.Rollback();
+                throw; // Re-throw to handle in UI
             }
+        }
+
+        public Review GetReview(int userId, string movieApiId)
+        {
+            return _context.Reviews
+                .Include(r => r.Movie)
+                .FirstOrDefault(r => r.user_id == userId && r.Movie.api_id == movieApiId);
         }
     }
 }
