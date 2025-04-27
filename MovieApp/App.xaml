@@ -20,6 +20,8 @@
                 <ResourceDictionary Source="/Theme/ScrollBarTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/MovieListTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/RateButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/RateButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/LoginButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
