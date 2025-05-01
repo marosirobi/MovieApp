@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:MovieApp"
         xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
         xmlns:views="clr-namespace:MovieApp.MVVM.View"
-        xmlns:utils="clr-namespace:MovieApp.Utils"
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="600" MinWidth="975"
         WindowStyle="None"
@@ -14,24 +13,19 @@
         Background="Transparent"
         AllowsTransparency="True"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        WindowStartupLocation="CenterScreen"
-        >
-    <!--ResizeMode="CanResize"-->
-    
+        WindowStartupLocation="CenterScreen">
+
     <Window.DataContext>
-            <viewModel:MainViewModel/>
+        <viewModel:MainViewModel/>
     </Window.DataContext>
 
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0"
-                  CornerRadius="0"
-                  CaptionHeight="0"/>
+                      CornerRadius="0"
+                      CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
 
-
-    <Border Background="#272537"
-            CornerRadius="10">
-        
+    <Border Background="{DynamicResource PrimaryBackgroundBrush}" CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -45,101 +39,43 @@
             <TextBlock Text="MovieApp"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Foreground="White"
+                       Foreground="{DynamicResource HeaderTextBrush}"
                        FontSize="22"
-                       Margin="20,20,20,20"/>
+                       Margin="20"/>
 
             <StackPanel Grid.Row="1">
-                
-                <RadioButton Content="Home"      
-                             IsChecked="True"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding NavigateToHomeCommand}"/>
+                <RadioButton Content="Home" IsChecked="True"
+             Command="{Binding NavigateToHomeCommand}" />
 
-                <!--1.TopRatedMovies Menü-->
-                <RadioButton Content="Top rated movies"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding NavigateToTopMoviesCommand}"/>
-
-                <!--2.Watchlist Menü-->
-                <RadioButton Content="Watchlist"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding NavigateToWatchlistCommand}"/>
-
-                <!--3.Ratings Menü-->
-                <RadioButton Content="Your ratings"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding NavigateToRatingsCommand}"/>
-
-                <!--4.Lists Menü-->
-                <RadioButton Content="Your Lists"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding NavigateToListsCommand}" />
-
-                <!--5.Reviews Menü-->
-                <RadioButton Content="Your reviews"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding NavigateToReviewsCommand}"/>
-
-
-                <!--6.Profile Menü-->
-                <RadioButton Content="Your profile"
-                             Style="{StaticResource MenuButtonTheme}"
-							 Command="{Binding NavigateToProfileCommand}"/>
-
-                <!--7.Settings Menü-->
-                <RadioButton Content="Settings"                                     
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding NavigateToSettingsCommand}"/>
-
-
-
-
+                <!-- Other menu items here -->
             </StackPanel>
 
-            <TextBox Width="250"
-                     Height="40"
+            <TextBox Width="250" Height="40"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
                      Margin="5"
                      Grid.Column="1"
                      Style="{StaticResource ModernTextBox}"/>
-            
 
             <StackPanel Grid.Column="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Margin="5">
-                
                 <TextBlock Text="{Binding CurrentUser.username, FallbackValue='Guest'}"
-               Foreground="White"
-               FontSize="14"
-               VerticalAlignment="Center"
-               Margin="0,0,10,0"/>
+                           Foreground="{DynamicResource PrimaryTextBrush}"
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,0"/>
 
-                <Button Style="{StaticResource WindowButton}"
-                        x:Name="MinimizeBtn"
-                        Content="—"
-                        Click="MinimizeApp"/>
-
-                <Button Style="{StaticResource WindowButton}"
-                        x:Name="MaximizeBtn"
-                        Content="❐"
-                        Click="MaximizeApp"/>
-
-                <Button Style="{StaticResource WindowButton}"
-                        x:Name="CloseBtn"
-                        Content="X"
-                        Click="CloseApp"/>
-                
-                
+                <Button Style="{StaticResource WindowButton}" Content="—" Click="MinimizeApp"/>
+                <Button Style="{StaticResource WindowButton}" Content="❐" Click="MaximizeApp"/>
+                <Button Style="{StaticResource WindowButton}" Content="X" Click="CloseApp"/>
             </StackPanel>
-            
-            <ScrollViewer Grid.Column="1"
-                           Grid.Row="1"
-                           CanContentScroll="True"
-                           Style="{StaticResource VerticalOnlyScrollViewer}">
+
+            <ScrollViewer Grid.Column="1" Grid.Row="1"
+                          CanContentScroll="True"
+                          Style="{StaticResource VerticalOnlyScrollViewer}">
                 <ContentControl Margin="10"
                                 Content="{Binding CurrentView}"/>
             </ScrollViewer>
@@ -149,40 +85,27 @@
                    Placement="Center"
                    AllowsTransparency="True"
                    Panel.ZIndex="1000">
-
                 <Border Background="#80000000" 
                         Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}"
                         Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
-
-                    <Border Background="#272537"
+                    <Border Background="{DynamicResource PrimaryBackgroundBrush}"
                             CornerRadius="10"
                             Width="450"
                             Height="300"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center">         
-
+                            VerticalAlignment="Center">
                         <Grid>
-                            <!-- MovieRatingView (Primary Content) -->
                             <views:MovieRatingView DataContext="{Binding RateMovieVM}"/>
-
-                            <!-- Close Button (Positioned Over the Content) -->
                             <Button Content="✕"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Margin="5"
                                     Style="{StaticResource WindowButton}"
-                                    Command="{Binding CloseRatingDialogCommand}"
-                                    Panel.ZIndex="1"/>
-                            <!-- Ensures button stays on top -->
+                                    Command="{Binding CloseRatingDialogCommand}"/>
                         </Grid>
                     </Border>
                 </Border>
             </Popup>
-
-
         </Grid>
-
-        
-
     </Border>
 </Window>

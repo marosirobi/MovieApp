@@ -32,5 +32,10 @@ namespace MovieApp.MVVM.View
                 vm.TopMoviesList.CalculateItemsPerPage(MoviesGrid.ActualWidth, MovieCardWidth);
             }
         }
+
+        private void WriteNewReview_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
