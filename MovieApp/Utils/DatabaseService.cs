@@ -247,7 +247,7 @@ namespace MovieApp.Utils
             return watchlistMovies;
         }
 
-        public List<string> GetWatchlistApiIds(int userId)
+        public List<string?> GetWatchlistApiIds(int userId)
         {
             return _context.Movie_Watchlists
                 .Include(mw => mw.Movie)
@@ -304,11 +304,45 @@ namespace MovieApp.Utils
             }
         }
 
-        public Review GetReview(int userId, string movieApiId)
+        public Review? GetReview(int userId, string movieApiId)
         {
             return _context.Reviews
                 .Include(r => r.Movie)
                 .FirstOrDefault(r => r.user_id == userId && r.Movie.api_id == movieApiId);
+        }
+
+        public void DeleteReview(int userId, string movieApiId)
+        {
+            using var transaction = _context.Database.BeginTransaction();
+            try
+            {
+                var movie = _context.Movies
+                    .Include(m => m.Reviews)
+                    .FirstOrDefault(m => m.api_id == movieApiId);
+
+                if (movie == null) return;
+
+                var review = movie.Reviews.FirstOrDefault(r => r.user_id == userId);
+                if (review != null)
+                {
+                    _context.Reviews.Remove(review);
+                    movie.review_count--;
+
+                    // Recalculate average if there are remaining reviews
+                    movie.avg_rating = movie.Reviews.Any()
+                        ? (decimal)movie.Reviews.Average(r => r.stars)
+                        : 0;
+
+                    _context.SaveChanges();
+                    transaction.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                Debug.WriteLine($"Error deleting review: {ex.Message}");
+                throw;
+            }
         }
     }
 }

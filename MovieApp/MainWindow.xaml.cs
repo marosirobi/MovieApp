@@ -31,6 +31,7 @@ public partial class MainWindow : Window
         if(this.WindowState == WindowState.Maximized)
         {
             this.WindowState = WindowState.Normal;
+
         }
         else
         {

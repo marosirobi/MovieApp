@@ -130,7 +130,7 @@
 
                 <Button Style="{StaticResource WindowButton}"
                         x:Name="CloseBtn"
-                        Content="X"
+                        Content="✕"
                         Click="CloseApp"/>
                 
                 
@@ -144,41 +144,15 @@
                                 Content="{Binding CurrentView}"/>
             </ScrollViewer>
 
-            <Popup IsOpen="{Binding IsRatingDialogOpen}"
-                   StaysOpen="True"
-                   Placement="Center"
-                   AllowsTransparency="True"
-                   Panel.ZIndex="1000">
-
-                <Border Background="#80000000" 
-                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}"
-                        Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
-
-                    <Border Background="#272537"
-                            CornerRadius="10"
-                            Width="450"
-                            Height="300"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">         
-
-                        <Grid>
-                            <!-- MovieRatingView (Primary Content) -->
-                            <views:MovieRatingView DataContext="{Binding RateMovieVM}"/>
-
-                            <!-- Close Button (Positioned Over the Content) -->
-                            <Button Content="✕"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Top"
-                                    Margin="5"
-                                    Style="{StaticResource WindowButton}"
-                                    Command="{Binding CloseRatingDialogCommand}"
-                                    Panel.ZIndex="1"/>
-                            <!-- Ensures button stays on top -->
-                        </Grid>
+            <Popup IsOpen="{Binding IsRatingDialogOpen}" 
+                   Style="{StaticResource BasePopupStyle}">
+                <Border Style="{StaticResource ModalOverlayStyle}">
+                    <Border Style="{StaticResource DialogContainerStyle}">
+                        <ContentControl ContentTemplate="{StaticResource RatingDialogContent}"
+                                        Content="{Binding RateMovieVM}"/>
                     </Border>
                 </Border>
             </Popup>
-
 
         </Grid>
 
