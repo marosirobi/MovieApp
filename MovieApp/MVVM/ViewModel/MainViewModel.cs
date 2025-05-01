@@ -131,7 +131,7 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != TopMoviesVM)
             {
-                TopMoviesVM.SetMovies(AllMovies);
+                TopMoviesVM.SetMoviesAsync(AllMovies);
                 NavigateToView(TopMoviesVM);
             }
         }
@@ -152,6 +152,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != RatingsVM)
             {
+                RatingsVM.SetCurrentUser(CurrentUser);
+                RatingsVM.LoadRatedMovies(AllMovies);
                 NavigateToView(RatingsVM);
 
             }

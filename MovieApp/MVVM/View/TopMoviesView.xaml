@@ -18,12 +18,27 @@
 
         <!-- Movies List -->
         <ItemsControl ItemsSource="{Binding Movies}"
-              ItemTemplate="{StaticResource MovieList}">
+              ItemTemplate="{StaticResource MovieList}"
+              VirtualizingPanel.IsVirtualizing="True"
+              VirtualizingPanel.VirtualizationMode="Recycling"
+                      RenderOptions.ClearTypeHint="Enabled"
+              TextOptions.TextFormattingMode="Display"
+              TextOptions.TextRenderingMode="ClearType">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical"/>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
+
+            <ItemsControl.Template>
+                <ControlTemplate TargetType="ItemsControl">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                        <ItemsPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </ItemsControl.Template>
         </ItemsControl>
 
     </StackPanel>

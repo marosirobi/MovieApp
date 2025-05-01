@@ -256,7 +256,14 @@ namespace MovieApp.Utils
                 .Select(mw => mw.Movie.api_id)
                 .ToList();
         }
-
+        public List<string?> GetRatedApiIds(int userId)
+        {
+            return _context.Reviews
+            .Include(r => r.Movie)
+            .Where(r => r.user_id == userId)
+            .Select(r => r.Movie.api_id)
+            .ToList();
+        }
         public void AddReview(int userId, string movieApiId, int stars)
         {
             using var transaction = _context.Database.BeginTransaction();
