@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:MovieApp"
              xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
              xmlns:view="clr-namespace:MovieApp.MVVM.View"
+             xmlns:converters="clr-namespace:MovieApp.Utils.Converters"
              xmlns:utils="clr-namespace:MovieApp.Utils">
     
     <Application.Resources>
@@ -20,8 +21,14 @@
                 <ResourceDictionary Source="/Theme/ScrollBarTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/MovieListTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/RateButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/RatePopupTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/PopupButtonsTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
+            <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+            <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+               
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>

@@ -98,7 +98,7 @@ namespace MovieApp.MVVM.ViewModel
                         movie.IsInWatchlist = watchlistApiIds.Contains(movie.Id);
 
                         var existingReview = _dbService.GetReview(CurrentUser.user_id, movie.Id);
-                        movie.YourRating = existingReview?.stars;
+                        movie.UpdateUserRating(existingReview?.stars);
                     }
                 }
 
@@ -214,17 +214,11 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (movie != null && CurrentUser != null)
             {
-                SelectedMovie = movie;
+                // Force fresh initialization
                 RateMovieVM.SetMovie(movie);
                 RateMovieVM.CurrentUser = CurrentUser;
 
-                // Load existing rating
-                var existingReview = _dbService.GetReview(CurrentUser.user_id, movie.Id);
-
-                // Update both the VM rating and the movie model
-                RateMovieVM.Rating = existingReview?.stars ?? 0;
-                movie.UpdateUserRating(existingReview?.stars);
-
+                Debug.WriteLine($"Opening rating dialog for {movie.PrimaryTitle}");
                 IsRatingDialogOpen = true;
             }
         }
@@ -234,20 +228,11 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (SelectedMovie != null && CurrentUser != null)
             {
-                // Update the movie model
-                SelectedMovie.UpdateUserRating(RateMovieVM.Rating);
-
-                // Save to database
-                _dbService.AddReview(CurrentUser.user_id, SelectedMovie.Id, RateMovieVM.Rating);
-
-                // Refresh all views that might display this movie
+                // Update all instances of this movie
                 RefreshMovieRatings(SelectedMovie.Id, RateMovieVM.Rating);
-
-                // Close the dialog
                 IsRatingDialogOpen = false;
             }
         }
-
         private void RefreshMovieRatings(string movieId, int newRating)
         {
             var movieInCollection = AllMovies.FirstOrDefault(m => m.Id == movieId);
@@ -255,11 +240,11 @@ namespace MovieApp.MVVM.ViewModel
             {
                 movieInCollection.UpdateUserRating(newRating);
             }
-
+            if (SelectedMovie?.Id == movieId)
+            {
+                SelectedMovie.UpdateUserRating(newRating);
+            }
         }
-
-        
-
 
         [RelayCommand]
         private void CloseRatingDialog()

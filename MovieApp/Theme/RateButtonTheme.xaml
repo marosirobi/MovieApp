@@ -14,7 +14,7 @@
                     <Border x:Name="border"
                     CornerRadius="5"
                     BorderThickness="1"
-                    Background="{TemplateBinding Background}" Margin="0,0,0,2">
+                    Background="{TemplateBinding Background}" Margin="0,0,0,1">
                         <ContentPresenter HorizontalAlignment="Center" 
                                 VerticalAlignment="Center"/>
                     </Border>
@@ -26,6 +26,11 @@
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Background" Value="#2c2c2c"/>
             </Trigger>
+            <DataTrigger Binding="{Binding HasRating}" Value="True">
+                <Setter Property="Content" Value="★"/>
+                <Setter Property="Foreground" Value="CornflowerBlue"/>
+                <Setter Property="FontSize" Value="18"/>
+            </DataTrigger>
         </Style.Triggers>
 
     </Style>

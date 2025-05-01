@@ -16,7 +16,7 @@ namespace MovieApp.MVVM.Model
             {
                 if (SetProperty(ref _yourRating, value))
                 {
-                    Debug.WriteLine($"YourRating updated to: {value}");
+                    Debug.WriteLine($"Rating updated for {PrimaryTitle}: {value}");
                     OnPropertyChanged(nameof(HasRating));
                 }
             }
@@ -24,10 +24,13 @@ namespace MovieApp.MVVM.Model
 
         public bool HasRating => YourRating.HasValue && YourRating > 0;
 
+
         public void UpdateUserRating(int? rating)
         {
             YourRating = rating;
-            // No need to call OnPropertyChanged here if you're using SetProperty in the YourRating setter
+
+            OnPropertyChanged(nameof(YourRating));
+            OnPropertyChanged(nameof(HasRating));
         }
 
         private bool _isInWatchlist;
