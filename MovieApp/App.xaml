@@ -23,6 +23,7 @@
                 <ResourceDictionary Source="/Theme/RateButtonTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/RatePopupTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/PopupButtonsTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/LoginButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>

@@ -3,40 +3,113 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:MovieApp.MVVM.ViewModel"
         Title="Bejelentkezés / Regisztráció" 
-        Height="250" 
+        Height="450" 
         Width="350"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Margin="0 0 0 10">
-            <TextBlock Text="Felhasználónév:"/>
-            <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
-        </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="0 0 0 10">
-            <TextBlock Text="Jelszó:"/>
-            <PasswordBox x:Name="PasswordBox" Width="200" PasswordChanged="PasswordBox_PasswordChanged"/>
-        </StackPanel>
 
-        <TextBlock Grid.Row="2" Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center"/>
+            <Border CornerRadius="10" Grid.RowSpan="2">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="DarkSlateGray" Offset="0.3"/>
+                        <GradientStop Color="DarkGray" Offset="3"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
-            <Button Content="Bejelentkezés" 
-                    Margin="5" 
-                    Command="{Binding LoginCommand}" 
+            <StackPanel VerticalAlignment="Center">
+
+                <TextBlock Text="MovieApp"
+                           FontWeight="Light"
+                           FontFamily="Gadugi"
+                           FontSize="22"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1">
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <TextBlock Text="Felhasználónév:"
+                       FontFamily="Gadugi"
+                       FontWeight="Light"
+                       Foreground="White"
+                       Margin="5"/>
+                    <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" 
+                             FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Width="215"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="10,0,0,0"/>
+                </StackPanel>
+
+                <Border Width="215"
+                        Height="2"
+                        Margin="70,0,0,0"
+                        Background="White"
+                        Opacity="0.5"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <TextBlock Text="Jelszó:"
+                         FontFamily="Gadugi"
+                         FontWeight="Light"
+                         Foreground="White"
+                         Margin="5"/>
+
+                    <PasswordBox x:Name="PasswordBox" 
+                             Width="215"
+                             PasswordChanged="PasswordBox_PasswordChanged"
+                             FontWeight="Light"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="59,0,0,0"/>
+                </StackPanel>
+                <Border Width="215"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"
+                        Margin="71,0,0,0"/>
+
+                <TextBlock Grid.Row="2" Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Left" Margin="155,0,0,83" Grid.RowSpan="2"/>
+
+                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Button Content="Bejelentkezés" 
+                       Margin="45,0,60,0"
+                       Command="{Binding LoginCommand}" 
+                       Style="{StaticResource LoginButtonTheme}"
+                       Width="100"/>
+
+                    <Button Content="Regisztráció" 
+                    Command="{Binding RegisterCommand}"
+                    Style="{StaticResource LoginButtonTheme}"
                     Width="100"/>
-            
-            <Button Content="Regisztráció" 
-                    Margin="5" 
-                    Command="{Binding RegisterCommand}" 
-                    Width="100"/>
-        </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Window>
