@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              Background="#272537">
-    <Grid Margin="20">
+
+    <Grid Margin="10">
         <StackPanel VerticalAlignment="Center">
             <TextBlock Text="Rate this movie:" 
                        HorizontalAlignment="Center"
@@ -12,11 +13,11 @@
                        Margin="0,0,0,10"/>
 
             <TextBlock Text="{Binding CurrentMovie.PrimaryTitle}"
-                       FontSize="18"
+                       FontSize="24"
                        Foreground="White"
                        HorizontalAlignment="Center"
                        TextWrapping="Wrap"
-                       Margin="0,0,0,20"
+                       Margin="0,0,0,10"
                        MaxWidth="350"/>
 
             <!-- 10-Star Rating Control -->
@@ -30,12 +31,19 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button Content="★"
-                                    FontSize="24"
+                                    FontSize="32"
                                     Foreground="{Binding Color}"
                                     Background="Transparent"
                                     BorderThickness="0"
                                     Padding="2,0"
                                     Cursor="Hand">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <ContentPresenter Content="{TemplateBinding Content}"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                    </ControlTemplate>
+                                </Button.Template>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseEnter">
                                         <i:InvokeCommandAction 
@@ -61,10 +69,20 @@
                 </ItemsControl>
             </StackPanel>
 
-            <Button Content="Submit Rating"
+            <!-- Rating Buttons StackPanel -->
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0">
+                <!-- Rate Button (Visible when no rating exists) -->
+                <Button Content="Rate"
                     Command="{Binding SubmitRatingCommand}"
-                    Width="150"
-                    HorizontalAlignment="Center"/>
+                    Style="{StaticResource SubmitRatingButtonStyle}"
+                    IsEnabled="{Binding Rating, Converter={StaticResource GreaterThanZeroConverter}}"/>
+
+                <!-- Delete Rating Button (only visible after submission) -->
+                <Button Content="Delete Rating"
+                    Command="{Binding DeleteRatingCommand}"
+                    Style="{StaticResource DeleteRatingButtonStyle}"
+                    Visibility="{Binding HasRating, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

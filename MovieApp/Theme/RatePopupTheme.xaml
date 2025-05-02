@@ -1,0 +1,57 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:views="clr-namespace:MovieApp.MVVM.View"
+                    xmlns:models="clr-namespace:MovieApp.MVVM.ViewModel">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Theme/WindowButtonTheme.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- 1. Base Popup Style -->
+    <Style x:Key="BasePopupStyle" TargetType="Popup">
+        <Setter Property="StaysOpen" Value="False"/>
+        <Setter Property="Placement" Value="Center"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="Panel.ZIndex" Value="1000"/>
+        <Setter Property="PopupAnimation" Value="Fade"/>
+        
+    </Style>
+
+    <!-- 2. Overlay Style -->
+    <Style x:Key="ModalOverlayStyle" TargetType="Border">
+        <Setter Property="Background" Value="#80000000"/>
+        <Setter Property="Width" Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}"/>
+        <Setter Property="Height" Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"/>
+    </Style>
+
+    <!-- 3. Dialog Container Style (Updated with CornerRadius) -->
+    <Style x:Key="DialogContainerStyle" TargetType="Border">
+        <Setter Property="Background" Value="#272537"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <!-- Added this line -->
+        <Setter Property="Width" Value="450"/>
+        <Setter Property="Height" Value="350"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <!-- Optional: Add padding to prevent content from touching rounded edges -->
+        <Setter Property="Padding" Value="15"/>
+    </Style>
+
+    <!-- 4. Rating Dialog Content Template -->
+    <DataTemplate x:Key="RatingDialogContent">
+        <Border Style="{StaticResource DialogContainerStyle}">
+            <!-- Apply the styled border here -->
+            <Grid>
+                <views:MovieRatingView/>
+                <Button Content="✕"
+                        x:Name="PopupBtn"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource WindowButton}"
+                        Command="{Binding DataContext.CloseRatingDialogCommand, 
+                                RelativeSource={RelativeSource AncestorType=Window}}"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>

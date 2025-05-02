@@ -22,6 +22,8 @@ namespace MovieApp.MVVM.ViewModel
             }
         }
 
+        private readonly DatabaseService _dbService;
+
         [ObservableProperty]
         private MovieModel _currentMovie;
 
@@ -31,9 +33,12 @@ namespace MovieApp.MVVM.ViewModel
         [ObservableProperty]
         private int _hoveredStar;
 
-        public ObservableCollection<StarViewModel> Stars { get; } = new();
+        [ObservableProperty]
+        private bool _hasRating;
 
-        private readonly DatabaseService _dbService;
+        public ObservableCollection<StarViewModel> Stars { get; } = new();
+        public User CurrentUser { get; set; }
+        public ICommand CloseRatingDialogCommand { get; set; }
 
         public MovieRatingViewModel()
         {
@@ -74,6 +79,8 @@ namespace MovieApp.MVVM.ViewModel
         private void SetRating(int stars)
         {
             Rating = stars;
+            HasRating = stars > 0;
+            UpdateStarColors();
         }
 
         [RelayCommand]
@@ -91,28 +98,73 @@ namespace MovieApp.MVVM.ViewModel
         [RelayCommand]
         private void SubmitRating()
         {
-            if (CurrentUser != null && CurrentMovie != null)
+            if (CurrentUser != null && CurrentMovie != null && Rating > 0)
             {
                 _dbService.AddReview(CurrentUser.user_id, CurrentMovie.Id, Rating);
-
-                // Use the public method to update rating
                 CurrentMovie.UpdateUserRating(Rating);
-
-                CloseRatingDialogCommand?.Execute(null);
+                HasRating = true;
+                Debug.WriteLine($"Rating submitted: {Rating}");
             }
         }
 
-        [RelayCommand]
+        private bool _isInitialLoad = false;
+
         public void SetMovie(MovieModel movie)
         {
+            if (CurrentMovie?.Id == movie?.Id && _isInitialLoad)
+                return;
+
             CurrentMovie = movie;
+            _isInitialLoad = true;
+
             if (CurrentUser != null && CurrentMovie != null)
             {
                 var existingReview = _dbService.GetReview(CurrentUser.user_id, CurrentMovie.Id);
                 Rating = existingReview?.stars ?? 0;
+                HasRating = existingReview != null;
+
+                // Force UI update
+                UpdateStarColors();
+                OnPropertyChanged(nameof(Rating));
+                OnPropertyChanged(nameof(HasRating));
+
+                Debug.WriteLine($"UI Rating updated to: {Rating} (DB: {existingReview?.stars ?? 0})");
             }
         }
-        public User CurrentUser { get; set; }
-                public ICommand CloseRatingDialogCommand { get; set; }
+
+        [RelayCommand]
+        private void DeleteRating()
+        {
+            if (CurrentUser != null && CurrentMovie != null)
+            {
+                _dbService.DeleteReview(CurrentUser.user_id, CurrentMovie.Id);
+                Rating = 0;
+                CurrentMovie.UpdateUserRating(null);
+                HasRating = false;
+                UpdateStarColors();
+                Debug.WriteLine($"Rating deleted for {CurrentMovie.PrimaryTitle}");
             }
         }
+
+        // Update this when setting the movie
+        partial void OnCurrentMovieChanged(MovieModel value)
+        {
+            if (value != null && CurrentUser != null)
+            {
+                var existingReview = _dbService.GetReview(CurrentUser.user_id, value.Id);
+                HasRating = existingReview != null;
+            }
+        }
+
+
+
+
+
+
+
+
+    }
+
+
+        }
+

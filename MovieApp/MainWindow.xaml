@@ -63,6 +63,7 @@
                         VerticalAlignment="Top"
                         Margin="5">
                 <TextBlock Text="{Binding CurrentUser.username, FallbackValue='Guest'}"
+
                            Foreground="{DynamicResource PrimaryTextBrush}"
                            FontSize="14"
                            VerticalAlignment="Center"
@@ -71,6 +72,7 @@
                 <Button Style="{StaticResource WindowButton}" Content="—" Click="MinimizeApp"/>
                 <Button Style="{StaticResource WindowButton}" Content="❐" Click="MaximizeApp"/>
                 <Button Style="{StaticResource WindowButton}" Content="X" Click="CloseApp"/>
+
             </StackPanel>
 
             <ScrollViewer Grid.Column="1" Grid.Row="1"
