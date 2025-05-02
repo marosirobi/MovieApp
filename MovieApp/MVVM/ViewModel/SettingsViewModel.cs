@@ -109,6 +109,7 @@ namespace MovieApp.MVVM.ViewModel
             string imagePath;
             Color textColor;
 
+
             switch (SelectedTheme)
             {
                 case "Pink":

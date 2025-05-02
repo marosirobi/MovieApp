@@ -8,6 +8,7 @@ namespace MovieApp.MVVM.View
     {
         public SettingsView()
         {
+
             InitializeComponent();
             // Beállítjuk a DataContext-et a ViewModel-re
             this.DataContext = new SettingsViewModel();
