@@ -63,6 +63,7 @@
                         VerticalAlignment="Top"
                         Margin="5">
                 <TextBlock Text="{Binding CurrentUser.username, FallbackValue='Guest'}"
+
                            Foreground="{DynamicResource PrimaryTextBrush}"
                            FontSize="14"
                            VerticalAlignment="Center"
@@ -71,6 +72,28 @@
                 <Button Style="{StaticResource WindowButton}" Content="—" Click="MinimizeApp"/>
                 <Button Style="{StaticResource WindowButton}" Content="❐" Click="MaximizeApp"/>
                 <Button Style="{StaticResource WindowButton}" Content="X" Click="CloseApp"/>
+
+               Foreground="White"
+               FontSize="14"
+               VerticalAlignment="Center"
+               Margin="0,0,10,0"/>
+
+                <Button Style="{StaticResource WindowButton}"
+                        x:Name="MinimizeBtn"
+                        Content="—"
+                        Command="{Binding MinimizeAppCommand}"/>
+
+                <Button Style="{StaticResource WindowButton}"
+                        x:Name="MaximizeBtn"
+                        Content="❐"
+                        Command="{Binding MaximizeAppCommand}"/>
+
+                <Button Style="{StaticResource WindowButton}"
+                        x:Name="CloseBtn"
+                        Content="✕"
+                        Command="{Binding CloseAppCommand}"/>
+                
+
             </StackPanel>
 
             <ScrollViewer Grid.Column="1" Grid.Row="1"
@@ -79,6 +102,7 @@
                 <ContentControl Margin="10"
                                 Content="{Binding CurrentView}"/>
             </ScrollViewer>
+
 
             <Popup IsOpen="{Binding IsRatingDialogOpen}"
                    StaysOpen="True"
@@ -106,6 +130,17 @@
                     </Border>
                 </Border>
             </Popup>
+
+            <Popup IsOpen="{Binding IsRatingDialogOpen}" 
+                   Style="{StaticResource BasePopupStyle}">
+                <Border Style="{StaticResource ModalOverlayStyle}">
+                    <Border Style="{StaticResource DialogContainerStyle}">
+                        <ContentControl ContentTemplate="{StaticResource RatingDialogContent}"
+                                        Content="{Binding RateMovieVM}"/>
+                    </Border>
+                </Border>
+            </Popup>
+
         </Grid>
     </Border>
 </Window>

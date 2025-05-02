@@ -16,6 +16,7 @@ public partial class MainWindow : Window
         DragMove();
     }
 
+
     // Ablak bezárása
     private void CloseApp(object sender, RoutedEventArgs e)
     {
@@ -45,4 +46,6 @@ public partial class MainWindow : Window
     {
 
     }
+}
+
 }

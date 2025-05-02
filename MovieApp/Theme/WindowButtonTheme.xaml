@@ -47,6 +47,15 @@
                 <Setter Property="Background" Value="Gray"/>
                 <!-- Changed from Red to Gray for consistency -->
             </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Name" Value="PopupBtn"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="Gray"/>
+                <!-- Changed from Red to Gray for consistency -->
+            </MultiTrigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

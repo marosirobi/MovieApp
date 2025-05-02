@@ -8,16 +8,29 @@
              d:DesignHeight="450" d:DesignWidth="800"              
              Background="#272537">
 
-    <Grid Margin="30">
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="300">
-            <!-- Cím -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0">
+            <!-- Title -->
             <TextBlock Text="Your Ratings"
-                       FontSize="32"
-                       Foreground="White"
-                       Margin="0,0,0,30"/>
+                   FontSize="28"
+                   Foreground="White"
+                   Margin="0,0,0,30"/>
         </StackPanel>
-
-        
-
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+            <ItemsControl ItemsSource="{Binding RatedMovies}"
+                     ItemTemplate="{StaticResource MovieList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <!-- WrapPanel will automatically create new rows -->
+                        <WrapPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            
+        </StackPanel>
     </Grid>
 </UserControl>

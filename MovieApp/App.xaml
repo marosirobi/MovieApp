@@ -4,12 +4,14 @@
              xmlns:local="clr-namespace:MovieApp"
              xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
              xmlns:view="clr-namespace:MovieApp.MVVM.View"
+             xmlns:converters="clr-namespace:MovieApp.Utils.Converters"
              xmlns:utils="clr-namespace:MovieApp.Utils">
 
     <Application.Resources>
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
+
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/WindowButtonTheme.xaml"/>
@@ -27,6 +29,26 @@
             <SolidColorBrush x:Key="HeaderTextBrush" Color="White"/>
 
             <!-- DataTemplates -->
+
+                <ResourceDictionary Source="/Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/WindowButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/WatchlistButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/MovieCardTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/SideBarTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/ScrollBarTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/MovieListTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/RateButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/RatePopupTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/PopupButtonsTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/LoginButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+            <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+               
+
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
