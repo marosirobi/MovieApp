@@ -21,10 +21,16 @@
                 <ResourceDictionary Source="Theme/RateButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Default Theme Resources -->
-            <ImageBrush x:Key="PrimaryBackgroundBrush" ImageSource="Theme/dark.jpg"/>
-            <SolidColorBrush x:Key="PrimaryTextBrush" Color="White"/>
-            <SolidColorBrush x:Key="HeaderTextBrush" Color="White"/>
+            <!-- Az alapértelmezett háttér resource, amelyet a SettingsViewModel módosít -->
+            <ImageBrush x:Key="PrimaryBackgroundBrush" 
+                        ImageSource="Theme/dark.jpg" 
+                        Stretch="UniformToFill"/>
+
+            <!-- A Window háttér dinamikusan a PrimaryBackgroundBrush resource alapján -->
+            <Style TargetType="Window">
+                <Setter Property="Background" 
+                        Value="{DynamicResource PrimaryBackgroundBrush}"/>
+            </Style>
 
             <!-- DataTemplates -->
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -33,35 +39,27 @@
             <DataTemplate DataType="{x:Type viewModel:TopMoviesViewModel}">
                 <view:TopMoviesView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:WatchlistViewModel}">
                 <view:WatchlistView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:RatingsViewModel}">
                 <view:RatingsView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:ListsViewModel}">
                 <view:ListsView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:ReviewsViewModel}">
                 <view:ReviewsView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:ProfileViewModel}">
                 <view:ProfileView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
                 <view:SettingsView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:SelectedMoviePageViewModel}">
                 <view:SelectedMoviePageView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:MovieRatingViewModel}">
                 <view:MovieRatingView/>
             </DataTemplate>

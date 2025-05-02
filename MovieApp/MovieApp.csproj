@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Theme\dark.jpg" />
+    <None Remove="Theme\light.jpg" />
+    <None Remove="Theme\pink.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -25,6 +31,12 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Theme\dark.jpg" />
+    <Resource Include="Theme\light.jpg" />
+    <Resource Include="Theme\pink.jpg" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,9 @@
         xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
         xmlns:views="clr-namespace:MovieApp.MVVM.View"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="600" MinWidth="975"
+        Title="MainWindow" 
+        MinHeight="600" 
+        MinWidth="975"
         WindowStyle="None"
         ResizeMode="CanResize" 
         Background="Transparent"
@@ -25,6 +27,7 @@
                       CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
 
+    <!-- A háttér itt a PrimaryBackgroundBrush erőforrással van beállítva, így módosulhat a téma váltás hatására -->
     <Border Background="{DynamicResource PrimaryBackgroundBrush}" CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -44,10 +47,45 @@
                        Margin="20"/>
 
             <StackPanel Grid.Row="1">
-                <RadioButton Content="Home" IsChecked="True"
-             Command="{Binding NavigateToHomeCommand}" />
+                <RadioButton Content="Home"      
+                             IsChecked="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToHomeCommand}"/>
 
-                <!-- Other menu items here -->
+                <!--1.TopRatedMovies Menü-->
+                <RadioButton Content="Top rated movies"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToTopMoviesCommand}"/>
+
+                <!--2.Watchlist Menü-->
+                <RadioButton Content="Watchlist"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToWatchlistCommand}"/>
+
+                <!--3.Ratings Menü-->
+                <RadioButton Content="Your ratings"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToRatingsCommand}"/>
+
+                <!--4.Lists Menü-->
+                <RadioButton Content="Your Lists"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToListsCommand}" />
+
+                <!--5.Reviews Menü-->
+                <RadioButton Content="Your reviews"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToReviewsCommand}"/>
+
+                <!--6.Profile Menü-->
+                <RadioButton Content="Your profile"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToProfileCommand}"/>
+
+                <!--7.Settings Menü-->
+                <RadioButton Content="Settings"                                     
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToSettingsCommand}"/>
             </StackPanel>
 
             <TextBox Width="250" Height="40"

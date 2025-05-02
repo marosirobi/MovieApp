@@ -3,18 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MovieApp.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="{Binding SelectedThemeBackground}">
+             Background="#272537">
 
     <UserControl.Resources>
+        <!-- Egységes label stílus -->
         <Style x:Key="LabelStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-
+        <!-- Alap gomb stílus -->
         <Style x:Key="PrimaryButton" TargetType="Button">
             <Setter Property="Background" Value="#FF007ACC"/>
             <Setter Property="Foreground" Value="White"/>
@@ -24,47 +24,54 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid x:Name="MainGrid" Margin="30" Background="{Binding SelectedThemeImage}">
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="300">
-            <TextBlock Text="{Binding SettingsTitle}" FontSize="32" Foreground="White" Margin="0,0,0,30"/>
+    <!-- A hátteret a PrimaryBackgroundBrush dinamikus resource vagy egy fix érték biztosítja -->
+    <Border BorderBrush="{Binding BorderBrush}" BorderThickness="4">
+        <Grid Background="{DynamicResource PrimaryBackgroundBrush}">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="254" Margin="265,0,0,0">
 
-            <!-- Language -->
-            <StackPanel Orientation="Horizontal" Margin="0,10">
-                <TextBlock Text="{Binding LanguageLabel}" Style="{StaticResource LabelStyle}" Width="150"/>
-                <ComboBox Width="120"
+                <TextBlock Text="{Binding SettingsTitle}" FontSize="32" Foreground="{DynamicResource PrimaryTextBrush}" RenderTransformOrigin="0.5,0.5">
+
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.213"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <!-- Language Panel -->
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <TextBlock Text="Language:" Style="{StaticResource LabelStyle}" Width="150"/>
+                    <ComboBox Width="120"
                           SelectedValue="{Binding SelectedLanguage, Mode=TwoWay}"
                           SelectedValuePath="Content">
-                    <ComboBoxItem Content="English"/>
-                    <ComboBoxItem Content="Magyar"/>
-                </ComboBox>
-            </StackPanel>
+                        <ComboBoxItem Content="English"/>
+                        <ComboBoxItem Content="Magyar"/>
+                    </ComboBox>
+                </StackPanel>
 
-            <!-- Notifications -->
-            <StackPanel Orientation="Horizontal" Margin="0,10">
-                <TextBlock Text="{Binding NotificationsLabel}" Style="{StaticResource LabelStyle}" Width="150"/>
-                <CheckBox IsChecked="{Binding NotificationsEnabled}" Width="20" Height="20"/>
-            </StackPanel>
+                <!-- Notifications Panel -->
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <TextBlock Text="Notifications:" Style="{StaticResource LabelStyle}" Width="150"/>
+                    <CheckBox IsChecked="{Binding NotificationsEnabled}" Width="20" Height="20"/>
+                </StackPanel>
 
-            <!-- Téma választó -->
-            <StackPanel Orientation="Horizontal" Margin="0,10">
-                <TextBlock Text="Téma:" Style="{StaticResource LabelStyle}" Width="150"/>
-                <ComboBox Width="120"
-          SelectedValue="{Binding SelectedTheme, Mode=TwoWay}"
-          SelectedValuePath="Content">
-                    <ComboBoxItem Content="Pink"/>
-                    <ComboBoxItem Content="Dark"/>
-                    <ComboBoxItem Content="Light"/>
-                </ComboBox>
+                <!-- Theme Selector Panel -->
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <TextBlock Text="Theme:" Style="{StaticResource LabelStyle}" Width="150"/>
+                    <ComboBox Width="120"
+                          ItemsSource="{Binding AvailableThemes}"
+                          SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"/>
+                </StackPanel>
 
-
-            </StackPanel>
-
-            <!-- Save Button -->
-            <Button Content="{Binding SaveButtonText}"
+                <!-- Save Button -->
+                <Button Content="{Binding SaveButtonText, TargetNullValue=Save Settings}"
                     Style="{StaticResource PrimaryButton}"
-                    Width="150"
-                    Height="30"
-                    Command="{Binding SaveSettingsCommand}"/>
-        </StackPanel>
-    </Grid>
+                    Width="72"
+                    Command="{Binding SaveSettingsCommand}" Height="30"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </UserControl>

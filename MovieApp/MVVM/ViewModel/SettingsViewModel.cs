@@ -1,21 +1,35 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace MovieApp.MVVM.ViewModel
 {
     public class SettingsViewModel : INotifyPropertyChanged
     {
+        private const string LightThemeImagePath = "Theme/light.jpg";
+        private const string DarkThemeImagePath = "Theme/dark.jpg";
+        private const string PinkThemeImagePath = "Theme/pink.jpg";
+
+        private const string BackgroundBrushKey = "PrimaryBackgroundBrush";
+        private const string PrimaryTextBrushKey = "PrimaryTextBrush";
+        private const string HeaderTextBrushKey = "HeaderTextBrush";
+
         private string _settingsTitle = "Beállítások";
         private string _languageLabel = "Nyelv";
         private string _selectedLanguage = "English";
         private string _notificationsLabel = "Értesítések";
         private bool _notificationsEnabled = true;
         private string _saveButtonText = "Mentés";
+        private string _selectedTheme = "Dark";
+        private ImageBrush _selectedThemeImage;
+
+        // Új: Elérhető témák listája a ComboBox-hoz
+        public List<string> AvailableThemes { get; } = new List<string> { "Dark", "Light", "Pink" };
 
         public string SettingsTitle
         {
@@ -53,84 +67,85 @@ namespace MovieApp.MVVM.ViewModel
             set => SetProperty(ref _saveButtonText, value);
         }
 
+        public string SelectedTheme
+        {
+            get => _selectedTheme;
+            set
+            {
+                if (SetProperty(ref _selectedTheme, value))
+                {
+                    UpdateThemeProperties();
+                }
+            }
+        }
+
+        public ImageBrush SelectedThemeImage
+        {
+            get => _selectedThemeImage;
+            set => SetProperty(ref _selectedThemeImage, value);
+        }
+
         public ICommand SaveSettingsCommand { get; }
 
         public SettingsViewModel()
         {
             SaveSettingsCommand = new RelayCommand(SaveSettings);
-        }
-
-        // Három téma kezelése
-        private bool _isDarkMode = true;
-        private bool _isPinkMode = false;
-
-        public bool IsDarkMode
-        {
-            get => _isDarkMode;
-            set => SetProperty(ref _isDarkMode, value);
-        }
-
-        public bool IsPinkMode
-        {
-            get => _isPinkMode;
-            set => SetProperty(ref _isPinkMode, value);
+            UpdateThemeProperties();
         }
 
         private void SaveSettings()
         {
-            // Frissíti a témát a kiválasztott beállítás alapján
-            UpdateThemeProperties();
-
-            // Ide jöhet mentési logika, pl. fájlba vagy adatbázisba mentés
             System.Diagnostics.Debug.WriteLine("Beállítások mentve.");
+        }
+        private Brush _borderBrush;
+        public Brush BorderBrush
+        {
+            get => _borderBrush;
+            set => SetProperty(ref _borderBrush, value);
         }
 
         private void UpdateThemeProperties()
         {
-            string imagePath = "Theme/light.jpg"; // Alapértelmezett világos téma.
+            string imagePath;
+            Color textColor;
 
-            if (IsDarkMode)
+            switch (SelectedTheme)
             {
-                imagePath = "Theme/dark.jpg"; // Ha Dark Mode van, akkor dark.jpg
-            }
-            else if (IsPinkMode) // Ha Pink Mode van, akkor pink.jpg
-            {
-                imagePath = "Theme/pink.jpg";
+                case "Pink":
+                    imagePath = PinkThemeImagePath;
+                    textColor = (Color)ColorConverter.ConvertFromString("#FF1493");
+                    BorderBrush = new SolidColorBrush(Colors.Purple);
+                    break;
+                case "Light":
+                    imagePath = LightThemeImagePath;
+                    textColor = Colors.DarkSlateGray;
+                    BorderBrush = new SolidColorBrush(Colors.Black);
+                    break;
+                case "Dark":
+                default:
+                    imagePath = DarkThemeImagePath;
+                    textColor = Colors.White;
+                    BorderBrush = new SolidColorBrush(Colors.Black);
+                    break;
             }
 
-            // Convert the URI to an ImageSource using BitmapImage
-            var imageBrush = new ImageBrush
+            var imgBrush = new ImageBrush
             {
-                ImageSource = new BitmapImage(new System.Uri(imagePath, System.UriKind.Relative))
+                ImageSource = new BitmapImage(new System.Uri(imagePath, System.UriKind.Relative)),
+                Stretch = Stretch.UniformToFill
             };
 
-            // Alapértelmezett háttérbeállítások a három téma alapján
-            Application.Current.Resources["PrimaryBackgroundBrush"] = imageBrush;
+            SelectedThemeImage = imgBrush;
 
-            // Betűszínek beállítása a téma alapján
-            if (IsDarkMode)
-            {
-                Application.Current.Resources["PrimaryTextBrush"] = new SolidColorBrush(Colors.White); // Fehér betűk sötét módban
-                Application.Current.Resources["HeaderTextBrush"] = new SolidColorBrush(Colors.White);
-            }
-            else if (IsPinkMode)
-            {
-                Application.Current.Resources["PrimaryTextBrush"] = new SolidColorBrush(Colors.Black); // Fekete betűk pink módban
-                Application.Current.Resources["HeaderTextBrush"] = new SolidColorBrush(Colors.Black);
-            }
-            else
-            {
-                Application.Current.Resources["PrimaryTextBrush"] = new SolidColorBrush(Colors.DarkSlateGray); // Sötét betűk világos módban
-                Application.Current.Resources["HeaderTextBrush"] = new SolidColorBrush(Colors.DarkSlateGray);
-            }
+            Application.Current.Resources[BackgroundBrushKey] = imgBrush;
+            var brush = new SolidColorBrush(textColor);
+            Application.Current.Resources[PrimaryTextBrushKey] = brush;
+            Application.Current.Resources[HeaderTextBrushKey] = brush;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
         {

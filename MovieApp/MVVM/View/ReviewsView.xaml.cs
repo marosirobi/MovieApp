@@ -10,11 +10,6 @@ namespace MovieApp.MVVM.View
         {
             InitializeComponent();
         }
-        private void WriteNewReview_Click(object sender, RoutedEventArgs e)
-        {
-            // Show the NewReviewPanel when the button is clicked
-            NewReviewPanel.Visibility = Visibility.Visible;
-        }
 
         private void SaveReview_Click(object sender, RoutedEventArgs e)
         {
