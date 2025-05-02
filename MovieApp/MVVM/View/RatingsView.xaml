@@ -22,14 +22,15 @@
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
             <ItemsControl ItemsSource="{Binding RatedMovies}"
-                     ItemTemplate="{StaticResource MovieCard}">
+                     ItemTemplate="{StaticResource MovieList}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <!-- WrapPanel will automatically create new rows -->
-                        <WrapPanel Orientation="Horizontal" />
+                        <WrapPanel Orientation="Vertical" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
+            
         </StackPanel>
     </Grid>
 </UserControl>

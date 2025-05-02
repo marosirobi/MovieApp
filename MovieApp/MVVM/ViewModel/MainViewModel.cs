@@ -101,7 +101,7 @@ namespace MovieApp.MVVM.ViewModel
                         movie.UpdateUserRating(existingReview?.stars);
                     }
                 }
-
+                TopMoviesVM.SetMoviesAsync(AllMovies);
                 HomeVM.SetMovies(AllMovies);
                 _dbService.SeedMovies(AllMovies);
 
@@ -131,7 +131,7 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != TopMoviesVM)
             {
-                TopMoviesVM.SetMoviesAsync(AllMovies);
+                //TopMoviesVM.SetMoviesAsync(AllMovies);
                 NavigateToView(TopMoviesVM);
             }
         }

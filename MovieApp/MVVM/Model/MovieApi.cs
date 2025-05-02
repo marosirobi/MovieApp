@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Windows.Input;
 
 namespace MovieApp.MVVM.Model
 {
