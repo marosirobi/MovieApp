@@ -7,7 +7,8 @@
         Width="350"
         AllowsTransparency="True" Background="Transparent"
         WindowStyle="None" ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
     <Grid>
         <Grid>
@@ -16,40 +17,50 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            
 
-
-            <Border CornerRadius="10" Grid.RowSpan="2">
+                <Border CornerRadius="10" Grid.RowSpan="2">
                 <Border.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="DarkSlateGray" Offset="0.3"/>
+                        <GradientStop Color="#272537" Offset="0.3"/>
                         <GradientStop Color="DarkGray" Offset="3"/>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
 
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel Grid.Row="0">
+                <Button Content="X"
+                        x:Name="PopupBtn"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource WindowButton}"
+                        Command="{Binding CloseAppCommand}"
+                        Margin="5"/>
+            </StackPanel>
+            
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
 
                 <TextBlock Text="MovieApp"
-                           FontWeight="Light"
-                           FontFamily="Gadugi"
-                           FontSize="22"
-                           Foreground="White"
-                           HorizontalAlignment="Center"/>
+               FontWeight="Light"
+               FontFamily="Gadugi"
+               FontSize="22"
+               Foreground="White"
+               HorizontalAlignment="Center"/>
             </StackPanel>
-
-
+            
             <StackPanel Grid.Row="1">
-                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Felhasználónév:"
                        FontFamily="Gadugi"
                        FontWeight="Light"
                        Foreground="White"
-                       Margin="5"/>
+                       Margin="20,0,0,0"
+                       VerticalAlignment="Center"/>
                     <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" 
                              FontFamily="Helvetica"
                              FontWeight="Light"
-                             Width="215"
-                             FontSize="20"
+                             Width="200"
+                             FontSize="18"
                              HorizontalAlignment="Center"
                              Foreground="White"
                              Background="Transparent"
@@ -60,7 +71,7 @@
                              Margin="10,0,0,0"/>
                 </StackPanel>
 
-                <Border Width="215"
+                <Border Width="200"
                         Height="2"
                         Margin="70,0,0,0"
                         Background="White"
@@ -71,13 +82,15 @@
                          FontFamily="Gadugi"
                          FontWeight="Light"
                          Foreground="White"
-                         Margin="5"/>
+                         Margin="20,0,0,0"
+                         VerticalAlignment="Center"
+                               />
 
                     <PasswordBox x:Name="PasswordBox" 
-                             Width="215"
+                             Width="200"
                              PasswordChanged="PasswordBox_PasswordChanged"
                              FontWeight="Light"
-                             FontSize="20"
+                             FontSize="18"
                              HorizontalAlignment="Center"
                              Foreground="White"
                              Background="Transparent"
@@ -87,7 +100,7 @@
                              Height="25"
                              Margin="59,0,0,0"/>
                 </StackPanel>
-                <Border Width="215"
+                <Border Width="200"
                         Height="2"
                         Background="White"
                         Opacity="0.5"

@@ -200,6 +200,43 @@ namespace MovieApp.MVVM.ViewModel
         }
 
         [RelayCommand]
+        private void CloseApp()
+        {
+            Application.Current.Windows.OfType<Window>()
+                .FirstOrDefault(w => w.IsActive)?
+                .Close();
+        }
+        [RelayCommand]
+        private void MinimizeApp()
+        {
+            var window = Application.Current.Windows.OfType<Window>()
+                .FirstOrDefault(w => w.IsActive);
+
+            if (window != null)
+            {
+                window.WindowState = WindowState.Minimized;
+            }
+        }
+        [RelayCommand]
+        private void MaximizeApp()
+        {
+            var window = Application.Current.Windows.OfType<Window>()
+                .FirstOrDefault(w => w.IsActive);
+            if (window != null)
+            {
+                if (window.WindowState == WindowState.Maximized)
+                {
+                    window.WindowState = WindowState.Normal;
+                }
+                else
+                {
+                    window.WindowState = WindowState.Maximized;
+                }
+            }
+            
+        }
+
+        [RelayCommand]
         private void ShowMovieDetails(MovieModel movie)
         {
             if (movie != null)

@@ -16,29 +16,4 @@ public partial class MainWindow : Window
     {
         DragMove();
     }
-
-    private void CloseApp(object sender, RoutedEventArgs e)
-    {
-        var window = GetWindow(this);
-        window?.Close();
-    }
-    private void MinimizeApp(object sender, RoutedEventArgs e)
-    {
-        this.WindowState = WindowState.Minimized;
-    }
-    private void MaximizeApp(object sender, RoutedEventArgs e)
-    {
-        if(this.WindowState == WindowState.Maximized)
-        {
-            this.WindowState = WindowState.Normal;
-
-        }
-        else
-        {
-            this.WindowState = WindowState.Maximized;
-
-        }
-    }
-    
-
 }
