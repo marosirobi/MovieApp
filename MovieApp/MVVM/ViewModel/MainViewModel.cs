@@ -101,7 +101,7 @@ namespace MovieApp.MVVM.ViewModel
                         movie.UpdateUserRating(existingReview?.stars);
                     }
                 }
-
+                TopMoviesVM.SetMoviesAsync(AllMovies);
                 HomeVM.SetMovies(AllMovies);
                 _dbService.SeedMovies(AllMovies);
 
@@ -131,7 +131,7 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != TopMoviesVM)
             {
-                TopMoviesVM.SetMovies(AllMovies);
+                //TopMoviesVM.SetMoviesAsync(AllMovies);
                 NavigateToView(TopMoviesVM);
             }
         }
@@ -152,6 +152,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != RatingsVM)
             {
+                RatingsVM.SetCurrentUser(CurrentUser);
+                RatingsVM.LoadRatedMovies(AllMovies);
                 NavigateToView(RatingsVM);
 
             }
@@ -195,6 +197,43 @@ namespace MovieApp.MVVM.ViewModel
                 NavigateToView(SettingsVM);
 
             }
+        }
+
+        [RelayCommand]
+        private void CloseApp()
+        {
+            Application.Current.Windows.OfType<Window>()
+                .FirstOrDefault(w => w.IsActive)?
+                .Close();
+        }
+        [RelayCommand]
+        private void MinimizeApp()
+        {
+            var window = Application.Current.Windows.OfType<Window>()
+                .FirstOrDefault(w => w.IsActive);
+
+            if (window != null)
+            {
+                window.WindowState = WindowState.Minimized;
+            }
+        }
+        [RelayCommand]
+        private void MaximizeApp()
+        {
+            var window = Application.Current.Windows.OfType<Window>()
+                .FirstOrDefault(w => w.IsActive);
+            if (window != null)
+            {
+                if (window.WindowState == WindowState.Maximized)
+                {
+                    window.WindowState = WindowState.Normal;
+                }
+                else
+                {
+                    window.WindowState = WindowState.Maximized;
+                }
+            }
+            
         }
 
         [RelayCommand]

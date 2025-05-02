@@ -121,17 +121,17 @@
                 <Button Style="{StaticResource WindowButton}"
                         x:Name="MinimizeBtn"
                         Content="—"
-                        Click="MinimizeApp"/>
+                        Command="{Binding MinimizeAppCommand}"/>
 
                 <Button Style="{StaticResource WindowButton}"
                         x:Name="MaximizeBtn"
                         Content="❐"
-                        Click="MaximizeApp"/>
+                        Command="{Binding MaximizeAppCommand}"/>
 
                 <Button Style="{StaticResource WindowButton}"
                         x:Name="CloseBtn"
                         Content="✕"
-                        Click="CloseApp"/>
+                        Command="{Binding CloseAppCommand}"/>
                 
                 
             </StackPanel>

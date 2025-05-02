@@ -114,5 +114,12 @@ namespace MovieApp.MVVM.ViewModel
                 }
             }
         }
+        [RelayCommand]
+        private void CloseApp()
+        {
+            Application.Current.Windows.OfType<Window>()
+                .FirstOrDefault(w => w.IsActive)?
+                .Close();
+        }
     }
 }
