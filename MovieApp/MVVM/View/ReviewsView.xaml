@@ -10,49 +10,31 @@
 
     <Grid Margin="30">
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="400">
-            <!-- Eddig írt vélemények -->
             <TextBlock Text="Your Reviews" FontSize="32" Foreground="White" Margin="0,0,0,20"/>
 
+            <!-- Értékelt filmek listája -->
             <ListBox x:Name="ReviewsListBox" Height="150" Margin="0,0,0,20">
-                <!-- Itt jelennek meg az eddigi vélemények -->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
                             <TextBlock Text="{Binding Title}" Foreground="White" FontSize="18"/>
-                            <TextBlock Text="{Binding Review}" Foreground="White" FontSize="14" TextWrapping="Wrap"/>
-                            <TextBlock Text="Rating: {Binding Rating}" Foreground="White" FontSize="14"/>
+                            <TextBlock Text="Rating: {Binding Rating}/10" Foreground="White" FontSize="14"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <!-- Új vélemény írás gomb -->
-            <Button Content="Write New Review" Width="150" Click="WriteNewReview_Click" HorizontalAlignment="Left" Margin="0,0,0,20"/>
+            <!-- Film kiválasztása RapidAPI-ról -->
+            <TextBlock Text="Select a movie:" Foreground="White" FontSize="16" Margin="0,0,0,5"/>
+            <ComboBox x:Name="FilmComboBox" Height="30" Margin="0,0,0,15"/>
 
-            <!-- Új vélemény űrlap -->
-            <StackPanel x:Name="NewReviewPanel" Visibility="Collapsed">
-                <TextBlock Text="Title:" Foreground="White" FontSize="16" Margin="0,0,0,5"/>
-                <TextBox x:Name="TitleTextBox" Height="30" Margin="0,0,0,15"/>
+            <!-- Értékelés választása -->
+            <TextBlock Text="Rating (1-10):" Foreground="White" FontSize="16" Margin="0,0,0,5"/>
+            <Slider x:Name="RatingSlider" Minimum="1" Maximum="10" Value="5" Width="200" TickFrequency="1" IsSnapToTickEnabled="True" Margin="0,0,0,10"/>
+            <TextBlock x:Name="RatingValueText" Text="5" Foreground="White" Margin="0,0,0,15"/>
 
-                <TextBlock Text="Review:" Foreground="White" FontSize="16" Margin="0,0,0,5"/>
-                <TextBox x:Name="ReviewTextBox" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15"/>
-
-                <TextBlock Text="Rating (1-10):" Foreground="White" FontSize="16" Margin="0,0,0,5"/>
-                <ComboBox x:Name="RatingComboBox" Height="30" Margin="0,0,0,15">
-                    <ComboBoxItem Content="1"/>
-                    <ComboBoxItem Content="2"/>
-                    <ComboBoxItem Content="3"/>
-                    <ComboBoxItem Content="4"/>
-                    <ComboBoxItem Content="5"/>
-                    <ComboBoxItem Content="6"/>
-                    <ComboBoxItem Content="7"/>
-                    <ComboBoxItem Content="8"/>
-                    <ComboBoxItem Content="9"/>
-                    <ComboBoxItem Content="10"/>
-                </ComboBox>
-
-                <Button Content="Save Review" Width="100" Click="SaveReview_Click" HorizontalAlignment="Left" Margin="0,0,0,0"/>
-            </StackPanel>
+            <!-- Mentés gomb -->
+            <Button Content="Save Review" Width="100" Click="SaveReview_Click" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>

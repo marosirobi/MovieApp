@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Net.Http;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -6,39 +9,68 @@ namespace MovieApp.MVVM.View
 {
     public partial class ReviewsView : UserControl
     {
+        public ObservableCollection<FilmReview> Reviews { get; set; } = new ObservableCollection<FilmReview>();
+
         public ReviewsView()
         {
             InitializeComponent();
+            ReviewsListBox.ItemsSource = Reviews;
+            RatingSlider.ValueChanged += RatingSlider_ValueChanged;
+            Loaded += ReviewsView_Loaded;
         }
-        private void WriteNewReview_Click(object sender, RoutedEventArgs e)
+
+        private async void ReviewsView_Loaded(object sender, RoutedEventArgs e)
         {
-            // Show the NewReviewPanel when the button is clicked
-            NewReviewPanel.Visibility = Visibility.Visible;
+            try
+            {
+                using var client = new HttpClient();
+                client.DefaultRequestHeaders.Add("x-rapidapi-key", "9ef2b7c24bmsh3e07f666b690bfep1f80eajsne4294a75043c");
+                client.DefaultRequestHeaders.Add("x-rapidapi-host", "imdb236.p.rapidapi.com");
+
+                var response = await client.GetAsync("https://imdb236.p.rapidapi.com/imdb/top250-movies");
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+                using var doc = JsonDocument.Parse(json);
+
+                var movies = doc.RootElement.GetProperty("data").EnumerateArray();
+                foreach (var movie in movies)
+                {
+                    var title = movie.GetProperty("title").GetString();
+                    FilmComboBox.Items.Add(title);
+                }
+
+                if (FilmComboBox.Items.Count > 0)
+                    FilmComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba a filmek betöltésekor: " + ex.Message);
+            }
+        }
+
+        private void RatingSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            RatingValueText.Text = RatingSlider.Value.ToString("0");
         }
 
         private void SaveReview_Click(object sender, RoutedEventArgs e)
         {
-            string title = TitleTextBox.Text;
-            string review = ReviewTextBox.Text;
-
-            // Ellenőrizzük, hogy a ComboBox-ban kiválasztott érték érvényes-e
-            if (RatingComboBox.SelectedItem is ComboBoxItem selectedItem)
+            if (FilmComboBox.SelectedItem is string title)
             {
-                int rating = Convert.ToInt32(selectedItem.Content); // A kiválasztott értéket int-té konvertáljuk
-
-                // Kiírhatjuk az adatokat
-                Console.WriteLine("Title: " + title);
-                Console.WriteLine("Review: " + review);
-                Console.WriteLine("Rating: " + rating);
-
-                // További feldolgozás, pl. adatbázisba mentés vagy lista frissítése...
-                MessageBox.Show("Review saved successfully!");
+                int rating = (int)RatingSlider.Value;
+                Reviews.Add(new FilmReview { Title = title, Rating = rating });
             }
             else
             {
-                // Ha nincs kiválasztott rating, hibaüzenetet küldhetünk
-                MessageBox.Show("Please select a valid rating.");
+                MessageBox.Show("Válassz egy filmet!");
             }
         }
+    }
+
+    public class FilmReview
+    {
+        public string Title { get; set; }
+        public int Rating { get; set; }
     }
 }

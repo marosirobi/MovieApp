@@ -1,0 +1,101 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Base Button Style -->
+    <Style x:Key="RatingDialogButtonBase" TargetType="Button">
+        <Setter Property="Background" Value="#3A3846"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="12,6"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Width" Value="140"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" 
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="6"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Submit Button Style with MultiTrigger -->
+    <Style x:Key="SubmitRatingButtonStyle" BasedOn="{StaticResource RatingDialogButtonBase}" TargetType="Button">
+        <Setter Property="Background" Value="#4CAF50"/>
+        <!-- Green -->
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                    <Condition Property="IsEnabled" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="#43A047"/>
+                <!-- Darker Green -->
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="8" 
+                                        ShadowDepth="0" 
+                                        Color="#FF4CAF50" 
+                                        Opacity="0.5"/>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#81C784"/>
+                <!-- Disabled Green -->
+                <Setter Property="Foreground" Value="#E0E0E0"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Delete Button Style with MultiTrigger -->
+    <Style x:Key="DeleteRatingButtonStyle" BasedOn="{StaticResource RatingDialogButtonBase}" TargetType="Button">
+        <Setter Property="Background" Value="#F44336"/>
+        <!-- Red -->
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                    <Condition Property="IsEnabled" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="#E53935"/>
+                <!-- Darker Red -->
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="8" 
+                                        ShadowDepth="0" 
+                                        Color="#FFF44336" 
+                                        Opacity="0.5"/>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                    <Condition Property="IsPressed" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="#C62828"/>
+                <!-- Pressed Red -->
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#E57373"/>
+                <!-- Disabled Red -->
+                <Setter Property="Foreground" Value="#E0E0E0"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

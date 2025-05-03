@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Windows.Input;
 
 namespace MovieApp.MVVM.Model
 {
@@ -12,7 +11,7 @@ namespace MovieApp.MVVM.Model
         {
             var headers = new Dictionary<string, string>
             {
-                { "x-rapidapi-key", "6c4300432emshdb475306fa6a4dfp155405jsn03b9d3434ef1" },
+                { "x-rapidapi-key", "9ef2b7c24bmsh3e07f666b690bfep1f80eajsne4294a75043c" },
                 { "x-rapidapi-host", "imdb236.p.rapidapi.com" },
             };
 

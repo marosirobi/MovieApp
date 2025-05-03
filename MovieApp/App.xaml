@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:MovieApp"
              xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
              xmlns:view="clr-namespace:MovieApp.MVVM.View"
+             xmlns:converters="clr-namespace:MovieApp.Utils.Converters"
              xmlns:utils="clr-namespace:MovieApp.Utils">
 
     <Application.Resources>
@@ -19,6 +20,7 @@
                 <ResourceDictionary Source="Theme/ScrollBarTheme.xaml"/>
                 <ResourceDictionary Source="Theme/MovieListTheme.xaml"/>
                 <ResourceDictionary Source="Theme/RateButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/LoginButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Default Theme Resources -->
