@@ -11,24 +11,24 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
-                <ResourceDictionary Source="Theme/WindowButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/WatchlistButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/MovieCardTheme.xaml"/>
-                <ResourceDictionary Source="Theme/SideBarTheme.xaml"/>
-                <ResourceDictionary Source="Theme/ScrollBarTheme.xaml"/>
-                <ResourceDictionary Source="Theme/MovieListTheme.xaml"/>
-                <ResourceDictionary Source="Theme/RateButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/LoginButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/WindowButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/WatchlistButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/MovieCardTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/SideBarTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/ScrollBarTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/MovieListTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/RateButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/RatePopupTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/PopupButtonsTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/LoginButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Default Theme Resources -->
-            <ImageBrush x:Key="PrimaryBackgroundBrush" ImageSource="Theme/dark.jpg"/>
-            <SolidColorBrush x:Key="PrimaryTextBrush" Color="White"/>
-            <SolidColorBrush x:Key="HeaderTextBrush" Color="White"/>
-
-            <!-- DataTemplates -->
+            <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+            <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+               
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
