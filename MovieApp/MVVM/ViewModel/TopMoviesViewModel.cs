@@ -34,7 +34,7 @@ public partial class TopMoviesViewModel : ObservableObject
                     _movies.Add(movie);
                 }, System.Windows.Threading.DispatcherPriority.Background);
 
-                await Task.Delay(150); // Yield to UI thread
+                await Task.Delay(300); // Yield to UI thread
             }
         });
     }

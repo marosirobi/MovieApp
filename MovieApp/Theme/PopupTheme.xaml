@@ -48,10 +48,25 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Style="{StaticResource WindowButton}"
-                        Command="{Binding DataContext.CloseRatingDialogCommand, 
+                        Command="{Binding DataContext.CloseDialogCommand, 
                                 RelativeSource={RelativeSource AncestorType=Window}}"/>
             </Grid>
         </Border>
     </DataTemplate>
 
+    <DataTemplate x:Key="CustomListDialogContent">
+        <Border Style="{StaticResource DialogContainerStyle}">
+            <!-- Apply the styled border here -->
+            <Grid>
+                <views:CustomListsView/>
+                <Button Content="✕"
+                    x:Name="PopupBtn"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Style="{StaticResource WindowButton}"
+                    Command="{Binding DataContext.CloseDialogCommand, 
+                            RelativeSource={RelativeSource AncestorType=Window}}"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
 </ResourceDictionary>

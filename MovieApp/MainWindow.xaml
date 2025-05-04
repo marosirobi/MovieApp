@@ -153,7 +153,16 @@
                     </Border>
                 </Border>
             </Popup>
-
+            
+            <Popup IsOpen="{Binding IsListDialogOpen}" 
+                   Style="{StaticResource BasePopupStyle}">
+                <Border Style="{StaticResource ModalOverlayStyle}">
+                    <Border Style="{StaticResource DialogContainerStyle}">
+                        <ContentControl ContentTemplate="{StaticResource CustomListDialogContent}"
+                            Content="{Binding CustomListsVM}"/>
+                    </Border>
+                </Border>
+            </Popup>
         </Grid>
 
         

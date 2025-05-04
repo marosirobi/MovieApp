@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MovieApp.MVVM.View"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="800">
 
@@ -69,7 +70,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="#3E3B54" CornerRadius="12" Padding="8,4,8,4" Margin="0,0,8,8">
+                            <Border Background="#3E3B54" CornerRadius="12" Padding="8,4,8,4" Margin="0,0,8,0">
                                 <TextBlock Text="{Binding}" 
                                            FontSize="14"
                                            FontWeight="Medium"
@@ -80,10 +81,26 @@
                 </ItemsControl>
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                    <TextBlock Text="{Binding CurrentMovie.AverageRating}" 
-                               FontSize="20" FontWeight="Bold" Foreground="White"/>
                     <TextBlock Text="★" 
-                               FontSize="20" Foreground="Gold" Margin="5,0,0,0"/>
+                                FontSize="20" Foreground="Gold" Margin="0,0,5,0" 
+                               VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding CurrentMovie.AverageRating}" 
+                               FontSize="20" FontWeight="Bold" Foreground="White"
+                               VerticalAlignment="Center"/>
+                    
+                    <Button Style="{StaticResource rateBtn}"
+                            Command="{Binding DataContext.RateMovieCommand, 
+                                RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            CommandParameter="{Binding CurrentMovie}"
+                            VerticalAlignment="Center"/>
+
+                    <!-- Your rating number (only shows when rated) -->
+                    <TextBlock Text="{Binding CurrentMovie.YourRating}"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,0"
+                               FontSize="20"
+                               Foreground="White"
+                               VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <Border Margin="0,0,0,20" Padding="15" Background="#333142" CornerRadius="8">

@@ -2,9 +2,9 @@
 
 namespace MovieApp.MVVM.View
 {
-    public partial class RatingsView : UserControl
+    public partial class CustomListsView : UserControl
     {
-        public RatingsView()
+        public CustomListsView()
         {
             InitializeComponent();
         }

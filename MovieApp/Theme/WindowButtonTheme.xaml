@@ -53,7 +53,7 @@
                     <Condition Property="Name" Value="PopupBtn"/>
                     <Condition Property="IsMouseOver" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="Gray"/>
+                <Setter Property="Background" Value="Red"/>
                 <!-- Changed from Red to Gray for consistency -->
             </MultiTrigger>
         </Style.Triggers>
