@@ -8,9 +8,9 @@
              xmlns:utils="clr-namespace:MovieApp.Utils">
     
     <Application.Resources>
+
         <ResourceDictionary>
-            
-            
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/TextBoxTheme.xaml"/>
@@ -29,7 +29,11 @@
             <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
             <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter"/>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-               
+            <SolidColorBrush x:Key="AppBackgroundBrush" Color="Black"/>
+            <SolidColorBrush x:Key="MenuButtonSelectedBackground" Color="#22202f"/>
+            <SolidColorBrush x:Key="MenuButtonHoverBackground" Color="#2d2b3c"/>
+
+
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
