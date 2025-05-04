@@ -33,18 +33,8 @@ namespace MovieApp.MVVM.ViewModel
 
             try
             {
-                var watchlistApiIds = _dbService.GetWatchlistApiIds(CurrentUser.user_id);
                 WatchlistMovies.Clear();
-
-                foreach (var apiId in watchlistApiIds)
-                {
-                    var movie = allMovies.FirstOrDefault(m => m.Id == apiId);
-                    if (movie != null)
-                    {
-                        movie.IsInWatchlist = true;
-                        WatchlistMovies.Add(movie);
-                    }
-                }
+                WatchlistMovies = _dbService.GetWatchlistMovies(CurrentUser.user_id, allMovies);
             }
             catch (Exception ex)
             {

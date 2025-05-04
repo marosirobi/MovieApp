@@ -1,6 +1,14 @@
-﻿namespace MovieApp
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
+
+namespace MovieApp
 {
-    public partial class Watchlist {
+    public partial class Watchlist : ObservableObject 
+    {
+        [NotMapped]
+        public bool IsInCurrentList { get; set; }
 
         public Watchlist()
         {
@@ -13,6 +21,9 @@
         }
 
         public int watchlist_id { get; set; }
+
+        
+        [MaxLength(255)]
         public string list_name { get; set; }
         public DateTime create_date { get; set; }
         public int movie_count { get; set; }

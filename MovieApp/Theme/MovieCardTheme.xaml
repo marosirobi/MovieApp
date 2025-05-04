@@ -91,13 +91,16 @@
                         <StackPanel Grid.Row="3"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Orientation="Vertical">
+                                    Orientation="Horizontal">
 
                     <Button Style="{StaticResource WatchlistToggleBtn}"
                             Command="{Binding DataContext.ToggleWatchlistCommand, 
                                     RelativeSource={RelativeSource AncestorType=Window}}"
                             CommandParameter="{Binding}"/>
-
+                            
+                    <Button Style="{StaticResource CustomListBtn}"
+                            Command="{Binding DataContext.ShowCustomListsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            CommandParameter="{Binding}"/>
 
 
 

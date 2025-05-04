@@ -5,14 +5,14 @@
         <Setter Property="Background" Value="#2c2c2c"/>
         <Setter Property="Foreground" Value="#5799EF"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
-        <Setter Property="Width" Value="190"/>
+        <Setter Property="Width" Value="150"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
-                            CornerRadius="20"
+                            CornerRadius="20,0,0,20"
                             BorderThickness="1"
                             Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" 
@@ -24,17 +24,18 @@
     </Style>
 
     <Style TargetType="Button" x:Key="WatchlistToggleBtn" BasedOn="{StaticResource WatchlistBtn}">
-        <Setter Property="Content" Value="Add to Watchlist"/>
+        <Setter Property="Content" Value="+ Add to Watchlist"/>
         <Style.Triggers>
             <!-- Normal state (Add to Watchlist) -->
             <DataTrigger Binding="{Binding IsInWatchlist}" Value="False">
+                <Setter Property="Content" Value="+ Add to Watchlist"/>
                 <Setter Property="Background" Value="#2c2c2c"/>
                 <Setter Property="Foreground" Value="#5799EF"/>
             </DataTrigger>
 
             <!-- Watchlist state (Remove from Watchlist) -->
             <DataTrigger Binding="{Binding IsInWatchlist}" Value="True">
-                <Setter Property="Content" Value="Remove from Watchlist"/>
+                <Setter Property="Content" Value="✔ In Watchlist"/>
                 <Setter Property="Background" Value="#FF3333"/>
                 <Setter Property="Foreground" Value="White"/>
             </DataTrigger>
@@ -59,4 +60,55 @@
             </MultiDataTrigger>
         </Style.Triggers>
     </Style>
+    
+    <Style TargetType="Button" x:Key="CustomListBtn">
+        <Setter Property="Content" Value="˅"/>
+        <Setter Property="Background" Value="#2c2c2c"/>
+        <Setter Property="Foreground" Value="#5799EF"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                    CornerRadius="0,20,20,0"
+                    BorderThickness="1"
+                    Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsInWatchlist}" Value="False">
+                <Setter Property="Background" Value="#2c2c2c"/>
+                <Setter Property="Foreground" Value="#5799EF"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding IsInWatchlist}" Value="True">
+                <Setter Property="Background" Value="#FF3333"/>
+                <Setter Property="Foreground" Value="White"/>
+            </DataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsInWatchlist}" Value="True"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="#FF5555"/>
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsInWatchlist}" Value="False"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="#30353c"/>
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+    
 </ResourceDictionary>

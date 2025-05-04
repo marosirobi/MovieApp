@@ -21,7 +21,7 @@
                 <ResourceDictionary Source="/Theme/ScrollBarTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/MovieListTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/RateButtonTheme.xaml"/>
-                <ResourceDictionary Source="/Theme/RatePopupTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/PopupTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/PopupButtonsTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/LoginButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -74,7 +74,10 @@
             <DataTemplate DataType="{x:Type viewModel:MovieRatingViewModel}">
                 <view:MovieRatingView/>
             </DataTemplate>
-
+            
+            <DataTemplate DataType="{x:Type viewModel:CustomListsViewModel}">
+                <view:CustomListsView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

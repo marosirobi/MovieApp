@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Identity.Client;
 
 namespace MovieApp
 {
@@ -80,7 +78,7 @@ namespace MovieApp
         {
             modelBuilder.Entity<Watchlist>().ToTable(@"Watchlists");
             modelBuilder.Entity<Watchlist>().Property(x => x.watchlist_id).HasColumnName(@"watchlist_id").IsRequired().ValueGeneratedOnAdd();
-            modelBuilder.Entity<Watchlist>().Property(x => x.list_name).HasColumnName(@"list_name").IsRequired(false).ValueGeneratedNever().HasMaxLength(50).HasDefaultValue("Watchlist");
+            modelBuilder.Entity<Watchlist>().Property(x => x.list_name).HasColumnName(@"list_name").IsRequired(false).ValueGeneratedNever().HasMaxLength(255).HasDefaultValue("Watchlist");
             modelBuilder.Entity<Watchlist>().Property(x => x.create_date).HasColumnName(@"create_date").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Watchlist>().Property(x => x.isDefault).HasColumnName(@"isDefault").IsRequired().ValueGeneratedNever();
             modelBuilder.Entity<Watchlist>().Property(x => x.movie_count).HasColumnName(@"movie_count").IsRequired().ValueGeneratedNever();

@@ -48,6 +48,9 @@ namespace MovieApp.MVVM.ViewModel
         private SettingsViewModel _settingsVM;
 
         [ObservableProperty]
+        private CustomListsViewModel _customListsVM;
+
+        [ObservableProperty]
         private ObservableCollection<MovieModel> _allMovies;
 
         [ObservableProperty]
@@ -55,6 +58,9 @@ namespace MovieApp.MVVM.ViewModel
 
         [ObservableProperty]
         private bool _isRatingDialogOpen;
+
+        [ObservableProperty]
+        private bool _isListDialogOpen;
 
         [ObservableProperty]
         private User? _currentUser;
@@ -78,6 +84,7 @@ namespace MovieApp.MVVM.ViewModel
             ProfileVM = new ProfileViewModel();
             SettingsVM = new SettingsViewModel();
             RateMovieVM = new MovieRatingViewModel();
+            CustomListsVM = new CustomListsViewModel();
             CurrentView = HomeVM;
             _navigationStack.Push(HomeVM);
         }
@@ -101,7 +108,7 @@ namespace MovieApp.MVVM.ViewModel
                         movie.UpdateUserRating(existingReview?.stars);
                     }
                 }
-                TopMoviesVM.SetMoviesAsync(AllMovies);
+                
                 HomeVM.SetMovies(AllMovies);
                 _dbService.SeedMovies(AllMovies);
 
@@ -131,7 +138,7 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != TopMoviesVM)
             {
-                //TopMoviesVM.SetMoviesAsync(AllMovies);
+                TopMoviesVM.SetMoviesAsync(AllMovies);
                 NavigateToView(TopMoviesVM);
             }
         }
@@ -286,9 +293,10 @@ namespace MovieApp.MVVM.ViewModel
         }
 
         [RelayCommand]
-        private void CloseRatingDialog()
+        private void CloseDialog()
         {
-            IsRatingDialogOpen = false; // Hide the popup
+            IsRatingDialogOpen = false;
+            IsListDialogOpen = false;
         }
 
         [RelayCommand]
@@ -334,8 +342,19 @@ namespace MovieApp.MVVM.ViewModel
             }
         }
 
-
-
+        [RelayCommand]
+        private void ShowCustomLists(MovieModel movie)
+        {
+            if (movie != null && CurrentUser != null)
+            {
+                CustomListsVM.CurrentMovie = movie;
+                CustomListsVM.CurrentUser = CurrentUser;
+                CustomListsVM.LoadCustomLists();
+                IsListDialogOpen = true;
+            }
+                
+        }
+        
     }
 
 }
