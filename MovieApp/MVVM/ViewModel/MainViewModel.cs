@@ -6,6 +6,7 @@ using MovieApp.Utils;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Diagnostics;
+using System.DirectoryServices;
 using System.Windows;
 
 namespace MovieApp.MVVM.ViewModel
@@ -64,6 +65,17 @@ namespace MovieApp.MVVM.ViewModel
 
         [ObservableProperty]
         private User? _currentUser;
+
+        [ObservableProperty]
+        private string _searchText = string.Empty;
+
+        [ObservableProperty]
+        private ObservableCollection<MovieModel> _searchResults = new();
+
+        [ObservableProperty]
+        private bool _showSearchResults;
+
+        private CancellationTokenSource _searchCancellationTokenSource;
 
         private readonly Stack<object> _navigationStack = new Stack<object>();
 
@@ -307,6 +319,7 @@ namespace MovieApp.MVVM.ViewModel
             if (_navigationStack.Count > 1) // Don't pop the last item (Home)
             {
                 var previousView = _navigationStack.Pop();
+                Debug.WriteLine(previousView);
                 CurrentView = previousView;
             }
         }
@@ -356,7 +369,80 @@ namespace MovieApp.MVVM.ViewModel
             }
                 
         }
-        
+
+        partial void OnSearchTextChanged(string value)
+        {
+            // Cancel previous search if it was still running
+            _searchCancellationTokenSource?.Cancel();
+            _searchCancellationTokenSource = new CancellationTokenSource();
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                ClearSearch();
+                return;
+            }
+
+            // Debounce the search to avoid too many requests
+            Task.Run(async () =>
+            {
+                await Task.Delay(200, _searchCancellationTokenSource.Token);
+
+                if (!_searchCancellationTokenSource.IsCancellationRequested)
+                {
+                    Application.Current.Dispatcher.Invoke(() => SearchMoviesCommand.Execute(null));
+                }
+            }, _searchCancellationTokenSource.Token);
+        }
+
+        [RelayCommand]
+        private void SearchMovies()
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                ClearSearch();
+                return;
+            }
+
+            try
+            {
+                var results = AllMovies
+                    .Where(m => m.PrimaryTitle?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) == true)
+                    .OrderBy(m => m.PrimaryTitle)
+                    .Take(5)
+                    .ToList();
+
+                SearchResults.Clear();
+                foreach (var movie in results)
+                {
+                    SearchResults.Add(movie);
+                }
+                ShowSearchResults = SearchResults.Count > 0;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Search error: {ex.Message}");
+                ClearSearch();
+            }
+        }
+
+        [RelayCommand]
+        private void SelectMovieFromSearch(MovieModel movie)
+        {
+            if (movie == null) return;
+
+            SelectedMovie = movie;
+            SelectedMovieVM.SetMovie(movie);
+            NavigateToView(SelectedMovieVM);
+            ClearSearch();
+        }
+
+        [RelayCommand]
+        private void ClearSearch()
+        {
+            SearchText = string.Empty;
+            SearchResults.Clear();
+            ShowSearchResults = false;
+        }
     }
 
 }

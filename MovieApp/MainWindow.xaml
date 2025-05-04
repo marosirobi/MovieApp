@@ -97,14 +97,58 @@
 
             </StackPanel>
 
-            <TextBox Width="250"
-                     Height="40"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Margin="5"
-                     Grid.Column="1"
-                     Style="{StaticResource ModernTextBox}"/>
-            
+            <Grid Grid.Column="1">
+                <!-- Search Box -->
+                <TextBox    Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                            Width="250"
+                            Height="40"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="5"
+                            Style="{StaticResource SearchTbox}"
+                            x:Name="SearchBar">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding SearchMoviesCommand}"/>
+                        <KeyBinding Key="Escape" Command="{Binding ClearSearchCommand}"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+
+                <!-- Search Results Popup -->
+                <Popup  IsOpen="{Binding ShowSearchResults}"
+                        PlacementTarget="{Binding ElementName=SearchBar}"
+                        Placement="Bottom"
+                        StaysOpen="False"
+                        Width="{Binding ActualWidth, ElementName=SearchBar}"
+                        Margin="5,0" >
+                    <Border Background="#37354A"
+                            CornerRadius="5"
+                            Padding="5">
+                        <ItemsControl ItemsSource="{Binding SearchResults}"
+                                      Background="Transparent">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate >
+                                    <Button Command="{Binding DataContext.SelectMovieFromSearchCommand, 
+                                                    RelativeSource={RelativeSource AncestorType=Popup}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource TransparentButton}">
+                                        <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Left" >
+                                            <Image Source="{Binding PrimaryImage}" 
+                                                   Width="40" 
+                                                   Height="60"
+                                                   Stretch="UniformToFill"/>
+                                            <TextBlock Text="{Binding PrimaryTitle}"
+                                                       Margin="10,0"
+                                                       Foreground="White"
+                                                       VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </Popup>
+            </Grid>
+
 
             <StackPanel Grid.Column="1"
                         Orientation="Horizontal"
@@ -113,10 +157,10 @@
                         Margin="5">
                 
                 <TextBlock Text="{Binding CurrentUser.username, FallbackValue='Guest'}"
-               Foreground="White"
-               FontSize="14"
-               VerticalAlignment="Center"
-               Margin="0,0,10,0"/>
+                           Foreground="White"
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,0"/>
 
                 <Button Style="{StaticResource WindowButton}"
                         x:Name="MinimizeBtn"
