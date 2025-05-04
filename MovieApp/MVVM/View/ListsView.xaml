@@ -22,11 +22,15 @@
             <ComboBox Style="{StaticResource StyledComboBox}"
                       ItemsSource="{Binding AvailableLists}"
                       SelectedItem="{Binding SelectedList, Mode=TwoWay}"
-                      Width="180"
+                      Width="300"
+                      Height="30"
                       Margin="10,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}" />
+                        <TextBlock Text="{Binding}" 
+                                   TextWrapping="WrapWithOverflow" 
+                                   TextTrimming="CharacterEllipsis"
+                                   Margin="0,5,0,5"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>

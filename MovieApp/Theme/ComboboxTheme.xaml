@@ -94,9 +94,10 @@
                                     BorderThickness="1"
                                     BorderBrush="#444060"
                                     CornerRadius="6"
-                                    Width="180"
+                                    Width="300"
                                     Effect="{DynamicResource DropShadow}">
-                                <ScrollViewer CanContentScroll="True" MaxHeight="200">
+                                <ScrollViewer CanContentScroll="True" MaxHeight="200" VerticalScrollBarVisibility="Hidden" 
+                                              HorizontalScrollBarVisibility="Disabled">
                                     <StackPanel IsItemsHost="True"
                                                 KeyboardNavigation.DirectionalNavigation="Contained"/>
                                 </ScrollViewer>
