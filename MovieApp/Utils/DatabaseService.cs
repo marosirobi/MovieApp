@@ -314,6 +314,7 @@ namespace MovieApp.Utils
             .Select(r => r.Movie.api_id)
             .ToList();
         }
+
         public void AddReview(int userId, string movieApiId, int stars, string content = null)
         {
             using var transaction = _context.Database.BeginTransaction();
