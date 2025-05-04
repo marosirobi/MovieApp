@@ -7,6 +7,7 @@ namespace MovieApp.MVVM.View
         public SelectedMoviePageView()
         {
             InitializeComponent();
+
         }
     }
 }

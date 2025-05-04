@@ -21,20 +21,19 @@ namespace MovieApp.MVVM.ViewModel
             _dbService = new DatabaseService();
             WatchlistMovies = new ObservableCollection<MovieModel>();
         }
-
         public void SetCurrentUser(User? user)
         {
             CurrentUser = user;
         }
 
-        public void LoadWatchlistMovies(ObservableCollection<MovieModel> allMovies)
+        public void LoadWatchlistMovies(ObservableCollection<MovieModel> allMovies, string list_name = "Watchlist")
         {
             if (CurrentUser == null || allMovies == null) return;
 
             try
             {
                 WatchlistMovies.Clear();
-                WatchlistMovies = _dbService.GetWatchlistMovies(CurrentUser.user_id, allMovies);
+                WatchlistMovies = _dbService.GetListMovies(CurrentUser.user_id, allMovies,list_name);
             }
             catch (Exception ex)
             {

@@ -99,7 +99,7 @@ namespace MovieApp.MVVM.ViewModel
                 // Initialize watchlist status
                 if (CurrentUser != null)
                 {
-                    var watchlistApiIds = _dbService.GetWatchlistApiIds(CurrentUser.user_id);
+                    var watchlistApiIds = _dbService.GetListApiIds(CurrentUser.user_id,"Watchlist");
                     foreach (var movie in AllMovies)
                     {
                         movie.IsInWatchlist = watchlistApiIds.Contains(movie.Id);
@@ -171,6 +171,8 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != ListsVM)
             {
+                ListsVM.SetCurrentUser(CurrentUser);
+                ListsVM.Initialize(AllMovies);
                 NavigateToView(ListsVM);
 
             }
