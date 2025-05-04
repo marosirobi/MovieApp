@@ -117,7 +117,7 @@
                         Command="{Binding DataContext.NavigateBackCommand, 
                                 RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Margin="0,10,0,0" 
-                        Width="150" 
+                        Width="160" 
                         HorizontalAlignment="Left"
                         BorderThickness="0"
                         Padding="10,5"
@@ -160,7 +160,8 @@
                             CommandParameter="{Binding CurrentMovie}"/>
 
                     <Button Style="{StaticResource CustomListBtn}"
-                            Command="{Binding DataContext.ShowCustomListsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            Command="{Binding DataContext.ShowCustomListsCommand, 
+                                    RelativeSource={RelativeSource AncestorType=Window}}"
                             CommandParameter="{Binding CurrentMovie}"/>
 
 
