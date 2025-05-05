@@ -58,6 +58,39 @@
                 <Setter Property="Background" Value="#30353c"/>
                 <!-- different gray on hover -->
             </MultiDataTrigger>
+
+            <!-- SECONDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+            <DataTrigger Binding="{Binding CurrentMovie.IsInWatchlist}" Value="False">
+                <Setter Property="Content" Value="+ Add to Watchlist"/>
+                <Setter Property="Background" Value="#2c2c2c"/>
+                <Setter Property="Foreground" Value="#5799EF"/>
+            </DataTrigger>
+
+            <!-- Watchlist state (Remove from Watchlist) -->
+            <DataTrigger Binding="{Binding CurrentMovie.IsInWatchlist}" Value="True">
+                <Setter Property="Content" Value="✔ In Watchlist"/>
+                <Setter Property="Background" Value="#FF3333"/>
+                <Setter Property="Foreground" Value="White"/>
+            </DataTrigger>
+
+            <!-- Hover effects for both states -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding CurrentMovie.IsInWatchlist}" Value="True"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="#FF5555"/>
+                <!-- different red on hover -->
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding CurrentMovie.IsInWatchlist}" Value="False"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="#30353c"/>
+                <!-- different gray on hover -->
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
     
@@ -104,6 +137,33 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsInWatchlist}" Value="False"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="#30353c"/>
+            </MultiDataTrigger>
+
+
+            <DataTrigger Binding="{Binding CurrentMovie.IsInWatchlist}" Value="False">
+                <Setter Property="Background" Value="#2c2c2c"/>
+                <Setter Property="Foreground" Value="#5799EF"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding CurrentMovie.IsInWatchlist}" Value="True">
+                <Setter Property="Background" Value="#FF3333"/>
+                <Setter Property="Foreground" Value="White"/>
+            </DataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding CurrentMovie.IsInWatchlist}" Value="True"/>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="#FF5555"/>
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding CurrentMovie.IsInWatchlist}" Value="False"/>
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Background" Value="#30353c"/>

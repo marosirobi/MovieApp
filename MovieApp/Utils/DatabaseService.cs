@@ -272,28 +272,37 @@ namespace MovieApp.Utils
                 throw;
             }
         }
-        public ObservableCollection<MovieModel> GetWatchlistMovies(int userId, ObservableCollection<MovieModel> allMovies)
+        public ObservableCollection<MovieModel> GetListMovies(int userId, ObservableCollection<MovieModel> allMovies, string list_name)
         {
-            var watchlistApiIds = GetWatchlistApiIds(userId); 
-            var watchlistMovies = new ObservableCollection<MovieModel>();
+            var ListApiIds = GetListApiIds(userId, list_name); 
+            var ListedMovies = new ObservableCollection<MovieModel>();
 
-            foreach (var apiId in watchlistApiIds)
+            foreach (var apiId in ListApiIds)
             {
                 var movie = allMovies.FirstOrDefault(m => m.Id == apiId);
                 if (movie != null)
                 {
-                    movie.IsInWatchlist = true;
-                    watchlistMovies.Add(movie);
+                    ListedMovies.Add(movie);
                 }
             }
-            return watchlistMovies;
+            return ListedMovies;
         }
-        public List<string?> GetWatchlistApiIds(int userId)
+        public List<string> GetUserLists(int userId)
         {
+            return _context.Watchlists
+                .Where(w => w.User.user_id == userId)
+                .Select(w => w.list_name)
+                .OrderBy(name => name)
+                .ToList();
+        }
+        public List<string?> GetListApiIds(int userId, string list_name)
+        {
+            if (string.IsNullOrEmpty(list_name)) return new List<string>();
+
             return _context.Movie_Watchlists
                 .Include(mw => mw.Movie)
                 .Include(mw => mw.Watchlist)
-                .Where(mw => mw.Watchlist.User.user_id == userId && mw.Watchlist.isDefault.Equals(true))
+                .Where(mw => mw.Watchlist.User.user_id == userId && mw.Watchlist.list_name == list_name)
                 .Select(mw => mw.Movie.api_id)
                 .ToList();
         }
@@ -305,6 +314,7 @@ namespace MovieApp.Utils
             .Select(r => r.Movie.api_id)
             .ToList();
         }
+
         public void AddReview(int userId, string movieApiId, int stars, string content = null)
         {
             using var transaction = _context.Database.BeginTransaction();

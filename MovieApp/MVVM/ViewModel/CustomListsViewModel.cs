@@ -4,6 +4,7 @@ using MovieApp.MVVM.Model;
 using MovieApp.Utils;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace MovieApp.MVVM.ViewModel
 {
@@ -32,14 +33,14 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentUser == null || CurrentMovie == null) return;
 
-            _customLists.Clear();
+            CustomLists.Clear();
 
             var lists = _dbService.GetUserCustomLists(CurrentUser.user_id);
 
             foreach (var list in lists)
             {
                 list.IsInCurrentList = _dbService.IsInCustomList(CurrentUser.user_id, CurrentMovie.Id, list.list_name);
-                _customLists.Add(list);
+                CustomLists.Add(list);
             }
         }
 

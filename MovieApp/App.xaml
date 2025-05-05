@@ -24,6 +24,7 @@
                 <ResourceDictionary Source="/Theme/PopupTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/PopupButtonsTheme.xaml"/>
                 <ResourceDictionary Source="/Theme/LoginButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Theme/ComboboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>

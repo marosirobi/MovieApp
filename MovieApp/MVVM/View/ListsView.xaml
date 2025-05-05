@@ -5,16 +5,58 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MovieApp.MVVM.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"             
+             d:DesignHeight="450" d:DesignWidth="800"
              Background="#272537">
 
-    <Grid Margin="30">
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="300">
-            <!-- Cím -->
-            <TextBlock Text="Your Lists"
-                       FontSize="32"
-                       Foreground="White"
-                       Margin="0,0,0,30"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- List Selection -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+
+
+            <ComboBox Style="{StaticResource StyledComboBox}"
+                      ItemsSource="{Binding AvailableLists}"
+                      SelectedItem="{Binding SelectedList, Mode=TwoWay}"
+                      Width="300"
+                      Height="30"
+                      Margin="10,0"
+                      Tag="Your list is currently empty">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" 
+                                   TextWrapping="WrapWithOverflow" 
+                                   TextTrimming="CharacterEllipsis"
+                                   Margin="0,5,0,5"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="1" 
+                   Text="{Binding SelectedList, StringFormat='{}Your list: {0}'}"
+                   FontSize="28"
+                   Foreground="White"
+                   Margin="10,5,0,5"
+                   TextWrapping="WrapWithOverflow"
+                   TextTrimming="CharacterEllipsis"/>
+
+        <!-- Movies List -->
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center">
+            <ItemsControl ItemsSource="{Binding ListedMovies}"
+             ItemTemplate="{StaticResource MovieCard}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <!-- WrapPanel will automatically create new rows -->
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
         </StackPanel>
     </Grid>
 </UserControl>
