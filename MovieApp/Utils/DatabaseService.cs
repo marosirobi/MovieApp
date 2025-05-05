@@ -348,7 +348,9 @@ namespace MovieApp.Utils
                 }
 
                 // Calculate new average - explicitly using decimal
-                movie.avg_rating = (decimal)movie.Reviews.Average(r => r.stars);
+                movie.avg_rating = movie.Reviews.Any()
+                ? (decimal)movie.Reviews.Average(r => r.stars)
+                : 0;
 
                 _context.SaveChanges();
                 transaction.Commit();
@@ -457,15 +459,23 @@ namespace MovieApp.Utils
         }
 
         public bool IsInCustomList(int userId, string movieApiId, string listName)
-{
-    return _context.Movie_Watchlists
-        .Include(mw => mw.Watchlist)
-        .ThenInclude(w => w.User)
-        .Include(mw => mw.Movie)
-        .Any(mw => mw.Watchlist.User.user_id == userId &&
-                  mw.Movie.api_id == movieApiId &&
-                  mw.Watchlist.list_name == listName &&
-                          !mw.Watchlist.isDefault);
-}
+        {
+            return _context.Movie_Watchlists
+                .Include(mw => mw.Watchlist)
+                .ThenInclude(w => w.User)
+                .Include(mw => mw.Movie)
+                .Any(mw => mw.Watchlist.User.user_id == userId &&
+                          mw.Movie.api_id == movieApiId &&
+                          mw.Watchlist.list_name == listName &&
+                                  !mw.Watchlist.isDefault);
+        }
+
+        public decimal GetMovieRating(string api_id)
+        {
+            var movie = _context.Movies
+            .FirstOrDefault(m => m.api_id == api_id);
+
+            return movie?.avg_rating ?? 0;
+        }
     }
 }

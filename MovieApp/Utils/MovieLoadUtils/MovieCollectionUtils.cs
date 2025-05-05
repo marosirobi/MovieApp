@@ -68,7 +68,7 @@ namespace MovieApp.MVVM.Utils
                 {
                     PrimaryTitle = randomTitle,
                     PrimaryImage = $"https://via.placeholder.com/200x300?text={Uri.EscapeDataString(randomTitle)}",
-                    AverageRating = Math.Round(Random.Shared.NextDouble() * 3 + 7, 1)
+                    AverageRating = Math.Round((decimal)(Random.Shared.Next(0, 31) / 10m) + 7m, 1)
                 });
             }
         }

@@ -115,7 +115,7 @@ namespace MovieApp.MVVM.ViewModel
                     foreach (var movie in AllMovies)
                     {
                         movie.IsInWatchlist = watchlistApiIds.Contains(movie.Id);
-
+                        movie.AverageRating = _dbService.GetMovieRating(movie.Id);
                         var existingReview = _dbService.GetReview(CurrentUser.user_id, movie.Id);
                         movie.UpdateUserRating(existingReview?.stars);
                     }
@@ -150,7 +150,7 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != TopMoviesVM)
             {
-                TopMoviesVM.SetMoviesAsync(AllMovies);
+                TopMoviesVM.SetMoviesAsync(AllMovies.OrderByDescending(m => m.AverageRating));
                 NavigateToView(TopMoviesVM);
             }
         }
@@ -280,29 +280,6 @@ namespace MovieApp.MVVM.ViewModel
 
                 Debug.WriteLine($"Opening rating dialog for {movie.PrimaryTitle}");
                 IsRatingDialogOpen = true;
-            }
-        }
-
-        [RelayCommand]
-        private void OnRatingSubmitted()
-        {
-            if (SelectedMovie != null && CurrentUser != null)
-            {
-                // Update all instances of this movie
-                RefreshMovieRatings(SelectedMovie.Id, RateMovieVM.Rating);
-                IsRatingDialogOpen = false;
-            }
-        }
-        private void RefreshMovieRatings(string movieId, int newRating)
-        {
-            var movieInCollection = AllMovies.FirstOrDefault(m => m.Id == movieId);
-            if (movieInCollection != null)
-            {
-                movieInCollection.UpdateUserRating(newRating);
-            }
-            if (SelectedMovie?.Id == movieId)
-            {
-                SelectedMovie.UpdateUserRating(newRating);
             }
         }
 

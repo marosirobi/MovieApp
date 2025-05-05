@@ -36,6 +36,10 @@ namespace MovieApp.MVVM.ViewModel
         [ObservableProperty]
         private bool _hasRating;
 
+        [ObservableProperty]
+        private Decimal _averageRating;
+
+        private bool _isInitialLoad = false;
         public ObservableCollection<StarViewModel> Stars { get; } = new();
         public User CurrentUser { get; set; }
         public ICommand CloseRatingDialogCommand { get; set; }
@@ -102,12 +106,13 @@ namespace MovieApp.MVVM.ViewModel
             {
                 _dbService.AddReview(CurrentUser.user_id, CurrentMovie.Id, Rating);
                 CurrentMovie.UpdateUserRating(Rating);
+                CurrentMovie.UpdateAverageRating(_dbService.GetMovieRating(CurrentMovie.Id));
                 HasRating = true;
                 Debug.WriteLine($"Rating submitted: {Rating}");
             }
         }
 
-        private bool _isInitialLoad = false;
+        
 
         public void SetMovie(MovieModel movie)
         {
@@ -122,13 +127,10 @@ namespace MovieApp.MVVM.ViewModel
                 var existingReview = _dbService.GetReview(CurrentUser.user_id, CurrentMovie.Id);
                 Rating = existingReview?.stars ?? 0;
                 HasRating = existingReview != null;
-
                 // Force UI update
                 UpdateStarColors();
                 OnPropertyChanged(nameof(Rating));
                 OnPropertyChanged(nameof(HasRating));
-
-                Debug.WriteLine($"UI Rating updated to: {Rating} (DB: {existingReview?.stars ?? 0})");
             }
         }
 
