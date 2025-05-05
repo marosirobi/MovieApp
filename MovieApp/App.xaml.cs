@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MovieApp.MVVM.View;
+using MovieApp.MVVM.ViewModel;
 using MovieApp.MVVM.ViewModel;
 using System.Diagnostics;
 using System.IO;

@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using MovieApp.MVVM.ViewModel;
 
-namespace MovieApp.MVVM.View
+namespace MovieApp.MVVM.ViewModel
 {
     public partial class LoginView : Window
     {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieApp"
         xmlns:viewModel="clr-namespace:MovieApp.MVVM.ViewModel"
-        xmlns:views="clr-namespace:MovieApp.MVVM.View"
+        xmlns:views="clr-namespace:MovieApp.MVVM.ViewModel"
         xmlns:utils="clr-namespace:MovieApp.Utils"
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="600" MinWidth="975"

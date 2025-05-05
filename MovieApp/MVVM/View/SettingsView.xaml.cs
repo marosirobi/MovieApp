@@ -1,34 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MovieApp.MVVM.ViewModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-namespace MovieApp.MVVM.View
+
+namespace MovieApp.MVVM.ViewModel
 {
     public partial class SettingsView : UserControl
     {
         public SettingsView()
         {
             InitializeComponent();
+
             var vm = new SettingsViewModel();
             vm.PropertyChanged += ViewModel_PropertyChanged;
             this.DataContext = vm;
 
-            // Initial background update
-            UpdateBackground(vm.SelectedTheme);
+            if (vm.SelectedTheme != null) // Null ellenőrzés, hogy ne legyen hiba
+            {
+                UpdateBackground(vm.SelectedTheme);
+            }
         }
 
-        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void InitializeComponent()
+        {
+          
+        }
+
+        private void ViewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(SettingsViewModel.SelectedTheme))
             {
                 var vm = DataContext as SettingsViewModel;
-                UpdateBackground(vm.SelectedTheme);  // Update the background when the theme changes
+                if (vm != null)
+                {
+                    UpdateBackground(vm.SelectedTheme);
+                }
             }
         }
 
@@ -59,14 +66,12 @@ namespace MovieApp.MVVM.View
                     break;
             }
 
-            // Update colors in the application resources
             Application.Current.Resources["AppBackgroundBrush"] = new SolidColorBrush(background);
             Application.Current.Resources["MenuButtonSelectedBackground"] = new SolidColorBrush(menuSelected);
             Application.Current.Resources["MenuButtonHoverBackground"] = new SolidColorBrush(menuHover);
             Application.Current.Resources["AppBorderBrush"] = new SolidColorBrush(border);
 
-            // Local background update for the main grid
-            MainGrid.Background = new SolidColorBrush(background);
+            Background = new SolidColorBrush(background);
         }
     }
 }

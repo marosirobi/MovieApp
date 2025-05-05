@@ -6,7 +6,7 @@ using Microsoft.Win32;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 
-namespace MovieApp.MVVM.View
+namespace MovieApp.MVVM.ViewModel
 {
     public partial class ProfileView : UserControl
     {

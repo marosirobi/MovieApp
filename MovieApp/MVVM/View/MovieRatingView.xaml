@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MovieApp.MVVM.View.MovieRatingView"
+﻿<UserControl x:Class="MovieApp.MVVM.ViewModel.MovieRatingView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieApp.MVVM.View
+namespace MovieApp.MVVM.ViewModel
 {
     /// <summary>
     /// Interaction logic for ListsView.xaml

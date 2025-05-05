@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
-namespace MovieApp.MVVM.View
+namespace MovieApp.MVVM.ViewModel
 {
     public class SettingsViewModel : INotifyPropertyChanged
     {
@@ -115,13 +115,21 @@ namespace MovieApp.MVVM.View
         // Method to update the theme dynamically
         private void UpdateTheme()
         {
-            string themeKey = SelectedTheme.ToString();
-            ResourceDictionary themeDictionary = Application.LoadComponent(new Uri($"Themes/{themeKey}.xaml", UriKind.Relative)) as ResourceDictionary;
+            try
+            {
+                string themeKey = SelectedTheme.ToString();
+                var uri = new Uri($"/MovieApp;component/Theme/{themeKey}.xaml", UriKind.RelativeOrAbsolute);
+                var themeDictionary = new ResourceDictionary { Source = uri };
 
-            // Clear previous theme and add the new theme
-            Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(themeDictionary);
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(themeDictionary);
+            }
+            catch
+            {
+                // Témafájl nem található – figyelmen kívül hagyjuk
+            }
         }
+
 
         // Method to save the settings
         private void SaveSettings()

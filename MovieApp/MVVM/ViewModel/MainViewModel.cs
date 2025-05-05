@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MovieApp.MVVM.Model;
-using MovieApp.MVVM.View;
+using MovieApp.MVVM.ViewModel;
 using MovieApp.Utils;
 using System.Collections.ObjectModel;
 using System.Configuration;
