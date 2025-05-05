@@ -24,7 +24,8 @@
                       SelectedItem="{Binding SelectedList, Mode=TwoWay}"
                       Width="300"
                       Height="30"
-                      Margin="10,0">
+                      Margin="10,0"
+                      Tag="Your list is currently empty">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" 

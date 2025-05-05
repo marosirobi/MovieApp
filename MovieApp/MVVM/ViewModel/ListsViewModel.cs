@@ -55,15 +55,15 @@ namespace MovieApp.MVVM.ViewModel
             var lists = _dbService.GetUserLists(CurrentUser.user_id);
             foreach (var list in lists)
             {
+                if(list != "Watchlist")
                 AvailableLists.Add(list);
             }
 
             // Default to watchlist if available
-            SelectedList = AvailableLists.Contains("Watchlist") ? "Watchlist" :
-                         AvailableLists.FirstOrDefault();
+            SelectedList = AvailableLists.FirstOrDefault();
         }
 
-        private void LoadListedMovies()
+        public void LoadListedMovies()
         {
             if (CurrentUser == null || _allMovies == null || string.IsNullOrEmpty(SelectedList)) return;
 
