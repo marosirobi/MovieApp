@@ -54,12 +54,13 @@ namespace MovieApp.MVVM.Model
         private decimal _averageRating;
         public decimal AverageRating
         {
-            get => _averageRating;
+            get => Math.Round(_averageRating, 1);
             set => SetProperty(ref _averageRating, value);
         }
         public void UpdateAverageRating(decimal newRating)
         {
             AverageRating = newRating;
+            Debug.WriteLine(newRating);
             OnPropertyChanged(nameof(AverageRating));
         }
 
