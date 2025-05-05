@@ -309,6 +309,7 @@ namespace MovieApp.MVVM.ViewModel
         [RelayCommand]
         private void CloseDialog()
         {
+            
             IsRatingDialogOpen = false;
             IsListDialogOpen = false;
         }
@@ -442,6 +443,15 @@ namespace MovieApp.MVVM.ViewModel
             SearchText = string.Empty;
             SearchResults.Clear();
             ShowSearchResults = false;
+        }
+
+        [RelayCommand]
+        private void Closed()
+        {
+
+            IsRatingDialogOpen = false;
+            IsListDialogOpen = false;
+            ListsVM.LoadListedMovies();
         }
     }
 

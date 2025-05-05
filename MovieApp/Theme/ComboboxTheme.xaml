@@ -82,6 +82,14 @@
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left" />
 
+                        <Label x:Name="Placeholder"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Foreground="LightGray"
+                               Visibility="Collapsed"
+                               Padding="10 0 0 0"
+                               Content="{TemplateBinding Tag}"
+                               FontSize="14"/>
                         <!-- Dropdown -->
                         <Popup Name="Popup"
                                Placement="Bottom"
@@ -112,6 +120,13 @@
                             <Setter Property="Foreground" Value="Gray"/>
                             <Setter Property="Background" Value="#2E2C40"/>
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value=""/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Placeholder" Property="Visibility" Value="Visible"/>
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
