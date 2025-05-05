@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Data;
 
 namespace MovieApp.MVVM.ViewModel;
+
 public partial class TopMoviesViewModel : ObservableObject
 {
     private readonly ObservableCollection<MovieModel> _movies = new();
@@ -17,35 +18,39 @@ public partial class TopMoviesViewModel : ObservableObject
     public TopMoviesViewModel()
     {
         Movies = CollectionViewSource.GetDefaultView(_movies);
-        Movies.Filter = FilterMovies; // Optional filtering
+        Movies.SortDescriptions.Add(new SortDescription(nameof(MovieModel.AverageRating), ListSortDirection.Descending));
     }
 
     public async Task SetMoviesAsync(IEnumerable<MovieModel> movies)
     {
-        _allMovies = movies.ToList();
+        _allMovies = movies
+            .OrderByDescending(m => m.AverageRating)
+            .ToList();
+
         _movies.Clear();
 
         await Task.Run(async () =>
         {
             foreach (var movie in _allMovies)
             {
-                await Application.Current.Dispatcher.InvokeAsync(() =>
+                if (Application.Current != null)
                 {
-                    _movies.Add(movie);
-                }, System.Windows.Threading.DispatcherPriority.Background);
-
-                await Task.Delay(300); // Yield to UI thread
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        _movies.Add(movie);
+                    }, System.Windows.Threading.DispatcherPriority.Background);
+                }
+                await Task.Delay(300); // Reduced delay for better performance
             }
         });
+
+        // Refresh the view after all movies are added
+        Movies.Refresh();
     }
 
-    private bool FilterMovies(object item)
+    [RelayCommand]
+    private void RefreshMovies()
     {
-        if (item is MovieModel movie)
-        {
-            // Add your filter logic here
-            return true;
-        }
-        return false;
+        Movies.Refresh();
     }
 }

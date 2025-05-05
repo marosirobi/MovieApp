@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Globalization;
 
@@ -48,8 +50,18 @@ namespace MovieApp.MVVM.Model
         [JsonProperty("primaryImage")]
         public string? PrimaryImage { get; set; }
 
-        [JsonProperty("averageRating")]
-        public double AverageRating { get; set; }
+        [Column(TypeName = "decimal(3,1)")]
+        private decimal _averageRating;
+        public decimal AverageRating
+        {
+            get => _averageRating;
+            set => SetProperty(ref _averageRating, value);
+        }
+        public void UpdateAverageRating(decimal newRating)
+        {
+            AverageRating = newRating;
+            OnPropertyChanged(nameof(AverageRating));
+        }
 
         [JsonProperty("genres")]
         public string[]? Genres { get; set; }
@@ -130,7 +142,7 @@ namespace MovieApp.MVVM.Model
             movie.PrimaryImage = imageUrl;
             return this;
         }
-        public MovieBuilder SetAverageRating(double rating)
+        public MovieBuilder SetAverageRating(decimal rating)
         {
             movie.AverageRating = rating;
             return this;

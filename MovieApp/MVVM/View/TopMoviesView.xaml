@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0">
             <!-- Title -->
-            <TextBlock Text="Your Ratings"
+            <TextBlock Text="Top rated Movies"
                FontSize="28"
                Foreground="White"
                Margin="0,0,0,30"/>
