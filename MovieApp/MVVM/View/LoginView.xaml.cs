@@ -13,12 +13,10 @@ namespace MovieApp.MVVM.View
             var viewModel = new LoginViewModel();
             viewModel.OnLoginSuccess = (user) =>
             {
-                // Create and show the main window
                 var mainWindow = new MainWindow();
                 mainWindow.DataContext = new MainViewModel { CurrentUser = user };
                 mainWindow.Show();
 
-                // Close the login window
                 this.Close();
             };
 

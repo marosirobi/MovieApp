@@ -40,11 +40,10 @@ public partial class TopMoviesViewModel : ObservableObject
                         _movies.Add(movie);
                     }, System.Windows.Threading.DispatcherPriority.Background);
                 }
-                await Task.Delay(300); // Reduced delay for better performance
+                await Task.Delay(300);
             }
         });
 
-        // Refresh the view after all movies are added
         Movies.Refresh();
     }
 

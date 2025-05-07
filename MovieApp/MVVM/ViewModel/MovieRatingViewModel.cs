@@ -127,7 +127,7 @@ namespace MovieApp.MVVM.ViewModel
                 var existingReview = _dbService.GetReview(CurrentUser.user_id, CurrentMovie.Id);
                 Rating = existingReview?.stars ?? 0;
                 HasRating = existingReview != null;
-                // Force UI update
+                
                 UpdateStarColors();
                 OnPropertyChanged(nameof(Rating));
                 OnPropertyChanged(nameof(HasRating));
@@ -148,7 +148,6 @@ namespace MovieApp.MVVM.ViewModel
             }
         }
 
-        // Update this when setting the movie
         partial void OnCurrentMovieChanged(MovieModel value)
         {
             if (value != null && CurrentUser != null)
@@ -157,16 +156,6 @@ namespace MovieApp.MVVM.ViewModel
                 HasRating = existingReview != null;
             }
         }
-
-
-
-
-
-
-
-
     }
-
-
         }
 

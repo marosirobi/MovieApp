@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using MovieApp.MVVM.Model;
 using MovieApp.Utils;
 using System.Collections.ObjectModel;
@@ -46,7 +45,6 @@ namespace MovieApp.MVVM.ViewModel
         {
             LoadListedMovies();
         }
-
         private void LoadAvailableLists()
         {
             if (CurrentUser == null) return;
@@ -58,8 +56,6 @@ namespace MovieApp.MVVM.ViewModel
                 if(list != "Watchlist")
                 AvailableLists.Add(list);
             }
-
-            // Default to watchlist if available
             SelectedList = AvailableLists.FirstOrDefault();
         }
 

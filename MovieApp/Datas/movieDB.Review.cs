@@ -9,8 +9,6 @@
             OnCreated();
         }
 
-        
-
         public int review_id { get; set; }
 
         public string? content { get; set; }

@@ -5,10 +5,10 @@ namespace MovieApp.MVVM.Utils
     public static class PaginationUtils
     {
         public static void UpdateVisibleItems<T>(
-    ObservableCollection<T> sourceCollection,
-    ObservableCollection<T> visibleCollection,
-    int currentPage,
-    int itemsPerPage)
+            ObservableCollection<T> sourceCollection,
+            ObservableCollection<T> visibleCollection,
+            int currentPage,
+            int itemsPerPage)
         {
             visibleCollection.Clear();
 

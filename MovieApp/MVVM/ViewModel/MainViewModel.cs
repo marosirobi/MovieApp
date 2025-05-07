@@ -4,9 +4,7 @@ using MovieApp.MVVM.Model;
 using MovieApp.MVVM.View;
 using MovieApp.Utils;
 using System.Collections.ObjectModel;
-using System.Configuration;
 using System.Diagnostics;
-using System.DirectoryServices;
 using System.Windows;
 
 namespace MovieApp.MVVM.ViewModel
@@ -81,7 +79,6 @@ namespace MovieApp.MVVM.ViewModel
 
         public MainViewModel()
         {
-            // Normal initialization
             _ = InitializeMovies();
 
             _dbService = new DatabaseService();
@@ -108,7 +105,6 @@ namespace MovieApp.MVVM.ViewModel
                 var movies = await MovieApi.GetMoviesFromApi();
                 AllMovies = new ObservableCollection<MovieModel>(movies);
 
-                // Initialize watchlist status
                 if (CurrentUser != null)
                 {
                     var watchlistApiIds = _dbService.GetListApiIds(CurrentUser.user_id,"Watchlist");
@@ -120,7 +116,6 @@ namespace MovieApp.MVVM.ViewModel
                         movie.UpdateUserRating(existingReview?.stars);
                     }
                 }
-                
                 HomeVM.SetMovies(AllMovies);
                 _dbService.SeedMovies(AllMovies);
 
@@ -130,7 +125,7 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (CurrentView != viewModel)
             {
-                _navigationStack.Push(CurrentView); // Save current view before changing
+                _navigationStack.Push(CurrentView);
                 CurrentView = viewModel;
             }
         }
@@ -186,7 +181,6 @@ namespace MovieApp.MVVM.ViewModel
                 ListsVM.SetCurrentUser(CurrentUser);
                 ListsVM.Initialize(AllMovies);
                 NavigateToView(ListsVM);
-
             }
         }
 
@@ -196,7 +190,6 @@ namespace MovieApp.MVVM.ViewModel
             if (CurrentView != ReviewsVM)
             {
                 NavigateToView(ReviewsVM);
-
             }
         }
 
@@ -206,7 +199,6 @@ namespace MovieApp.MVVM.ViewModel
             if (CurrentView != ProfileVM)
             {
                 NavigateToView(ProfileVM);
-
             }
         }
 
@@ -216,7 +208,6 @@ namespace MovieApp.MVVM.ViewModel
             if (CurrentView != SettingsVM)
             {
                 NavigateToView(SettingsVM);
-
             }
         }
 
@@ -274,7 +265,6 @@ namespace MovieApp.MVVM.ViewModel
         {
             if (movie != null && CurrentUser != null)
             {
-                // Force fresh initialization
                 RateMovieVM.SetMovie(movie);
                 RateMovieVM.CurrentUser = CurrentUser;
 
@@ -286,7 +276,6 @@ namespace MovieApp.MVVM.ViewModel
         [RelayCommand]
         private void CloseDialog()
         {
-            
             IsRatingDialogOpen = false;
             IsListDialogOpen = false;
         }
@@ -294,7 +283,7 @@ namespace MovieApp.MVVM.ViewModel
         [RelayCommand]
         private void NavigateBack()
         {
-            if (_navigationStack.Count > 1) // Don't pop the last item (Home)
+            if (_navigationStack.Count > 1)
             {
                 var previousView = _navigationStack.Pop();
                 Debug.WriteLine(previousView);
@@ -309,7 +298,6 @@ namespace MovieApp.MVVM.ViewModel
 
             try
             {
-                // Toggle the watchlist status
                 movie.IsInWatchlist = !movie.IsInWatchlist;
 
                 if (movie.IsInWatchlist)
@@ -320,7 +308,6 @@ namespace MovieApp.MVVM.ViewModel
                 {
                     _dbService.RemoveFromWatchlist(CurrentUser.user_id, movie.Id);
 
-                    // If we're currently viewing the watchlist, remove the movie from the displayed collection
                     if (CurrentView is WatchlistViewModel watchlistVM)
                     {
                         watchlistVM.WatchlistMovies.Remove(movie);
@@ -329,7 +316,6 @@ namespace MovieApp.MVVM.ViewModel
             }
             catch (Exception ex)
             {
-                // Revert on error
                 movie.IsInWatchlist = !movie.IsInWatchlist;
                 MessageBox.Show($"Error: {ex.Message}");
             }
@@ -350,7 +336,6 @@ namespace MovieApp.MVVM.ViewModel
 
         partial void OnSearchTextChanged(string value)
         {
-            // Cancel previous search if it was still running
             _searchCancellationTokenSource?.Cancel();
             _searchCancellationTokenSource = new CancellationTokenSource();
 
@@ -360,7 +345,6 @@ namespace MovieApp.MVVM.ViewModel
                 return;
             }
 
-            // Debounce the search to avoid too many requests
             Task.Run(async () =>
             {
                 await Task.Delay(200, _searchCancellationTokenSource.Token);
@@ -425,7 +409,6 @@ namespace MovieApp.MVVM.ViewModel
         [RelayCommand]
         private void Closed()
         {
-
             IsRatingDialogOpen = false;
             IsListDialogOpen = false;
             ListsVM.LoadListedMovies();

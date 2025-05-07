@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Globalization;
@@ -39,7 +38,7 @@ namespace MovieApp.MVVM.Model
         public bool IsInWatchlist
         {
             get => _isInWatchlist;
-            set => SetProperty(ref _isInWatchlist, value); // This triggers UI updates
+            set => SetProperty(ref _isInWatchlist, value);
         }
         [JsonProperty("id")]
         public string? Id { get; set; }
@@ -76,19 +75,15 @@ namespace MovieApp.MVVM.Model
         [JsonProperty("contentRating")]
         public string? ContentRating { get; set; }
 
-        // Raw runtime
         [JsonProperty("runtimeMinutes")]
         public int? RuntimeMinutes { get; set; }
 
-        // Raw Budget
         [JsonProperty("budget")]
         public string? Budget { get; set; }
 
-        // Formatted runtime
         [JsonIgnore]
         public string FormattedRuntime => GetFormattedRuntime();
 
-        // Formatted budget
         [JsonIgnore]
         public string? FormattedBudget => GetFormattedBudget();
 
@@ -111,14 +106,11 @@ namespace MovieApp.MVVM.Model
             if (string.IsNullOrEmpty(Budget) || Budget == "0")
                 return "N/A";
 
-            // Try to parse the budget as a number
             if (long.TryParse(Budget, out long budgetValue))
             {
-                // Format with commas and dollar sign
                 return "$" + budgetValue.ToString("N0", CultureInfo.InvariantCulture);
             }
 
-            // If not a number, return as-is
             return Budget;
         }
     }

@@ -4,7 +4,6 @@ using MovieApp.MVVM.Model;
 using MovieApp.Utils;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Windows.Controls;
 
 namespace MovieApp.MVVM.ViewModel
 {
@@ -87,14 +86,13 @@ namespace MovieApp.MVVM.ViewModel
                     Debug.WriteLine($"Added {CurrentMovie.PrimaryTitle} to list {list.list_name}");
                 }
                 LoadCustomLists();
-                // Update the local property
+                
                 list.IsInCurrentList = !isInList;
 
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error toggling list: {ex.Message}");
-                // Consider showing a user-friendly error message
             }
         }
 

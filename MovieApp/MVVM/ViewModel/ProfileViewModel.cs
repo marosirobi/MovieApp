@@ -10,10 +10,9 @@ namespace MovieApp.MVVM.ViewModel
         private void OnPropertyChanged([CallerMemberName] string name = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-        // Műfajok listája
         public ObservableCollection<string> Genres { get; set; }
 
-        // Kiválasztott műfaj
+
         private string _selectedGenre;
         public string SelectedGenre
         {
@@ -34,7 +33,7 @@ namespace MovieApp.MVVM.ViewModel
             {
                 "Action", "Comedy", "Drama", "Fantasy", "Horror", "Sci-Fi", "Romance", "Thriller"
             };
-            SelectedGenre = "Sci-Fi"; // alapértelmezett érték
+            SelectedGenre = "Sci-Fi";
         }
     }
 }

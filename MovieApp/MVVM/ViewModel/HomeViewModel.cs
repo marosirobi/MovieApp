@@ -26,19 +26,16 @@ namespace MovieApp.MVVM.ViewModel
             {
                 if (allMovies?.Count > 0)
                 {
-                    // Set random movies
                     MovieCollectionUtils.SetRandomMovies(
                         allMovies,
                         RandomMoviesList.AllItems,
                         TotalMoviesToKeep);
 
-                    // Set top rated movies
                     MovieCollectionUtils.SetTopMovies(
                         allMovies,
                         TopMoviesList.AllItems,
                         TotalMoviesToKeep);
 
-                    // Reset pagination for both lists
                     RandomMoviesList.ResetPagination();
                     TopMoviesList.ResetPagination();
                 }
