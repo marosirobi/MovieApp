@@ -35,7 +35,6 @@ namespace MovieApp.MVVM.Model
 
                 return response;
 
-
             }
             catch (Exception ex)
             {

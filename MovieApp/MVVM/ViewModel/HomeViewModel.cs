@@ -8,7 +8,6 @@ namespace MovieApp.MVVM.ViewModel
 {
     public partial class HomeViewModel : ObservableObject
     {
-
         private const int TotalMoviesToKeep = 20;
         private static readonly List<string> FallbackTitles = new()
         {

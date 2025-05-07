@@ -22,7 +22,6 @@ namespace MovieApp.MVVM.View
                 this.Close();
             };
 
-
             DataContext = viewModel;
         }
         public void ClearPassword()

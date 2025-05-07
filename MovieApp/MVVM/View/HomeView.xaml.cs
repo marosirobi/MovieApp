@@ -6,7 +6,7 @@ namespace MovieApp.MVVM.View
 {
     public partial class HomeView : UserControl
     {
-        private const double MovieCardWidth = 235; // 200 width + 20 margin
+        private const double MovieCardWidth = 235;
 
         public HomeView()
         {

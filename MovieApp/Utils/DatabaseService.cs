@@ -3,7 +3,6 @@ using MovieApp.MVVM.Model;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
-
 namespace MovieApp.Utils
 {
     public class DatabaseService
@@ -69,7 +68,7 @@ namespace MovieApp.Utils
             catch (Exception ex)
             {
                 Debug.WriteLine($"Database initialization failed: {ex.Message}");
-                throw; // Critical failure
+                throw;
             }
         }
 
@@ -139,7 +138,6 @@ namespace MovieApp.Utils
             {
                 Debug.WriteLine($"Attempting to toggle movie {api_id} in {(listName == null ? "default watchlist" : $"list '{listName}'")} for user {userId}");
 
-                // 1. Verify movie exists first - don't track the entity
                 var movie = freshContext.Movies
                     .AsNoTracking()
                     .FirstOrDefault(m => m.api_id == api_id);
@@ -150,7 +148,6 @@ namespace MovieApp.Utils
                     return;
                 }
 
-                // 2. Get user with watchlists
                 var user = freshContext.Users
                     .Include(u => u.Watchlists)
                     .ThenInclude(w => w.Movie_Watchlists1)
@@ -162,7 +159,6 @@ namespace MovieApp.Utils
                     return;
                 }
 
-                // 3. Find or create appropriate watchlist
                 Watchlist watchlist;
 
                 if (listName == null)
@@ -173,13 +169,13 @@ namespace MovieApp.Utils
                     {
                         watchlist = new Watchlist
                         {
-                            User = user,  // Use navigation property instead of UserId
+                            User = user,
                             isDefault = true,
                             list_name = "Watchlist",
                             create_date = DateTime.Now
                         };
                         freshContext.Watchlists.Add(watchlist);
-                        freshContext.SaveChanges(); // Save to get ID
+                        freshContext.SaveChanges();
                     }
                 }
                 else
@@ -190,13 +186,13 @@ namespace MovieApp.Utils
                     {
                         watchlist = new Watchlist
                         {
-                            User = user,  // Use navigation property instead of UserId
+                            User = user,
                             isDefault = false,
                             list_name = listName,
                             create_date = DateTime.Now
                         };
                         freshContext.Watchlists.Add(watchlist);
-                        freshContext.SaveChanges(); // Save to get ID
+                        freshContext.SaveChanges();
                     }
                 }
 
@@ -207,7 +203,6 @@ namespace MovieApp.Utils
 
                 if (existingEntry == null)
                 {
-                    // Add to watchlist - let EF handle the relationships
                     var movieToAdd = freshContext.Movies.First(m => m.api_id == api_id);
                     var newEntry = new Movie_Watchlist
                     {
@@ -232,13 +227,13 @@ namespace MovieApp.Utils
             }
             catch (Exception ex)
             {
-                try { transaction.Rollback(); } catch { /* Ignore rollback errors */ }
+                try { transaction.Rollback(); } catch {}
                 Debug.WriteLine($"Error in AddOrRemoveFromWatchlist: {ex.Message}");
                 if (ex.InnerException != null)
                 {
                     Debug.WriteLine($"Inner exception: {ex.InnerException.Message}");
                 }
-                throw; // Re-throw to handle in UI
+                throw;
             }
         }
         public bool IsInWatchlist(int userId, string movieId)
@@ -360,7 +355,7 @@ namespace MovieApp.Utils
             catch (Exception ex)
             {
                 transaction.Rollback();
-                throw; // Re-throw to handle in UI
+                throw;
             }
         }
         public Review? GetReview(int userId, string movieApiId)

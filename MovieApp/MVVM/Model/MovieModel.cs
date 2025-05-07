@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Globalization;
@@ -9,7 +8,6 @@ namespace MovieApp.MVVM.Model
 {
     public partial class MovieModel : ObservableObject
     {
-
         private int? _yourRating;
         public int? YourRating
         {
@@ -26,7 +24,6 @@ namespace MovieApp.MVVM.Model
 
         public bool HasRating => YourRating.HasValue && YourRating > 0;
 
-
         public void UpdateUserRating(int? rating)
         {
             YourRating = rating;
@@ -39,7 +36,7 @@ namespace MovieApp.MVVM.Model
         public bool IsInWatchlist
         {
             get => _isInWatchlist;
-            set => SetProperty(ref _isInWatchlist, value); // This triggers UI updates
+            set => SetProperty(ref _isInWatchlist, value);
         }
         [JsonProperty("id")]
         public string? Id { get; set; }
@@ -111,14 +108,10 @@ namespace MovieApp.MVVM.Model
             if (string.IsNullOrEmpty(Budget) || Budget == "0")
                 return "N/A";
 
-            // Try to parse the budget as a number
             if (long.TryParse(Budget, out long budgetValue))
             {
-                // Format with commas and dollar sign
                 return "$" + budgetValue.ToString("N0", CultureInfo.InvariantCulture);
             }
-
-            // If not a number, return as-is
             return Budget;
         }
     }

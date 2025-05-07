@@ -29,7 +29,6 @@ namespace MovieApp.MVVM.ViewModel
             _dbService = new DatabaseService();
             
         }
-
         public void Initialize(ObservableCollection<MovieModel> allMovies)
         {
             _allMovies = allMovies;
@@ -46,7 +45,6 @@ namespace MovieApp.MVVM.ViewModel
         {
             LoadListedMovies();
         }
-
         private void LoadAvailableLists()
         {
             if (CurrentUser == null) return;

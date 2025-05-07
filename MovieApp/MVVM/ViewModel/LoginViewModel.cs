@@ -20,9 +20,6 @@ namespace MovieApp.MVVM.ViewModel
         [ObservableProperty]
         private string _errorMessage = string.Empty;
 
-        
-
-        // Use an action to handle successful login
         public Action<User> OnLoginSuccess { get; set; }
 
         public LoginViewModel()
@@ -100,8 +97,6 @@ namespace MovieApp.MVVM.ViewModel
                 Debug.WriteLine($"Registration error: {ex.Message}");
             }
         }
-
-        // Add this event to notify the view to clear the password box
 
         private void CloseWindow()
         {

@@ -2,7 +2,6 @@
 
 namespace MovieApp
 {
-
     public partial class MovieDB : DbContext
     {
         public MovieDB(DbContextOptions<MovieDB> options) : base(options)
@@ -13,7 +12,6 @@ namespace MovieApp
         public MovieDB() : this(GetOptions())
         {
         }
-
         private static DbContextOptions<MovieDB> GetOptions()
         {
             var connectionString = ConfigurationHelper.GetConnectionString("MovieDB");
@@ -25,7 +23,6 @@ namespace MovieApp
             optionsBuilder.UseSqlServer(connectionString);
             return optionsBuilder.Options;
         }
-
 
         public DbSet<Movie> Movies { get; set; }
     public DbSet<User> Users { get; set; }

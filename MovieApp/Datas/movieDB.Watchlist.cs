@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics;
 
 namespace MovieApp
 {
@@ -21,7 +20,6 @@ namespace MovieApp
         }
 
         public int watchlist_id { get; set; }
-
         
         [MaxLength(255)]
         public string list_name { get; set; }
