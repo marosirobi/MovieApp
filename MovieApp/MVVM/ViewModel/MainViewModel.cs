@@ -1,12 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MovieApp.MVVM.Model;
-using MovieApp.MVVM.View;
 using MovieApp.Utils;
 using System.Collections.ObjectModel;
-using System.Configuration;
 using System.Diagnostics;
-using System.DirectoryServices;
 using System.Windows;
 
 namespace MovieApp.MVVM.ViewModel
@@ -81,7 +78,6 @@ namespace MovieApp.MVVM.ViewModel
 
         public MainViewModel()
         {
-            // Normal initialization
             _ = InitializeMovies();
 
             _dbService = new DatabaseService();
@@ -294,7 +290,7 @@ namespace MovieApp.MVVM.ViewModel
         [RelayCommand]
         private void NavigateBack()
         {
-            if (_navigationStack.Count > 1) // Don't pop the last item (Home)
+            if (_navigationStack.Count > 1)
             {
                 var previousView = _navigationStack.Pop();
                 Debug.WriteLine(previousView);

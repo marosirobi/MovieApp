@@ -1,5 +1,4 @@
-﻿// MovieCollectionUtils.cs
-using MovieApp.MVVM.Model;
+﻿using MovieApp.MVVM.Model;
 using System.Collections.ObjectModel;
 
 namespace MovieApp.MVVM.Utils

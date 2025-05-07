@@ -42,7 +42,6 @@ namespace MovieApp.MVVM.Utils
                 }
             }
         }
-
         public static bool CanGoNext<T>(int currentPage, int itemsPerPage, ObservableCollection<T> sourceCollection)
         {
             return (currentPage + 1) * itemsPerPage < sourceCollection.Count;

@@ -4,7 +4,6 @@ using MovieApp.MVVM.Model;
 using MovieApp.Utils;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Windows.Controls;
 
 namespace MovieApp.MVVM.ViewModel
 {
@@ -54,12 +53,12 @@ namespace MovieApp.MVVM.ViewModel
                 if (NewListName.Length > 255)
                 {
                     Debug.WriteLine("List name cannot exceed 255 characters");
-                    // Show error to user (implement your preferred notification method)
+                    
                     return;
                 }
                 _dbService.CreateCustomList(CurrentUser.user_id, NewListName);
-                LoadCustomLists(); // Refresh the list
-                NewListName = string.Empty; // Clear the input field
+                LoadCustomLists();
+                NewListName = string.Empty;
             }
             catch (Exception ex)
             {
@@ -94,7 +93,6 @@ namespace MovieApp.MVVM.ViewModel
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error toggling list: {ex.Message}");
-                // Consider showing a user-friendly error message
             }
         }
 

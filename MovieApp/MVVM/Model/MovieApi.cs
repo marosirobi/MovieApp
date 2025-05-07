@@ -26,7 +26,6 @@ namespace MovieApp.MVVM.Model
 
             if (response.IsSuccessStatusCode)
             {
-                // For System.Text.Json:
                 string content = await response.Content.ReadAsStringAsync();
                 Debug.WriteLine(content);
                 return JsonConvert.DeserializeObject<ObservableCollection<MovieModel>>(content);

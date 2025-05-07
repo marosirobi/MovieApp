@@ -78,7 +78,6 @@ namespace MovieApp.MVVM.ViewModel
             }
         }
 
-
         [RelayCommand]
         private void SetRating(int stars)
         {
@@ -111,9 +110,6 @@ namespace MovieApp.MVVM.ViewModel
                 Debug.WriteLine($"Rating submitted: {Rating}");
             }
         }
-
-        
-
         public void SetMovie(MovieModel movie)
         {
             if (CurrentMovie?.Id == movie?.Id && _isInitialLoad)
@@ -157,16 +153,6 @@ namespace MovieApp.MVVM.ViewModel
                 HasRating = existingReview != null;
             }
         }
-
-
-
-
-
-
-
-
     }
-
-
         }
 

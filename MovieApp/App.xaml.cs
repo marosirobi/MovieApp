@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using MovieApp.MVVM.View;
-using MovieApp.MVVM.ViewModel;
+﻿using MovieApp.MVVM.View;
 using System.Diagnostics;
-using System.IO;
 using System.Windows;
 
 namespace MovieApp;

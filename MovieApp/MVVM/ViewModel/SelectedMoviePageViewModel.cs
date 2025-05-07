@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MovieApp.MVVM.Model;
-using MovieApp.Utils;
 
 namespace MovieApp.MVVM.ViewModel
 {
@@ -17,7 +16,6 @@ namespace MovieApp.MVVM.ViewModel
         {
             CurrentMovie = movie;
         }
-
         public void SetCurrentUser(User? user)
         {
             CurrentUser = user;

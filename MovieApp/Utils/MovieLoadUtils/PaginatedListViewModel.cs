@@ -25,7 +25,6 @@ namespace MovieApp.MVVM.ViewModel
             {
                 if (SetProperty(ref _itemsPerPage, value))
                 {
-                    // Ensure currentPage is valid after ItemsPerPage changes
                     AdjustCurrentPageAfterItemsPerPageChange();
                     UpdateVisibleItems();
                     OnPropertyChanged(nameof(CanGoNext));
@@ -78,10 +77,6 @@ namespace MovieApp.MVVM.ViewModel
         {
             PaginationUtils.UpdateVisibleItems(AllItems, VisibleItems, _currentPage, ItemsPerPage);
         }
-
-        /// <summary>
-        /// Adjusts currentPage if it becomes invalid after ItemsPerPage changes.
-        /// </summary>
         private void AdjustCurrentPageAfterItemsPerPageChange()
         {
             if (AllItems.Count == 0)
